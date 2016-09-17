@@ -409,7 +409,6 @@ class Model implements ArrayAccess, Iterator {
 			foreach ( $this->map as $key => $value ) {
 				if ( $type == 1 ) {
 					if ( isset( $data[ $key ] ) ) {
-						echo 11;
 						$data[ $value ] = $data[ $key ];
 						unset( $data[ $key ] );
 					}
