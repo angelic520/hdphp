@@ -1,6 +1,4 @@
 <?php namespace web\home\controller;
-use system\model\News;
-
 /** .-------------------------------------------------------------------
  * |  Software: [HDPHP framework]
  * |      Site: www.hdphp.com
@@ -13,8 +11,6 @@ use system\model\News;
 class Entry {
 	//首页
 	public function index() {
-		$d= News::get();
-		p($d);
 		View::make();
 	}
 }

@@ -2,10 +2,10 @@
 
 use hdphp\Model\Model;
 
-class News extends Model{
+class {{MODEL}} extends Model{
 
 	//数据表
-	protected $table = "news";
+	protected $table = "{{TABLE}}";
 
 	//完整表名
 	protected $full = false;

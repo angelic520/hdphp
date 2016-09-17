@@ -10,4 +10,4 @@
 //开启调试模式
 define( 'DEBUG', TRUE );
 //引入框架
-require 'system/hdphp.php';
+require 'hdphp/hdphp.php';
