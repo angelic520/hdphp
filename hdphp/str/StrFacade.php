@@ -7,21 +7,12 @@
  * |    WeChat: aihoudun
  * | Copyright (c) 2012-2019, www.houdunwang.com. All Rights Reserved.
  * '-------------------------------------------------------------------*/
-namespace hdphp\String;
+namespace hdphp\str;
 
-use hdphp\kernel\ServiceProvider;
+use hdphp\kernel\ServiceFacade;
 
-class StringProvider extends ServiceProvider {
-
-	//延迟加载
-	public $defer = TRUE;
-
-	public function boot() {
-	}
-
-	public function register() {
-		$this->app->single( 'String', function ( $app ) {
-			return new String( $app );
-		} );
+class StrFacade extends ServiceFacade {
+	public static function getFacadeAccessor() {
+		return 'Str';
 	}
 }
