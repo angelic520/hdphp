@@ -1,0 +1,5 @@
+/storage/
+.idea
+.env
+.DS_Store
+attachment
