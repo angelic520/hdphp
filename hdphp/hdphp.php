@@ -11,7 +11,7 @@ header( "Content-type:text/html;charset=utf-8" );
 if ( version_compare( PHP_VERSION, '5.4.0', '<' ) ) {
 	die( 'HDPHP 需要PHP版本大于php5.4,当前版本' . PHP_VERSION );
 }
-define( 'HDPHP_VERSION', '2.0.1' );
+define( 'HDPHP_VERSION', '2.0.13' );
 define( 'RELEASE_VERSION', '20160818' );
 define( 'HDPHP_PATH', __DIR__ );
 define( 'DS', DIRECTORY_SEPARATOR );
