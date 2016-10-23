@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/houdunwang/framework.git",
-                "reference": "1d42dcb5a1ab7d73d4b52fc6de9d34c5c8fba32d"
+                "reference": "2e5c585d51cd0cfab4fbfbead834430431b66398"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/houdunwang/framework/zipball/1d42dcb5a1ab7d73d4b52fc6de9d34c5c8fba32d",
-                "reference": "1d42dcb5a1ab7d73d4b52fc6de9d34c5c8fba32d",
+                "url": "https://api.github.com/repos/houdunwang/framework/zipball/2e5c585d51cd0cfab4fbfbead834430431b66398",
+                "reference": "2e5c585d51cd0cfab4fbfbead834430431b66398",
                 "shasum": ""
             },
             "type": "project",
@@ -41,7 +41,7 @@
                 }
             ],
             "description": "Hdphp Framework (Kernel)",
-            "time": "2016-10-23 03:31:15"
+            "time": "2016-10-23 15:29:00"
         }
     ],
     "packages-dev": [],
