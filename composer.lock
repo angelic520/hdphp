@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "80eccd7378ba66f24039f5881d45c443",
-    "content-hash": "e52d130d787dbf30deaa60eb85fa2ebf",
+    "hash": "ec95399ee4329dcf7eaad3aa996bc651",
+    "content-hash": "5519ce036db964ca824fc9fe54860aa9",
     "packages": [
         {
             "name": "houdunwang/framework",
@@ -46,7 +46,7 @@
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
