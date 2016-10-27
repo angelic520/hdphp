@@ -14,7 +14,7 @@ return [
 	'lang'               => '',
 	//自动加载文件
 	'auto_load_file'     => [ ],
-	//令牌验证
+	//CSRF验证
 	'token_on'           => TRUE,
 	//注册命名空间
 	'autoload_namespace' => [ ],
