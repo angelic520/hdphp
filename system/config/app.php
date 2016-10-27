@@ -1,7 +1,7 @@
 <?php
 return [
 	//调试模式
-	'debug'              => TRUE,
+	'debug'              => true,
 	//应用目录
 	'path'               => 'app',
 	//加密key
@@ -15,7 +15,7 @@ return [
 	//自动加载文件
 	'auto_load_file'     => [ ],
 	//CSRF验证
-	'token_on'           => TRUE,
+	'token_on'           => true,
 	//注册命名空间
 	'autoload_namespace' => [ ],
 	//类别名
