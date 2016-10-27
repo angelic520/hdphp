@@ -16,10 +16,6 @@ return [
 	'auto_load_file'     => [ ],
 	//令牌验证
 	'token_on'           => TRUE,
-	//令牌验证的表单隐藏字段名称
-	'token_name'         => '__TOKEN__',
-	//令牌验证出错后是否重置令牌 默认为true
-	'token_reset'        => TRUE,
 	//注册命名空间
 	'autoload_namespace' => [ ],
 	//类别名
