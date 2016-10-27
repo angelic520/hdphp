@@ -14,7 +14,7 @@ trait Base {
 		$this->session_id   = $this->getSessionId();
 		$this->expire       = c( 'session.expire' ) ?: 3600;
 		$this->connect();
-		$this->items = $this->read();
+		$this->items = $this->read() ?: [ ];
 	}
 
 	/**

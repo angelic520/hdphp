@@ -19,12 +19,9 @@ class Session {
 	protected $driver;
 
 	//开启
-	public function start() {
-		static $isStart = false;
-		if ( $isStart === false ) {
-			$driver       = '\hdphp\session\\' . ucfirst( Config::get( 'session.driver' ) ) . 'Handler';
-			$this->driver = new $driver();
-		}
+	public function __construct() {
+		$driver       = '\hdphp\session\\' . ucfirst( Config::get( 'session.driver' ) ) . 'Handler';
+		$this->driver = new $driver();
 	}
 
 	//魔术方法
