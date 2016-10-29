@@ -19,8 +19,8 @@ if ( ! function_exists( 'tablename' ) ) {
  * 显示模板
  */
 if ( ! function_exists( 'view' ) ) {
-	function view( $tpl = '' ) {
-		return View::make( $tpl );
+	function view( $tpl = '', $expire = 0 ) {
+		return View::make( $tpl, $expire );
 	}
 }
 /**
@@ -118,7 +118,7 @@ if ( ! function_exists( '_404' ) ) {
 	function _404() {
 		\Response::sendHttpStatus( 302 );
 		if ( is_file( c( 'view.404' ) ) ) {
-			require( c( 'view.404' ) );
+			die( view( c( 'view.404' ) ) );
 		}
 		exit;
 	}

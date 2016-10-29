@@ -1,5 +1,4 @@
-<?php namespace hdphp\cloud;
-
+<?php
 /** .-------------------------------------------------------------------
  * |  Software: [HDCMS framework]
  * |      Site: www.hdcms.com
@@ -8,26 +7,12 @@
  * |    WeChat: aihoudun
  * | Copyright (c) 2012-2019, www.houdunwang.com. All Rights Reserved.
  * '-------------------------------------------------------------------*/
+namespace hdphp\cli;
 
-use hdphp\kernel\ServiceProvider;
+use hdphp\kernel\ServiceFacade;
 
-/**
- * 云接口
- * Class CloudProvider
- * @package hdphp\cloud
- */
-class CloudProvider extends ServiceProvider {
-
-	//延迟加载
-	public $defer = true;
-
-	public function boot() {
-
-	}
-
-	public function register() {
-		$this->app->single( 'Cloud', function ( $app ) {
-			return new Cloud( $app );
-		});
+class CliFacade extends ServiceFacade {
+	public static function getFacadeAccessor() {
+		return 'Cli';
 	}
 }

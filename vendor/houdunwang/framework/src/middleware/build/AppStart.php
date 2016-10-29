@@ -15,6 +15,7 @@ class AppStart {
 		$this->csrf();
 	}
 
+	//令牌验证
 	protected function csrf() {
 		//获取令牌,不存在时创建令牌
 		if ( ! $token = Session::get( 'csrf_token' ) ) {

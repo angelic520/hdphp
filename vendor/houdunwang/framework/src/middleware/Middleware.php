@@ -61,7 +61,8 @@ class Middleware {
 
 	//执行普通中间件
 	public function exe( $name ) {
-		foreach ( Config::get( 'middleware.middleware.' . $name ) as $class ) {
+		$middleware = array_unique( c( 'middleware.middleware.' . $name ) );
+		foreach ( $middleware as $class ) {
 			if ( class_exists( $class ) ) {
 				$obj = $this->app->make( $class );
 				if ( method_exists( $obj, 'run' ) ) {

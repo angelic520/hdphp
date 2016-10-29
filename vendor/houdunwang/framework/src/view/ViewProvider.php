@@ -22,6 +22,6 @@ class ViewProvider extends ServiceProvider {
 	public function register() {
 		$this->app->bind( 'View', function ( $app ) {
 			return new View( $app );
-		}, true );
+		} );
 	}
 }
