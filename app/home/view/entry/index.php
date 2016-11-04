@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>欢迎使用HDPHP</title>
-	<link rel="stylesheet" href="{{__ROOT__}}/resource/hdjs/css/bootstrap.min.css">
+	<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body style="background: #f3f3f3;">
 <h1 class="text-muted text-center" style="margin-top:200px;font-size:80px;">HDPHP 3 </h1>
