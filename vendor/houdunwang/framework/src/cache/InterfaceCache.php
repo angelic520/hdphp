@@ -16,15 +16,15 @@ namespace hdphp\Cache;
  * @package Hdphp\Cache
  * @author  向军 <2300071698@qq.com>
  */
-interface InterfaceCache
-{
-    public function connect();
+interface InterfaceCache {
+	//连接驱动只运行一次
+	public function connect();
 
-    public function set($name, $value, $expire);
+	public function set( $name, $value, $expire );
 
-    public function get($name);
+	public function get( $name );
 
-    public function del($name);
+	public function del( $name );
 
-    public function flush();
+	public function flush();
 }
