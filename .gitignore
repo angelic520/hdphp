@@ -1,4 +1,4 @@
-/storage/
+/storage
 .idea
 .env
 .DS_Store
