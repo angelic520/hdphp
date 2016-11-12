@@ -11,6 +11,10 @@ class ComposerStaticInit90010f21300c382119f8081579bc3548
     );
 
     public static $prefixLengthsPsr4 = array (
+        'w' => 
+        array (
+            'wechat\\' => 7,
+        ),
         's' => 
         array (
             'system\\' => 7,
@@ -26,6 +30,10 @@ class ComposerStaticInit90010f21300c382119f8081579bc3548
     );
 
     public static $prefixDirsPsr4 = array (
+        'wechat\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/houdunwang/wechat',
+        ),
         'system\\' => 
         array (
             0 => __DIR__ . '/../..' . '/system',

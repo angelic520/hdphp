@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "80eccd7378ba66f24039f5881d45c443",
-    "content-hash": "e52d130d787dbf30deaa60eb85fa2ebf",
+    "hash": "b0e08b6fb58d47c5cd90b3ed5a5b92dc",
+    "content-hash": "c046470326f591f281bbbdf737666238",
     "packages": [
         {
             "name": "houdunwang/framework",
@@ -42,12 +42,48 @@
             ],
             "description": "Hdphp Framework (Kernel)",
             "time": "2016-11-11 18:45:58"
+        },
+        {
+            "name": "houdunwang/wechat",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/houdunwang/wechat.git",
+                "reference": "ff63a1f3d9c4a7299b0952fb0eccb736965a206b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/houdunwang/wechat/zipball/ff63a1f3d9c4a7299b0952fb0eccb736965a206b",
+                "reference": "ff63a1f3d9c4a7299b0952fb0eccb736965a206b",
+                "shasum": ""
+            },
+            "type": "project",
+            "autoload": {
+                "files": [],
+                "psr-4": {
+                    "wechat\\": "/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "houdunwang",
+                    "email": "2300071698@qq.com"
+                }
+            ],
+            "description": "wechat framework",
+            "time": "2016-11-12 19:42:22"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "houdunwang/wechat": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

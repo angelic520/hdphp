@@ -36,5 +36,41 @@
             }
         ],
         "description": "Hdphp Framework (Kernel)"
+    },
+    {
+        "name": "houdunwang/wechat",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/houdunwang/wechat.git",
+            "reference": "ff63a1f3d9c4a7299b0952fb0eccb736965a206b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/houdunwang/wechat/zipball/ff63a1f3d9c4a7299b0952fb0eccb736965a206b",
+            "reference": "ff63a1f3d9c4a7299b0952fb0eccb736965a206b",
+            "shasum": ""
+        },
+        "time": "2016-11-12 19:42:22",
+        "type": "project",
+        "installation-source": "source",
+        "autoload": {
+            "files": [],
+            "psr-4": {
+                "wechat\\": "/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "houdunwang",
+                "email": "2300071698@qq.com"
+            }
+        ],
+        "description": "wechat framework"
     }
 ]
