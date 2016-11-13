@@ -16,7 +16,7 @@ class WeChat extends Error {
 	protected $message;
 	//API 根地址
 	protected $apiUrl = 'https://api.weixin.qq.com';
-
+public function show(){echo 3993;}
 	public function __construct( array $config = [ ] ) {
 		if ( empty( $config ) && defined( 'HDPHP_PATH' ) && function_exists( 'c' ) ) {
 			$config = c( 'wechat' );

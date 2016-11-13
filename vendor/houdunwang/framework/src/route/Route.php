@@ -18,19 +18,14 @@ class Route extends Compile {
 	public static $app;
 	//路由定义
 	public $route = [ ];
-
 	//匹配到路由
 	protected $found = false;
-
 	//匹配到的参数
 	protected $args = [ ];
-
 	//请求的URI
 	protected $requestUri;
-
 	//路由缓存
 	protected $cache = [ ];
-
 	//正则替换字符
 	protected $patterns
 		= [
@@ -57,6 +52,7 @@ class Route extends Compile {
 			}
 		}
 		$REQUEST_URI = preg_replace( '/\w+\.php/i', '', $REQUEST_URI );
+
 		return $REQUEST_URI ? parse_url( $REQUEST_URI, PHP_URL_PATH ) : '/';
 	}
 
