@@ -14,7 +14,7 @@ use hdphp\kernel\ServiceProvider;
 class MiddlewareProvider extends ServiceProvider {
 	//延迟加载
 	public    $defer      = true;
-	protected $middleware = [ 'hdphp\middleware\App', 'hdphp\middleware\Csrf' ];
+	protected $middleware = [ 'hdphp\middleware\App' ];
 
 	public function boot( $app ) {
 		//添加全局中间件

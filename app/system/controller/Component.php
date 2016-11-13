@@ -1,25 +1,6 @@
-<?php
-/** .-------------------------------------------------------------------
- * |  Software: [HDCMS framework]
- * |      Site: www.hdcms.com
- * |-------------------------------------------------------------------
- * |    Author: 向军 <2300071698@qq.com>
- * |    WeChat: aihoudun
- * | Copyright (c) 2012-2019, www.houdunwang.com. All Rights Reserved.
- * '-------------------------------------------------------------------*/
-namespace app\system\controller;
+<?php namespace app\system\controller;
 
-/**
- * 前端组件处理
- * Class component
- * @package system\controller
- * @author 向军
- */
 class Component {
-	//字体列表
-	public function font() {
-		return view();
-	}
 	//上传图片webuploader
 	public function uploader() {
 		$file = Upload::path( c( 'upload.path' ) . '/' . date( 'Y/m/d' ) )->make();
@@ -44,9 +25,7 @@ class Component {
 
 	//获取文件列表webuploader
 	public function filesLists() {
-		$db = Db::table( 'core_attachment' )
-		        ->whereIn( 'extension', explode( ',', strtolower( $_GET['extensions'] ) ) )
-		        ->orderBy( 'id', 'DESC' );
+		$db   = Db::table( 'core_attachment' )->whereIn( 'extension', explode( ',', strtolower( $_GET['extensions'] ) ) )->orderBy( 'id', 'DESC' );
 		$data = $db->get();
 		if ( $data ) {
 			foreach ( $data as $k => $v ) {
@@ -70,7 +49,7 @@ class Component {
 	//百度编辑器
 	public function ueditor() {
 		$path   = ROOT_PATH . '/resource/hdjs/component/ueditor';
-		$CONFIG = json_decode( preg_replace( "/\/\*[\s\S]+?\*\//", "", file_get_contents( $path . "/php/config.json" ) ), TRUE );
+		$CONFIG = json_decode( preg_replace( "/\/\*[\s\S]+?\*\//", "", file_get_contents( $path . "/php/config.json" ) ), true );
 		$action = $_GET['action'];
 		switch ( $action ) {
 			case 'config':

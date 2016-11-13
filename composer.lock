@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b0e08b6fb58d47c5cd90b3ed5a5b92dc",
-    "content-hash": "c046470326f591f281bbbdf737666238",
+    "hash": "1ad93640e554672c8e36de5403cf0f95",
+    "content-hash": "a9530e4079256ba4d23cbe7b69b838c8",
     "packages": [
         {
             "name": "houdunwang/framework",
@@ -45,16 +45,16 @@
         },
         {
             "name": "houdunwang/wechat",
-            "version": "dev-master",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/houdunwang/wechat.git",
-                "reference": "ff63a1f3d9c4a7299b0952fb0eccb736965a206b"
+                "reference": "4efa68d7581bceb8478cfc93808f660748c6ece8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/houdunwang/wechat/zipball/ff63a1f3d9c4a7299b0952fb0eccb736965a206b",
-                "reference": "ff63a1f3d9c4a7299b0952fb0eccb736965a206b",
+                "url": "https://api.github.com/repos/houdunwang/wechat/zipball/4efa68d7581bceb8478cfc93808f660748c6ece8",
+                "reference": "4efa68d7581bceb8478cfc93808f660748c6ece8",
                 "shasum": ""
             },
             "type": "project",
@@ -75,15 +75,13 @@
                 }
             ],
             "description": "wechat framework",
-            "time": "2016-11-12 19:42:22"
+            "time": "2016-11-12 22:35:08"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "houdunwang/wechat": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
