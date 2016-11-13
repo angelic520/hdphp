@@ -5,6 +5,7 @@
 	<title>温馨提示</title>
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body style="background: url('{{__ROOT__}}/resource/images/bg.jpg');background-size: cover">
 <!--导航-->
@@ -24,11 +25,9 @@
 </nav>
 <!--导航end-->
 <div class="container-fluid">
-	<h1>&nbsp;</h1>
-	<div style="background: url('{{__ROOT__}}/resource/images/logo.png') no-repeat;background-size: contain;height:60px;"></div>
-	<br/>
-	<div class="alert alert-info clearfix jumbotron">
-		<h4>&nbsp;</h4>
+	<div style="background: url('{{__ROOT__}}/resource/images/logo.png') no-repeat;background-size: contain;height:80px;margin-top: 60px;"></div>
+	<div class="alert alert-info clearfix jumbotron" style="padding:30px;margin-top: 50px;">
+		<br/>
 		<div class="col-xs-3">
 			<i class="fa fa-5x fa-w {{$ico}}"></i>
 		</div>
