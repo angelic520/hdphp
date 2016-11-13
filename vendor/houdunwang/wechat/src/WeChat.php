@@ -30,8 +30,6 @@ class WeChat extends Error {
 		$this->message = $this->parsePostRequestData();
 	}
 
-	public function show() { echo 33; }
-
 	//设置配置项
 	public function config( $config ) {
 		self::$config = $config;
