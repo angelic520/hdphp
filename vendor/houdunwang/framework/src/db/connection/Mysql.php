@@ -1,24 +1,21 @@
 <?php
 /** .-------------------------------------------------------------------
- * |  Software: [HDPHP framework]
+ * |  Software: [HDCMS framework]
  * |      Site: www.hdphp.com
  * |-------------------------------------------------------------------
  * |    Author: 向军 <2300071698@qq.com>
  * |    WeChat: aihoudun
  * | Copyright (c) 2012-2019, www.houdunwang.com. All Rights Reserved.
  * '-------------------------------------------------------------------*/
-Route::get( '/c', function () {
-	$a->show();
-} );
+namespace hdphp\db\connection;
 
-Route::get( '/a', function ( \wechat\src\WeChat $a, $b = 3 ) {
-	$a->show();
-} );
-
-Route::get( '/user/{id}/{name}', function ($id, $f = '后盾人', \wechat\WeChat $a, $name ) {
-	echo $id, $name;
-	p( $f );
-	dd($a);
-} )->where( [ 'id' => '[0-9]+', 'name' => '[a-z]+' ] );
-
-
+class Mysql implements DbInterface{
+	use Connection;
+	/**
+	 * pdo连接
+	 * @return string
+	 */
+	public function getDns() {
+		return $dns = 'mysql:host=' . $this->config['host'] . ';dbname=' . $this->config['database'];
+	}
+}
