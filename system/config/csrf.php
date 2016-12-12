@@ -8,5 +8,5 @@ return [
 	 * 排除的url地址
 	 * 支持正则表达式
 	 */
-	'except' => [ 'http://dev.hdphp.com' ]
+	'except' => [ ]
 ];
