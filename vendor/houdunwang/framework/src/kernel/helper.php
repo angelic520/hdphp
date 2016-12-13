@@ -477,6 +477,12 @@ if ( ! function_exists( 'csrf_field' ) ) {
 	}
 }
 
+if ( ! function_exists( 'method_field' ) ) {
+	//CSRF 表单
+	function method_field($type) {
+		return "<input type='hidden' name='_method' value='" .strtoupper($type) . "'/>\r\n";
+	}
+}
 
 if ( ! function_exists( 'csrf_token' ) ) {
 	//CSRF 值

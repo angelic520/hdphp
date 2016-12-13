@@ -64,7 +64,7 @@ class App extends Container {
 	//定义常量
 	protected function constant() {
 		//版本号
-		define( 'FRAMEWORK_VERSION', '3.0.31' );
+		define( 'FRAMEWORK_VERSION', '3.0.32' );
 		define( 'IS_CLI', PHP_SAPI == 'cli' );
 		define( 'NOW', $_SERVER['REQUEST_TIME'] );
 		define( '__ROOT__', IS_CLI ? '' : trim( 'http://' . $_SERVER['HTTP_HOST'] . dirname( $_SERVER['SCRIPT_NAME'] ), '/\\' ) );
@@ -110,7 +110,6 @@ class App extends Container {
 		if ( $this->booted ) {
 			return;
 		}
-
 		foreach ( $this->serviceProviders as $p ) {
 			$this->bootProvider( $p );
 		}
