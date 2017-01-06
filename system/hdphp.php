@@ -9,7 +9,7 @@ if ( version_compare( phpversion(), '5.4.0', '<' ) ) {
 /*--------------------------------------------------------------------------
 | 框架版本号
 |--------------------------------------------------------------------------*/
-define( 'HDPHP_VERSION', '3.0.20' );
+define( 'HDPHP_VERSION', '3.0.21' );
 
 require __DIR__ . '/../vendor/autoload.php';
 \houdunwang\framework\App::bootstrap();
