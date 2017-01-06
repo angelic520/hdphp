@@ -9,6 +9,12 @@
 * PDO扩展
 
 ----
+# 安装
+```
+composer create-project houdunwang/hdphp blog  --prefer-dist
+```
+
+----
 # 100%免费
 * HDPHP是完全免费的，你不用担心任何版权问题 
 * 你可以用在任意网站（包括商业网站）你不需要支付任何费用
