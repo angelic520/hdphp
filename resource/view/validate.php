@@ -44,7 +44,9 @@
 	</div>
 </div>
 <script>
-	setTimeout(function () {<?php echo $url;?>},<?php echo $timeout;?>);
+	setTimeout(function () {
+		location.href = '{{__HISTORY__}}';
+	}, 3000);
 </script>
 </body>
 </html>
