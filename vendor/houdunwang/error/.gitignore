@@ -1,0 +1,8 @@
+/.idea
+.DS_Store
+/vendor
+composer.lock
+resource/
+2016_12_27.log
+log/
+storage/

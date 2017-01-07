@@ -1,0 +1,37 @@
+{
+  "name": "houdunwang/controller",
+  "description": "控制器管理组件",
+  "type": "project",
+  "keywords": [
+    "houdunwang",
+    "hdphp",
+    "后盾网",
+    "后盾人",
+    "向军老师",
+    "控制器",
+    "controller"
+  ],
+  "homepage": "http://www.houdunwang.com/",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "后盾网向军",
+      "email": "2300071698@qq.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=5.4.0",
+    "houdunwang/config": "~1.0",
+    "houdunwang/request": "~1.0",
+    "houdunwang/container": "~1.0",
+    "houdunwang/response": "~1.0",
+    "houdunwang/middleware": "~1.0"
+  },
+  "autoload": {
+    "files": [],
+    "psr-4": {
+      "houdunwang\\controller\\": "src"
+    }
+  }
+}

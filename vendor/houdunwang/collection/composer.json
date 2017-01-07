@@ -1,0 +1,33 @@
+{
+  "name": "houdunwang/collection",
+  "description": "Collection 组件提供一个流畅、方便的封装来操作数据",
+  "type": "project",
+  "keywords": [
+    "houdunwang",
+    "hdphp",
+    "json",
+    "collection",
+    "集合管理"
+  ],
+  "homepage": "http://www.hdphp.com/",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "后盾网向军",
+      "email": "2300071698@qq.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=5.4.0",
+    "houdunwang/xml": "~1.0"
+  },
+  "autoload": {
+    "files": [
+      "src/helper.php"
+    ],
+    "psr-4": {
+      "houdunwang\\collection\\": "src"
+    }
+  }
+}
