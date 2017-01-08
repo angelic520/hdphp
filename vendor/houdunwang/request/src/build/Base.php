@@ -17,10 +17,6 @@ use houdunwang\session\Session;
 class Base {
 	protected $items = [ ];
 
-	public function __construct() {
-
-	}
-
 	//启动组件
 	public function bootstrap() {
 		defined( 'IS_CLI' ) or define( 'IS_CLI', PHP_SAPI == 'cli' );

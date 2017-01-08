@@ -107,5 +107,6 @@ class Dispose {
 		//控制器访问时控制器或方法不存在时执行的中间件
 		c('middleware.web.CONTROLLER_NOT_FOUND',['houdunwang\framework\middleware\ControllerNotFound']);
 		c('middleware.web.ACTION_NOT_FOUND',['houdunwang\framework\middleware\ActionNotFound']);
+		c('middleware.web.ROUTER_NOT_FOUND',['houdunwang\framework\middleware\RouterNotFound']);
 	}
 }

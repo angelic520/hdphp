@@ -7,7 +7,7 @@
     <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
-<body style="background: url('resource/images/bg.jpg');background-size: cover">
+<body style="background: url('{{__ROOT__}}/resource/images/bg.jpg');background-size: cover">
 <!--导航-->
 <nav class="navbar navbar-inverse" style="border-radius: 0px;">
     <div class="container-fluid">
