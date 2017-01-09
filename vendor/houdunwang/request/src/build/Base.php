@@ -55,9 +55,9 @@ class Base {
 	 * @return null
 	 */
 	public function query( $name, $value = null, $method = [ ] ) {
-		$exp    = explode( '.', $name );
-		if(count($exp)==1){
-			array_unshift($exp,'request');
+		$exp = explode( '.', $name );
+		if ( count( $exp ) == 1 ) {
+			array_unshift( $exp, 'request' );
 		}
 		$action = array_shift( $exp );
 
@@ -102,11 +102,11 @@ class Base {
 			return $this->items[ $action ];
 		}
 		$data = Arr::get( $this->items[ $action ], $arguments[0] );
+
 		if ( ! is_null( $data ) && ! empty( $arguments[2] ) ) {
 			return Tool::batchFunctions( $arguments[2], $data );
 		}
-
-		return $data ?: ( empty( $arguments[1] ) ? null : $arguments[1] );
+		return ! is_null( $data ) ? $data : ( isset( $arguments[1] ) ?  $arguments[1]:null );
 	}
 
 	//客户端IP
@@ -148,6 +148,7 @@ class Base {
 
 			return $referer['host'] == $root['host'];
 		}
+
 		return false;
 	}
 

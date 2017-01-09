@@ -96,6 +96,7 @@ if ( ! function_exists( 'dd' ) ) {
 		ob_start();
 		var_dump( $var );
 		echo "<pre>" . ob_get_clean() . "</pre>";
+		exit;
 	}
 }
 
@@ -201,6 +202,11 @@ if ( ! function_exists( 'message' ) ) {
 			ajax( [ 'valid' => $type == 'success' ? 1 : 0, 'message' => $content ] );
 		} else {
 			switch ( $redirect ) {
+				case 'with':
+					\Session::set( 'errors', is_array( $content ) ? $content : [ $content ] );
+					echo '<script>location.href="' . $_SERVER['HTTP_REFERER'] . '";</script>';
+					exit;
+					break;
 				case 'back':
 					//有回调地址时回调,没有时返回主页
 					$url = 'window.history.go(-1)';

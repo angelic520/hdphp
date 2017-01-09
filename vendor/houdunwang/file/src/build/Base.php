@@ -81,8 +81,7 @@ class Base {
 		if ( ! $this->createDir() ) {
 			return false;
 		}
-		$files = $this->format( $fieldName );
-
+		$files        = $this->format( $fieldName );
 		$uploadedFile = [ ];
 		//验证文件
 		if ( ! empty( $files ) ) {
@@ -121,7 +120,6 @@ class Base {
 		$_info            = pathinfo( $filePath );
 		$arr              = [ ];
 		$arr['path']      = $filePath;
-		$arr['url']       = __ROOT__ . '/' . $filePath;
 		$arr['uptime']    = time();
 		$arr['fieldname'] = $file['fieldname'];
 		$arr['basename']  = $_info['basename'];

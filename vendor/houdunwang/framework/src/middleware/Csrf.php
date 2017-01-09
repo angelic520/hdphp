@@ -9,7 +9,7 @@ use houdunwang\config\Config;
  */
 class Csrf {
 	public function run() {
-		if ( Config::get( 'csrf.open' ) ) {
+		if ( ! IS_AJAX && IS_POST && Config::get( 'csrf.open' ) ) {
 			/**
 			 * 获取令牌值用于比较
 			 * 令牌不存在时生成新的令牌
@@ -21,7 +21,7 @@ class Csrf {
 			/**
 			 * 当为POST请求时并且为同域名时验证令牌
 			 */
-			if ( Request::post() && Request::isDomain() ) {
+			if ( Request::isDomain() ) {
 				if ( Request::post( 'csrf_token' ) != $token ) {
 					//存在过滤的验证时忽略验证
 					$except = Config::get( 'csrf.except' );

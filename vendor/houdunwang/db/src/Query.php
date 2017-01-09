@@ -513,7 +513,9 @@ class Query implements \ArrayAccess, \Iterator {
 					break;
 				default:
 					foreach ( $result as $v ) {
-						$data[ $v[ $field[0] ] ] = $v;
+						foreach ( $field as $f ) {
+							$data[ $v[ $field[0] ] ][$f] = $v[$f];
+						}
 					}
 					break;
 			}
