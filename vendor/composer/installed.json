@@ -936,54 +936,6 @@
         ]
     },
     {
-        "name": "houdunwang/curl",
-        "version": "v1.0.3",
-        "version_normalized": "1.0.3.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/houdunwang/curl.git",
-            "reference": "53c7bedc364075f3cbdb08df69609c99f069ae5a"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/houdunwang/curl/zipball/53c7bedc364075f3cbdb08df69609c99f069ae5a",
-            "reference": "53c7bedc364075f3cbdb08df69609c99f069ae5a",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.4.0"
-        },
-        "time": "2017-01-06 18:46:18",
-        "type": "project",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [],
-            "psr-4": {
-                "houdunwang\\curl\\": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "后盾网向军",
-                "email": "2300071698@qq.com"
-            }
-        ],
-        "description": "curl组件提供远程请求操作，支持文件的上传和下载",
-        "homepage": "http://www.houdunwang.com/",
-        "keywords": [
-            "curl",
-            "hdphp",
-            "houdunwang",
-            "后盾人",
-            "后盾网",
-            "向军老师"
-        ]
-    },
-    {
         "name": "houdunwang/code",
         "version": "v1.0.4",
         "version_normalized": "1.0.4.0",
@@ -1907,62 +1859,6 @@
         ]
     },
     {
-        "name": "houdunwang/model",
-        "version": "v1.0.6",
-        "version_normalized": "1.0.6.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/houdunwang/model.git",
-            "reference": "9da7750118a6287abc6ec7bbb2054197580d2abb"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/houdunwang/model/zipball/9da7750118a6287abc6ec7bbb2054197580d2abb",
-            "reference": "9da7750118a6287abc6ec7bbb2054197580d2abb",
-            "shasum": ""
-        },
-        "require": {
-            "houdunwang/arr": "~1.0",
-            "houdunwang/collection": "~1.0",
-            "houdunwang/config": "~1.0",
-            "houdunwang/db": "~1.0",
-            "houdunwang/validate": "~1.0",
-            "php": ">=5.4.0"
-        },
-        "time": "2017-01-08 18:42:08",
-        "type": "project",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "src/helper.php"
-            ],
-            "psr-4": {
-                "houdunwang\\model\\": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "后盾网向军",
-                "email": "2300071698@qq.com"
-            }
-        ],
-        "description": "模型是应用程序中用于处理应用程序数据逻辑的部分, 通常模型对象负责在数据库中存取数据。",
-        "homepage": "http://www.houdunwang.com/",
-        "keywords": [
-            "hdphp",
-            "houdunwang",
-            "model",
-            "后盾人",
-            "后盾网",
-            "向军老师",
-            "模型"
-        ]
-    },
-    {
         "name": "houdunwang/html",
         "version": "v1.0.3",
         "version_normalized": "1.0.3.0",
@@ -2139,5 +2035,109 @@
             }
         ],
         "description": "Hdphp Framework (Kernel)"
+    },
+    {
+        "name": "houdunwang/curl",
+        "version": "v1.0.4",
+        "version_normalized": "1.0.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/houdunwang/curl.git",
+            "reference": "33d78069f20c70beb83a9ff9053ae69f3ef4438c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/houdunwang/curl/zipball/33d78069f20c70beb83a9ff9053ae69f3ef4438c",
+            "reference": "33d78069f20c70beb83a9ff9053ae69f3ef4438c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0"
+        },
+        "time": "2017-01-09 18:46:39",
+        "type": "project",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [],
+            "psr-4": {
+                "houdunwang\\curl\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "后盾网向军",
+                "email": "2300071698@qq.com"
+            }
+        ],
+        "description": "curl组件提供远程请求操作，支持文件的上传和下载",
+        "homepage": "http://www.houdunwang.com/",
+        "keywords": [
+            "curl",
+            "hdphp",
+            "houdunwang",
+            "后盾人",
+            "后盾网",
+            "向军老师"
+        ]
+    },
+    {
+        "name": "houdunwang/model",
+        "version": "v1.0.7",
+        "version_normalized": "1.0.7.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/houdunwang/model.git",
+            "reference": "ba032e8d379e2ffb936220ffbf7cb6ab9c733d8c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/houdunwang/model/zipball/ba032e8d379e2ffb936220ffbf7cb6ab9c733d8c",
+            "reference": "ba032e8d379e2ffb936220ffbf7cb6ab9c733d8c",
+            "shasum": ""
+        },
+        "require": {
+            "houdunwang/arr": "~1.0",
+            "houdunwang/collection": "~1.0",
+            "houdunwang/config": "~1.0",
+            "houdunwang/db": "~1.0",
+            "houdunwang/validate": "~1.0",
+            "php": ">=5.4.0"
+        },
+        "time": "2017-01-10 11:45:28",
+        "type": "project",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "src/helper.php"
+            ],
+            "psr-4": {
+                "houdunwang\\model\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "后盾网向军",
+                "email": "2300071698@qq.com"
+            }
+        ],
+        "description": "模型是应用程序中用于处理应用程序数据逻辑的部分, 通常模型对象负责在数据库中存取数据。",
+        "homepage": "http://www.houdunwang.com/",
+        "keywords": [
+            "hdphp",
+            "houdunwang",
+            "model",
+            "后盾人",
+            "后盾网",
+            "向军老师",
+            "模型"
+        ]
     }
 ]

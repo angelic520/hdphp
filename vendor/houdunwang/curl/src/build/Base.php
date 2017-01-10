@@ -8,7 +8,7 @@
  * | Copyright (c) 2012-2019, www.houdunwang.com. All Rights Reserved.
  * '-------------------------------------------------------------------*/
 
-class Curl {
+class Base {
 	//请求服务器
 	public function get( $url ) {
 		$ch = curl_init();

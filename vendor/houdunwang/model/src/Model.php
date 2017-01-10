@@ -354,7 +354,10 @@ class Model implements ArrayAccess, Iterator {
 		if ( isset( $this->original[ $this->pk ] ) ) {
 			unset( $this->original[ $this->pk ] );
 		}
-		$this->original = array_merge( $this->data, $this->original );
+		//更新时设置主键
+		if ( $this->actionType() == self::MODEL_UPDATE ) {
+			$this->original[ $this->pk ] = $this->data[ $this->pk ];
+		}
 		//修改时间
 		if ( $this->timestamps === true && ! empty( $this->original ) ) {
 			$this->original['updated_at'] = time();
@@ -372,7 +375,7 @@ class Model implements ArrayAccess, Iterator {
 	 * @return int
 	 */
 	final public function actionType() {
-		return empty( $this->original[ $this->pk ] ) ? self::MODEL_INSERT : self::MODEL_UPDATE;
+		return empty( $this->data[ $this->pk ] ) ? self::MODEL_INSERT : self::MODEL_UPDATE;
 	}
 
 	/**
