@@ -94,6 +94,7 @@ class Dispose {
 
 	protected static function route() {
 		Config::set( 'route.cache', Config::get( 'http.route_cache' ) );
+		Config::set( 'route.mode', Config::get( 'http.route_mode' ) );
 	}
 
 	protected static function middleware() {

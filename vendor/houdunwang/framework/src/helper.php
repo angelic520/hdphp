@@ -183,7 +183,7 @@ if ( ! function_exists( 'confirm' ) ) {
 	 */
 	function confirm( $message, $sUrl, $eUrl ) {
 		View::with( [ 'message' => $message, 'sUrl' => $sUrl, 'eUrl' => $eUrl ] );
-		echo view( Config::get( 'view.confirm' ) );
+		echo view( Config::get( 'app.confirm' ) );
 		exit;
 	}
 }
