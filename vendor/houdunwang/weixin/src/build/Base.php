@@ -189,7 +189,7 @@ class Base extends Error {
 
 	//获取实例
 	public function instance( $type ) {
-		$class = '\wechat\build\\' . ucfirst( $type );
+		$class = '\houdunwang\weixin\build\\' . ucfirst( $type );
 
 		return new $class( self::$config );
 	}

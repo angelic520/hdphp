@@ -66,7 +66,7 @@ return [
 		'Xml'        => 'houdunwang\xml\XmlFacade',
 		'Qq'         => 'houdunwang\qq\QqFacade',
 		'Middleware' => 'houdunwang\middleware\MiddlewareFacade',
-		'WeChat'     => 'houdunwang\weixin\WeiChatFacade',
+		'WeChat'     => 'houdunwang\weixin\WeChatFacade',
 		'Curl'       => 'houdunwang\curl\CurlFacade',
 		'Dir'        => 'houdunwang\dir\DirFacade',
 		'Mail'       => 'houdunwang\mail\MailFacade',

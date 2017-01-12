@@ -9,14 +9,16 @@ use houdunwang\request\Request;
  * @package hdphp\middleware
  */
 class Csrf {
+	//验证令牌
+	protected $token;
+
 	public function run() {
-//		p($_GET);
-//		p($_POST);
-//		VAR_DUMP(IS_POST);return;
+		//设置令牌
+		$this->setToken();
 		//当为POST请求时并且为同域名时验证令牌
-		if ( Request::isDomain() && Config::get( 'csrf.open' ) && Request::post() ) {
+		if ( Config::get( 'csrf.open' ) && Request::isDomain() && Request::post() ) {
 			//比较POST中提交的CSRF
-			if ( Request::post( 'csrf_token' ) == $this->get() ) {
+			if ( Request::post( 'csrf_token' ) == $this->token ) {
 				return true;
 			}
 			//根据头部数据验证CSRF
@@ -36,22 +38,22 @@ class Csrf {
 	}
 
 	/**
-	 * 获取令牌
+	 * 设置令牌
 	 * 如果不存是创建新令牌
-	 * @return string
 	 */
-	protected function get() {
-		$token = Session::get( 'csrf_token' );
-		if ( empty( $token ) ) {
-			$token = md5( clientIp() . microtime( true ) );
-			Session::set( 'csrf_token', $token );
-			/**
-			 * 生成COOKIE令牌
-			 * 一些框架如AngularJs等框架会自动根据COOKIE中的token提交令牌
-			 */
-			Cookie::set( 'XSRF-TOKEN', $token );
+	protected function setToken() {
+		if ( Config::get( 'csrf.open' ) ) {
+			$token = Session::get( 'csrf_token' );
+			if ( empty( $token ) ) {
+				$token = md5( clientIp() . microtime( true ) );
+				Session::set( 'csrf_token', $token );
+				/**
+				 * 生成COOKIE令牌
+				 * 一些框架如AngularJs等框架会自动根据COOKIE中的token提交令牌
+				 */
+				Cookie::set( 'XSRF-TOKEN', $token );
+			}
+			$this->token = $token;
 		}
-
-		return $token;
 	}
 }
