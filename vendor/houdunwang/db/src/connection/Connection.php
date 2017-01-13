@@ -27,7 +27,6 @@ trait Connection {
 	//初始化
 	public function __construct( $query ) {
 		$this->query = $query;
-		$this->link();
 	}
 
 	/**
@@ -46,8 +45,10 @@ trait Connection {
 			return $links[ $name ];
 		}
 		$dns            = $this->getDns();
-		$links[ $name ] = new PDO( $dns, $this->config['user'], $this->config['password'], [ PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'" ] );
-
+		$links[ $name ] = new PDO(
+			$dns, $this->config['user'], $this->config['password'],
+			[ PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'"]
+		);
 		$links[ $name ]->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 		$this->execute( "SET sql_mode = ''" );
 

@@ -985,56 +985,6 @@
         ]
     },
     {
-        "name": "houdunwang/error",
-        "version": "v1.0.6",
-        "version_normalized": "1.0.6.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/houdunwang/error.git",
-            "reference": "257195e3414b456dea68928b64967817eb3e2252"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/houdunwang/error/zipball/257195e3414b456dea68928b64967817eb3e2252",
-            "reference": "257195e3414b456dea68928b64967817eb3e2252",
-            "shasum": ""
-        },
-        "require": {
-            "houdunwang/config": "~1.0",
-            "houdunwang/log": "~1.0",
-            "php": ">=5.4.0"
-        },
-        "time": "2017-01-06 20:19:01",
-        "type": "project",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "src/helper.php"
-            ],
-            "psr-4": {
-                "houdunwang\\error\\": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "后盾网向军",
-                "email": "2300071698@qq.com"
-            }
-        ],
-        "description": "错误与异常处理",
-        "homepage": "http://www.hdphp.com/",
-        "keywords": [
-            "error",
-            "hdphp",
-            "houdunwang",
-            "json"
-        ]
-    },
-    {
         "name": "houdunwang/controller",
         "version": "v1.0.4",
         "version_normalized": "1.0.4.0",
@@ -1539,60 +1489,6 @@
         ]
     },
     {
-        "name": "houdunwang/db",
-        "version": "v1.0.18",
-        "version_normalized": "1.0.18.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/houdunwang/db.git",
-            "reference": "53887c4986dc743602aded6fddd593e20777cf60"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/houdunwang/db/zipball/53887c4986dc743602aded6fddd593e20777cf60",
-            "reference": "53887c4986dc743602aded6fddd593e20777cf60",
-            "shasum": ""
-        },
-        "require": {
-            "houdunwang/arr": "~1.0",
-            "houdunwang/config": "~1.0",
-            "houdunwang/dir": "~1.0",
-            "houdunwang/page": "~1.0",
-            "php": ">=5.4.0"
-        },
-        "time": "2017-01-08 13:02:48",
-        "type": "project",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "src/helper.php"
-            ],
-            "psr-4": {
-                "houdunwang\\db\\": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "后盾网向军",
-                "email": "2300071698@qq.com"
-            }
-        ],
-        "description": "数据库管理组件提供了丰富的数据操作功能，使用我们在开发中快速的管理数据",
-        "homepage": "http://www.houdunwang.com/",
-        "keywords": [
-            "hdphp",
-            "houdunwang",
-            "后盾人",
-            "后盾网",
-            "向军老师",
-            "数据库管理"
-        ]
-    },
-    {
         "name": "houdunwang/cache",
         "version": "v1.0.13",
         "version_normalized": "1.0.13.0",
@@ -1901,56 +1797,6 @@
         ]
     },
     {
-        "name": "houdunwang/weixin",
-        "version": "v1.0.5",
-        "version_normalized": "1.0.5.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/houdunwang/weixin.git",
-            "reference": "415211a134fe0cf56d52122ae49fdff582227c24"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/houdunwang/weixin/zipball/415211a134fe0cf56d52122ae49fdff582227c24",
-            "reference": "415211a134fe0cf56d52122ae49fdff582227c24",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.4.0"
-        },
-        "time": "2017-01-11 16:40:11",
-        "type": "project",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [],
-            "psr-4": {
-                "houdunwang\\weixin\\": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "后盾网向军",
-                "email": "2300071698@qq.com"
-            }
-        ],
-        "description": "微信开发组件可以快速整合到主流框架中如thinkphp、laravel。为微信开发提供了很大的便利，减少开发人员底层代码的构建，节省开发时间。如果大家对微信开发不了解，后盾网已经推出了【后盾向军微信开发宝典】 请登录 后盾网论坛获取视频 http://bbs.houdunwang.com",
-        "homepage": "http://www.houdunwang.com/",
-        "keywords": [
-            "hdphp",
-            "houdunwang",
-            "mcrypt",
-            "wechat",
-            "后盾人",
-            "后盾网",
-            "向军老师",
-            "微信开发"
-        ]
-    },
-    {
         "name": "houdunwang/session",
         "version": "v1.0.9",
         "version_normalized": "1.0.9.0",
@@ -2059,18 +1905,172 @@
         ]
     },
     {
-        "name": "houdunwang/framework",
-        "version": "v3.0.59",
-        "version_normalized": "3.0.59.0",
+        "name": "houdunwang/weixin",
+        "version": "v1.0.6",
+        "version_normalized": "1.0.6.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/houdunwang/framework.git",
-            "reference": "18bdd8dde012443b4a274d65394949ab44ec608a"
+            "url": "https://github.com/houdunwang/weixin.git",
+            "reference": "a891429bca5f5d23965b628024906b2d714cbd2f"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/houdunwang/framework/zipball/18bdd8dde012443b4a274d65394949ab44ec608a",
-            "reference": "18bdd8dde012443b4a274d65394949ab44ec608a",
+            "url": "https://api.github.com/repos/houdunwang/weixin/zipball/a891429bca5f5d23965b628024906b2d714cbd2f",
+            "reference": "a891429bca5f5d23965b628024906b2d714cbd2f",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0"
+        },
+        "time": "2017-01-13 06:53:35",
+        "type": "project",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [],
+            "psr-4": {
+                "houdunwang\\weixin\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "后盾网向军",
+                "email": "2300071698@qq.com"
+            }
+        ],
+        "description": "微信开发组件可以快速整合到主流框架中如thinkphp、laravel。为微信开发提供了很大的便利，减少开发人员底层代码的构建，节省开发时间。如果大家对微信开发不了解，后盾网已经推出了【后盾向军微信开发宝典】 请登录 后盾网论坛获取视频 http://bbs.houdunwang.com",
+        "homepage": "http://www.houdunwang.com/",
+        "keywords": [
+            "hdphp",
+            "houdunwang",
+            "mcrypt",
+            "wechat",
+            "后盾人",
+            "后盾网",
+            "向军老师",
+            "微信开发"
+        ]
+    },
+    {
+        "name": "houdunwang/db",
+        "version": "v1.0.19",
+        "version_normalized": "1.0.19.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/houdunwang/db.git",
+            "reference": "88b5e853227c7a2d26bbdeef19034e14f0f93566"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/houdunwang/db/zipball/88b5e853227c7a2d26bbdeef19034e14f0f93566",
+            "reference": "88b5e853227c7a2d26bbdeef19034e14f0f93566",
+            "shasum": ""
+        },
+        "require": {
+            "houdunwang/arr": "~1.0",
+            "houdunwang/config": "~1.0",
+            "houdunwang/dir": "~1.0",
+            "houdunwang/page": "~1.0",
+            "php": ">=5.4.0"
+        },
+        "time": "2017-01-12 19:22:58",
+        "type": "project",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "src/helper.php"
+            ],
+            "psr-4": {
+                "houdunwang\\db\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "后盾网向军",
+                "email": "2300071698@qq.com"
+            }
+        ],
+        "description": "数据库管理组件提供了丰富的数据操作功能，使用我们在开发中快速的管理数据",
+        "homepage": "http://www.houdunwang.com/",
+        "keywords": [
+            "hdphp",
+            "houdunwang",
+            "后盾人",
+            "后盾网",
+            "向军老师",
+            "数据库管理"
+        ]
+    },
+    {
+        "name": "houdunwang/error",
+        "version": "v1.0.7",
+        "version_normalized": "1.0.7.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/houdunwang/error.git",
+            "reference": "f5d3d658897d6e8879778e0b9bb3e8401f783c7d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/houdunwang/error/zipball/f5d3d658897d6e8879778e0b9bb3e8401f783c7d",
+            "reference": "f5d3d658897d6e8879778e0b9bb3e8401f783c7d",
+            "shasum": ""
+        },
+        "require": {
+            "houdunwang/config": "~1.0",
+            "houdunwang/log": "~1.0",
+            "php": ">=5.4.0"
+        },
+        "time": "2017-01-12 18:07:00",
+        "type": "project",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "src/helper.php"
+            ],
+            "psr-4": {
+                "houdunwang\\error\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "后盾网向军",
+                "email": "2300071698@qq.com"
+            }
+        ],
+        "description": "错误与异常处理",
+        "homepage": "http://www.hdphp.com/",
+        "keywords": [
+            "error",
+            "hdphp",
+            "houdunwang",
+            "json"
+        ]
+    },
+    {
+        "name": "houdunwang/framework",
+        "version": "v3.0.60",
+        "version_normalized": "3.0.60.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/houdunwang/framework.git",
+            "reference": "5da9d6b9811f60fc4fe216c43a9937411e48920f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/houdunwang/framework/zipball/5da9d6b9811f60fc4fe216c43a9937411e48920f",
+            "reference": "5da9d6b9811f60fc4fe216c43a9937411e48920f",
             "shasum": ""
         },
         "require": {
@@ -2117,7 +2117,7 @@
             "houdunwang/zip": "~1.0",
             "php": ">=5.4.0"
         },
-        "time": "2017-01-12 17:15:52",
+        "time": "2017-01-13 06:54:36",
         "type": "project",
         "installation-source": "dist",
         "autoload": {

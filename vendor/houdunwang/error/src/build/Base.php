@@ -45,7 +45,6 @@ class Base {
 	//错误处理
 	public function error( $errno, $error, $file, $line ) {
 		$msg = $error . "($errno)" . $file . " ($line).";
-		Log::write( $msg, $this->errorType( $errno ) );
 		//命令行错误
 		if ( PHP_SAPI == 'cli' ) {
 			die( PHP_EOL . "\033[;36m $msg \x1B[0m\n" . PHP_EOL );
@@ -60,6 +59,7 @@ class Base {
 					}
 					break;
 				default:
+					Log::write( $msg, $this->errorType( $errno ) );
 					if ( c( 'error.debug' ) === true ) {
 						require __DIR__ . '/../view/debug.php';
 					} else {

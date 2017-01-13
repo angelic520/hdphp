@@ -18,6 +18,11 @@ class Base extends Error {
 	//API 根地址
 	protected $apiUrl = 'https://api.weixin.qq.com';
 
+	public function __construct( $config = [ ] ) {
+		$this->config( $config );
+		$this->bootstrap();
+	}
+
 	//设置配置项
 	public function config( $config, $value = null ) {
 		if ( is_array( $config ) ) {

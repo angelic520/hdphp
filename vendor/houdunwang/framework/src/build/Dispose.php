@@ -55,6 +55,9 @@ class Dispose {
 			Config::set( 'database.password', $config['DB_PASSWORD'] );
 			Config::set( 'database.database', $config['DB_DATABASE'] );
 		}
+		//如果主机是LOCALHOST改为IP地址
+		$host = preg_match( '@localhost@i', c( 'database.host' ) ) ? '127.0.0.1' : c( 'database.host' );
+		c( 'database.host', $host );
 		//将公共数据库配置合并到 write 与 read 中
 		$config = Config::getExtName( 'database', [ 'write', 'read' ] );
 		if ( empty( $config['write'] ) ) {
@@ -106,8 +109,8 @@ class Dispose {
 		c( 'middleware.global', array_unique( $config ) );
 
 		//控制器访问时控制器或方法不存在时执行的中间件
-		c('middleware.web.CONTROLLER_NOT_FOUND',['houdunwang\framework\middleware\ControllerNotFound']);
-		c('middleware.web.ACTION_NOT_FOUND',['houdunwang\framework\middleware\ActionNotFound']);
-		c('middleware.web.ROUTER_NOT_FOUND',['houdunwang\framework\middleware\RouterNotFound']);
+		c( 'middleware.web.CONTROLLER_NOT_FOUND', [ 'houdunwang\framework\middleware\ControllerNotFound' ] );
+		c( 'middleware.web.ACTION_NOT_FOUND', [ 'houdunwang\framework\middleware\ActionNotFound' ] );
+		c( 'middleware.web.ROUTER_NOT_FOUND', [ 'houdunwang\framework\middleware\RouterNotFound' ] );
 	}
 }
