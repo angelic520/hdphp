@@ -2009,88 +2009,6 @@
         ]
     },
     {
-        "name": "houdunwang/framework",
-        "version": "v3.0.61",
-        "version_normalized": "3.0.61.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/houdunwang/framework.git",
-            "reference": "3d4faf0e84102e59d96d5c4ab1e105768d90f210"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/houdunwang/framework/zipball/3d4faf0e84102e59d96d5c4ab1e105768d90f210",
-            "reference": "3d4faf0e84102e59d96d5c4ab1e105768d90f210",
-            "shasum": ""
-        },
-        "require": {
-            "houdunwang/alipay": "~1.0",
-            "houdunwang/arr": "~1.0",
-            "houdunwang/backup": "~1.0",
-            "houdunwang/cache": "~1.0",
-            "houdunwang/cart": "~1.0",
-            "houdunwang/cli": "~1.0",
-            "houdunwang/code": "~1.0",
-            "houdunwang/collection": "~1.0",
-            "houdunwang/config": "~1.0",
-            "houdunwang/container": "~1.0",
-            "houdunwang/controller": "~1.0",
-            "houdunwang/cookie": "~1.0",
-            "houdunwang/crypt": "~1.0",
-            "houdunwang/curl": "~1.0",
-            "houdunwang/database": "~1.0",
-            "houdunwang/db": "~1.0",
-            "houdunwang/dir": "~1.0",
-            "houdunwang/error": "~1.0",
-            "houdunwang/file": "~1.0",
-            "houdunwang/html": "~1.0",
-            "houdunwang/image": "~1.0",
-            "houdunwang/lang": "~1.0",
-            "houdunwang/loader": "~1.0",
-            "houdunwang/log": "~1.0",
-            "houdunwang/mail": "~1.0",
-            "houdunwang/middleware": "~1.0",
-            "houdunwang/model": "~1.0",
-            "houdunwang/page": "~1.0",
-            "houdunwang/qq": "~1.0",
-            "houdunwang/rbac": "~1.0",
-            "houdunwang/request": "~1.0",
-            "houdunwang/response": "~1.0",
-            "houdunwang/route": "~1.0",
-            "houdunwang/session": "~1.0",
-            "houdunwang/str": "~1.0",
-            "houdunwang/tool": "~1.0",
-            "houdunwang/validate": "~1.0",
-            "houdunwang/view": "~1.0",
-            "houdunwang/wechat": "~1.0",
-            "houdunwang/xml": "~1.0",
-            "houdunwang/zip": "~1.0",
-            "php": ">=5.4.0"
-        },
-        "time": "2017-01-16 06:02:07",
-        "type": "project",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "src/helper.php"
-            ],
-            "psr-4": {
-                "houdunwang\\framework\\": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "后盾网向军",
-                "email": "2300071698@qq.com"
-            }
-        ],
-        "description": "Hdphp Framework (Kernel)"
-    },
-    {
         "name": "houdunwang/wechat",
         "version": "v1.0.4",
         "version_normalized": "1.0.4.0",
@@ -2139,5 +2057,87 @@
             "向军老师",
             "微信开发"
         ]
+    },
+    {
+        "name": "houdunwang/framework",
+        "version": "v3.0.62",
+        "version_normalized": "3.0.62.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/houdunwang/framework.git",
+            "reference": "4f08638d0bc7d6ddfbc912abee49e5137adb5ea6"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/houdunwang/framework/zipball/4f08638d0bc7d6ddfbc912abee49e5137adb5ea6",
+            "reference": "4f08638d0bc7d6ddfbc912abee49e5137adb5ea6",
+            "shasum": ""
+        },
+        "require": {
+            "houdunwang/alipay": "~1.0",
+            "houdunwang/arr": "~1.0",
+            "houdunwang/backup": "~1.0",
+            "houdunwang/cache": "~1.0",
+            "houdunwang/cart": "~1.0",
+            "houdunwang/cli": "~1.0",
+            "houdunwang/code": "~1.0",
+            "houdunwang/collection": "~1.0",
+            "houdunwang/config": "~1.0",
+            "houdunwang/container": "~1.0",
+            "houdunwang/controller": "~1.0",
+            "houdunwang/cookie": "~1.0",
+            "houdunwang/crypt": "~1.0",
+            "houdunwang/curl": "~1.0",
+            "houdunwang/database": "~1.0",
+            "houdunwang/db": "~1.0",
+            "houdunwang/dir": "~1.0",
+            "houdunwang/error": "~1.0",
+            "houdunwang/file": "~1.0",
+            "houdunwang/html": "~1.0",
+            "houdunwang/image": "~1.0",
+            "houdunwang/lang": "~1.0",
+            "houdunwang/loader": "~1.0",
+            "houdunwang/log": "~1.0",
+            "houdunwang/mail": "~1.0",
+            "houdunwang/middleware": "~1.0",
+            "houdunwang/model": "~1.0",
+            "houdunwang/page": "~1.0",
+            "houdunwang/qq": "~1.0",
+            "houdunwang/rbac": "~1.0",
+            "houdunwang/request": "~1.0",
+            "houdunwang/response": "~1.0",
+            "houdunwang/route": "~1.0",
+            "houdunwang/session": "~1.0",
+            "houdunwang/str": "~1.0",
+            "houdunwang/tool": "~1.0",
+            "houdunwang/validate": "~1.0",
+            "houdunwang/view": "~1.0",
+            "houdunwang/wechat": "~1.0",
+            "houdunwang/xml": "~1.0",
+            "houdunwang/zip": "~1.0",
+            "php": ">=5.4.0"
+        },
+        "time": "2017-01-16 06:56:17",
+        "type": "project",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "src/helper.php"
+            ],
+            "psr-4": {
+                "houdunwang\\framework\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "后盾网向军",
+                "email": "2300071698@qq.com"
+            }
+        ],
+        "description": "Hdphp Framework (Kernel)"
     }
 ]

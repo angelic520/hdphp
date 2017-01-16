@@ -22,8 +22,8 @@ class Csrf {
 				return true;
 			}
 			//根据头部数据验证CSRF
-			$headers = getallheaders();
-			if ( isset( $headers['X-CSRF-TOKEN'] ) && $headers['X-CSRF-TOKEN'] == $this->get() ) {
+			$headers = \Arr::keyCase( getallheaders(), 1 );
+			if ( isset( $headers['X-CSRF-TOKEN'] ) && ( $headers['X-CSRF-TOKEN'] == $this->token ) ) {
 				return true;
 			}
 			//存在过滤的验证时忽略验证
