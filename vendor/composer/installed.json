@@ -1905,56 +1905,6 @@
         ]
     },
     {
-        "name": "houdunwang/weixin",
-        "version": "v1.0.6",
-        "version_normalized": "1.0.6.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/houdunwang/weixin.git",
-            "reference": "a891429bca5f5d23965b628024906b2d714cbd2f"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/houdunwang/weixin/zipball/a891429bca5f5d23965b628024906b2d714cbd2f",
-            "reference": "a891429bca5f5d23965b628024906b2d714cbd2f",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.4.0"
-        },
-        "time": "2017-01-13 06:53:35",
-        "type": "project",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [],
-            "psr-4": {
-                "houdunwang\\weixin\\": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "后盾网向军",
-                "email": "2300071698@qq.com"
-            }
-        ],
-        "description": "微信开发组件可以快速整合到主流框架中如thinkphp、laravel。为微信开发提供了很大的便利，减少开发人员底层代码的构建，节省开发时间。如果大家对微信开发不了解，后盾网已经推出了【后盾向军微信开发宝典】 请登录 后盾网论坛获取视频 http://bbs.houdunwang.com",
-        "homepage": "http://www.houdunwang.com/",
-        "keywords": [
-            "hdphp",
-            "houdunwang",
-            "mcrypt",
-            "wechat",
-            "后盾人",
-            "后盾网",
-            "向军老师",
-            "微信开发"
-        ]
-    },
-    {
         "name": "houdunwang/db",
         "version": "v1.0.19",
         "version_normalized": "1.0.19.0",
@@ -2060,17 +2010,17 @@
     },
     {
         "name": "houdunwang/framework",
-        "version": "v3.0.60",
-        "version_normalized": "3.0.60.0",
+        "version": "v3.0.61",
+        "version_normalized": "3.0.61.0",
         "source": {
             "type": "git",
             "url": "https://github.com/houdunwang/framework.git",
-            "reference": "5da9d6b9811f60fc4fe216c43a9937411e48920f"
+            "reference": "3d4faf0e84102e59d96d5c4ab1e105768d90f210"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/houdunwang/framework/zipball/5da9d6b9811f60fc4fe216c43a9937411e48920f",
-            "reference": "5da9d6b9811f60fc4fe216c43a9937411e48920f",
+            "url": "https://api.github.com/repos/houdunwang/framework/zipball/3d4faf0e84102e59d96d5c4ab1e105768d90f210",
+            "reference": "3d4faf0e84102e59d96d5c4ab1e105768d90f210",
             "shasum": ""
         },
         "require": {
@@ -2112,12 +2062,12 @@
             "houdunwang/tool": "~1.0",
             "houdunwang/validate": "~1.0",
             "houdunwang/view": "~1.0",
-            "houdunwang/weixin": "~1.0",
+            "houdunwang/wechat": "~1.0",
             "houdunwang/xml": "~1.0",
             "houdunwang/zip": "~1.0",
             "php": ">=5.4.0"
         },
-        "time": "2017-01-13 06:54:36",
+        "time": "2017-01-16 06:02:07",
         "type": "project",
         "installation-source": "dist",
         "autoload": {
@@ -2139,5 +2089,55 @@
             }
         ],
         "description": "Hdphp Framework (Kernel)"
+    },
+    {
+        "name": "houdunwang/wechat",
+        "version": "v1.0.3",
+        "version_normalized": "1.0.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/houdunwang/wechat.git",
+            "reference": "be952815bd8e71abf40e1a840cd4a54891e025c0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/houdunwang/wechat/zipball/be952815bd8e71abf40e1a840cd4a54891e025c0",
+            "reference": "be952815bd8e71abf40e1a840cd4a54891e025c0",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0"
+        },
+        "time": "2017-01-16 06:06:00",
+        "type": "project",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [],
+            "psr-4": {
+                "houdunwang\\wechat\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "后盾网向军",
+                "email": "2300071698@qq.com"
+            }
+        ],
+        "description": "微信开发组件可以快速整合到主流框架中如thinkphp、laravel。为微信开发提供了很大的便利，减少开发人员底层代码的构建，节省开发时间。如果大家对微信开发不了解，后盾网已经推出了【后盾向军微信开发宝典】 请登录 后盾网论坛获取视频 http://bbs.houdunwang.com",
+        "homepage": "http://www.houdunwang.com/",
+        "keywords": [
+            "hdphp",
+            "houdunwang",
+            "mcrypt",
+            "wechat",
+            "后盾人",
+            "后盾网",
+            "向军老师",
+            "微信开发"
+        ]
     }
 ]

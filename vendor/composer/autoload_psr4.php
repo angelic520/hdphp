@@ -9,7 +9,7 @@ return array(
     'system\\' => array($baseDir . '/system'),
     'houdunwang\\zip\\' => array($vendorDir . '/houdunwang/zip/src'),
     'houdunwang\\xml\\' => array($vendorDir . '/houdunwang/xml/src'),
-    'houdunwang\\weixin\\' => array($vendorDir . '/houdunwang/weixin/src'),
+    'houdunwang\\wechat\\' => array($vendorDir . '/houdunwang/wechat/src'),
     'houdunwang\\view\\' => array($vendorDir . '/houdunwang/view/src'),
     'houdunwang\\validate\\' => array($vendorDir . '/houdunwang/validate/src'),
     'houdunwang\\tool\\' => array($vendorDir . '/houdunwang/tool/src'),

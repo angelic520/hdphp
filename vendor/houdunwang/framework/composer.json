@@ -51,7 +51,7 @@
     "houdunwang/view": "~1.0",
     "houdunwang/xml": "~1.0",
     "houdunwang/zip": "~1.0",
-    "houdunwang/weixin": "~1.0",
+    "houdunwang/wechat": "~1.0",
     "houdunwang/loader": "~1.0"
   },
   "autoload": {
