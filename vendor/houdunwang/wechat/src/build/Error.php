@@ -1,4 +1,4 @@
-<?php namespace houdunwang\weixin\build;
+<?php namespace houdunwang\wechat\build;
 
 class Error {
 	public $error

@@ -2092,23 +2092,23 @@
     },
     {
         "name": "houdunwang/wechat",
-        "version": "v1.0.3",
-        "version_normalized": "1.0.3.0",
+        "version": "v1.0.4",
+        "version_normalized": "1.0.4.0",
         "source": {
             "type": "git",
             "url": "https://github.com/houdunwang/wechat.git",
-            "reference": "be952815bd8e71abf40e1a840cd4a54891e025c0"
+            "reference": "2c530ce7b4e393164d4d4ab9475aa2c0f28b59ce"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/houdunwang/wechat/zipball/be952815bd8e71abf40e1a840cd4a54891e025c0",
-            "reference": "be952815bd8e71abf40e1a840cd4a54891e025c0",
+            "url": "https://api.github.com/repos/houdunwang/wechat/zipball/2c530ce7b4e393164d4d4ab9475aa2c0f28b59ce",
+            "reference": "2c530ce7b4e393164d4d4ab9475aa2c0f28b59ce",
             "shasum": ""
         },
         "require": {
             "php": ">=5.4.0"
         },
-        "time": "2017-01-16 06:06:00",
+        "time": "2017-01-16 06:37:32",
         "type": "project",
         "installation-source": "dist",
         "autoload": {

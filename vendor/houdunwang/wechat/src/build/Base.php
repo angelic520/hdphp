@@ -1,4 +1,4 @@
-<?php namespace houdunwang\weixin\build;
+<?php namespace houdunwang\wechat\build;
 /** .-------------------------------------------------------------------
  * |  Software: [HDCMS framework]
  * |      Site: www.hdcms.com
@@ -194,7 +194,7 @@ class Base extends Error {
 
 	//获取实例
 	public function instance( $type ) {
-		$class = '\houdunwang\weixin\build\\' . ucfirst( $type );
+		$class = '\houdunwang\wechat\build\\' . ucfirst( $type );
 
 		return new $class( self::$config );
 	}

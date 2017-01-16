@@ -1,7 +1,7 @@
-<?php namespace houdunwang\weixin;
+<?php namespace houdunwang\wechat;
 
 use houdunwang\config\Config;
-use houdunwang\weixin\build\Base;
+use houdunwang\wechat\build\Base;
 
 /** .-------------------------------------------------------------------
  * |  Software: [HDCMS framework]

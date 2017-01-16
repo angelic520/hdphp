@@ -1,4 +1,4 @@
-<?php namespace houdunwang\weixin\build;
+<?php namespace houdunwang\wechat\build;
 
 //微信红包
 class cash extends Base {

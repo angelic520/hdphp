@@ -1,4 +1,4 @@
-<?php namespace houdunwang\weixin;
+<?php namespace houdunwang\wechat;
 
 use houdunwang\framework\build\Provider;
 

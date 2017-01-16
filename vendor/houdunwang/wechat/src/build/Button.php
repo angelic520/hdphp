@@ -1,4 +1,4 @@
-<?php namespace houdunwang\weixin\build;
+<?php namespace houdunwang\wechat\build;
 
 //自定义菜单
 class Button extends Base {

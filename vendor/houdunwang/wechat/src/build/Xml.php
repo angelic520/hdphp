@@ -1,4 +1,4 @@
-<?php namespace houdunwang\weixin\build;
+<?php namespace houdunwang\wechat\build;
 /** .-------------------------------------------------------------------
  * |  Software: [HDPHP framework, HDCMS]
  * |      Site: www.hdphp.com www.hdcms.com
