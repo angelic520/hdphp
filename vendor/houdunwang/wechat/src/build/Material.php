@@ -76,7 +76,7 @@ class Material extends Base {
 	//新增永久图文素材
 	public function addNews( $articles ) {
 		$url     = $this->apiUrl . "/cgi-bin/material/add_news?access_token={$this->access_token}";
-		$content = $this->curl( $url, urldecode( json_encode( $this->urlencodeArray( $articles ) ) ) );
+		$content = $this->curl( $url, json_encode($articles ,JSON_UNESCAPED_UNICODE));
 
 		return $this->get( $content );
 	}
@@ -84,8 +84,7 @@ class Material extends Base {
 	//修改永久图文素材
 	public function editNews( $article ) {
 		$url     = $this->apiUrl . "/cgi-bin/material/update_news?access_token={$this->access_token}";
-		$content = $this->curl( $url, urldecode( json_encode( $this->urlencodeArray( $article ) ) ) );
-
+		$content = $this->curl( $url, json_encode(  $article ,JSON_UNESCAPED_UNICODE) ) ;
 		return $this->get( $content );
 	}
 
@@ -100,7 +99,7 @@ class Material extends Base {
 	//获取素材列表
 	public function lists( $param ) {
 		$url     = $this->apiUrl . "/cgi-bin/material/batchget_material?access_token={$this->access_token}";
-		$content = $this->curl( $url, urldecode( json_encode( $this->urlencodeArray( $param ) ) ) );
+		$content = $this->curl( $url, json_encode( $param, JSON_UNESCAPED_UNICODE ) );
 
 		return $this->get( $content );
 	}

@@ -1,6 +1,5 @@
-<?php namespace houdunwang\wechat\build;
-
-	/** .-------------------------------------------------------------------
+<?php
+/** .-------------------------------------------------------------------
  * |  Software: [HDCMS framework]
  * |      Site: www.hdcms.com
  * |-------------------------------------------------------------------
@@ -8,7 +7,13 @@
  * |    WeChat: aihoudun
  * | Copyright (c) 2012-2019, www.houdunwang.com. All Rights Reserved.
  * '-------------------------------------------------------------------*/
-//会员组管理
+namespace houdunwang\wechat\build;
+
+/**
+ * 会员组管理
+ * Class Group
+ * @package houdunwang\wechat\build
+ */
 class Group extends Base {
 	//查询所有分组
 	public function getAllGroups() {

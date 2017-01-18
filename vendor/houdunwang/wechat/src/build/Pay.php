@@ -1,8 +1,13 @@
 <?php namespace houdunwang\wechat\build;
 
-//微信支付
-
-class pay extends Base {
+/**
+ * 微信支付
+ * Class Pay
+ * @package houdunwang\wechat\build
+ * @author 向军 <2300071698@qq.com>
+ * @site www.houdunwang.com
+ */
+class Pay extends Base {
 	//统一下单返回结果
 	protected $order = [ ];
 

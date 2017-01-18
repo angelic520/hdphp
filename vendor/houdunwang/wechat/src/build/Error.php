@@ -1,5 +1,12 @@
 <?php namespace houdunwang\wechat\build;
 
+/**
+ * 错误处理
+ * Class Error
+ * @package houdunwang\wechat\build
+ * @author 向军 <2300071698@qq.com>
+ * @site www.houdunwang.com
+ */
 class Error {
 	public $error
 		= [
@@ -136,18 +143,15 @@ class Error {
 		$data = json_decode( $data, true );
 		if ( ! is_array( $data ) || ! array_key_exists( 'errcode', $data ) ) {
 			return $data;
-		}
-
-		if ( isset( $this->error[ $data['errcode'] ] ) ) {
-			if ( $data['errcode'] == 0 ) {
-				return true;
-			}
+		} else if ( $data['errcode'] == 0 ) {
+			return $data;
+		} else if ( isset( $this->error[ $data['errcode'] ] ) ) {
 			$errmsg = isset( $this->error[ $data['errcode'] ] ) ? $this->error[ $data['errcode'] ] : ( $data['errmsg'] ?: '未知错误' );
 
 			return [ 'errcode' => $data['errcode'], 'errmsg' => $errmsg ];
 		}
 
-		return [ 'errcode' => '-2', 'errmsg' => '未知错误' ];
+		return $data;
 	}
 
 

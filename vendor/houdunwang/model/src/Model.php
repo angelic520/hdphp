@@ -69,8 +69,6 @@ class Model implements ArrayAccess, Iterator {
 	protected $data = [ ];
 	//构建数据
 	protected $original = [ ];
-	//模型记录
-	protected static $links;
 	//数据库连接
 	protected $connect;
 	//表名
@@ -480,7 +478,7 @@ class Model implements ArrayAccess, Iterator {
 	public function __call( $method, $params ) {
 		$res = call_user_func_array( [ $this->db, $method ], $params );
 
-		return self::returnParse( $method, $res, $this );
+		return $this->returnParse( $method, $res, $this );
 	}
 
 	/**
@@ -492,17 +490,16 @@ class Model implements ArrayAccess, Iterator {
 	 * @return mixed
 	 */
 	public static function __callStatic( $method, $params ) {
+		static $links = [ ];
 		$model = get_called_class();
-		if ( ! isset( self::$links[ $model ] ) ) {
-			self::$links[ $model ] = ( new static() );
+		if ( ! isset( $links[ $model ] ) ) {
+			$links[ $model ] = ( new static() );
 		}
-		$query = self::$links[ $model ];
-		$res   = call_user_func_array( [ $query->db, $method ], $params );
 
-		return self::returnParse( $method, $res, self::$links[ $model ] );
+		return call_user_func_array( [ $links[ $model ], $method ], $params );
 	}
 
-	protected static function returnParse( $method, $result, $model ) {
+	protected function returnParse( $method, $result, $model ) {
 		if ( ! empty( $result ) ) {
 			switch ( strtolower( $method ) ) {
 				case 'find':
@@ -519,6 +516,14 @@ class Model implements ArrayAccess, Iterator {
 
 					return $Collection;
 				default:
+					/**
+					 * 返回值为查询构造器对象时
+					 * 返回模型实例
+					 */
+					if ( is_object( $result ) && is_a( $result, 'houdunwang\db\Query' ) ) {
+						return $this;
+					}
+
 					return $result;
 			}
 		}

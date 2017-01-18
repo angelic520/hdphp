@@ -1039,57 +1039,6 @@
         ]
     },
     {
-        "name": "houdunwang/validate",
-        "version": "v1.0.4",
-        "version_normalized": "1.0.4.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/houdunwang/validate.git",
-            "reference": "d581be6901d441f4ff7df035447356ba86bfd2b1"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/houdunwang/validate/zipball/d581be6901d441f4ff7df035447356ba86bfd2b1",
-            "reference": "d581be6901d441f4ff7df035447356ba86bfd2b1",
-            "shasum": ""
-        },
-        "require": {
-            "houdunwang/config": "~1.0",
-            "houdunwang/session": "~1.0",
-            "php": ">=5.4.0"
-        },
-        "time": "2017-01-07 10:38:01",
-        "type": "project",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [],
-            "psr-4": {
-                "houdunwang\\validate\\": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "后盾网向军",
-                "email": "2300071698@qq.com"
-            }
-        ],
-        "description": "Validate组件提供了方便的验证机制，快速实现验证业务。",
-        "homepage": "http://www.houdunwang.com/",
-        "keywords": [
-            "hdphp",
-            "houdunwang",
-            "validate",
-            "后盾人",
-            "后盾网",
-            "向军老师",
-            "表单验证"
-        ]
-    },
-    {
         "name": "houdunwang/middleware",
         "version": "v1.0.7",
         "version_normalized": "1.0.7.0",
@@ -1388,59 +1337,6 @@
         ]
     },
     {
-        "name": "houdunwang/view",
-        "version": "v1.0.7",
-        "version_normalized": "1.0.7.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/houdunwang/view.git",
-            "reference": "9faa3b6b69a0d70fa311bc5738fac0edfc96c86c"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/houdunwang/view/zipball/9faa3b6b69a0d70fa311bc5738fac0edfc96c86c",
-            "reference": "9faa3b6b69a0d70fa311bc5738fac0edfc96c86c",
-            "shasum": ""
-        },
-        "require": {
-            "houdunwang/cache": "~1.0",
-            "houdunwang/config": "~1.0",
-            "php": ">=5.4.0"
-        },
-        "time": "2017-01-07 16:53:27",
-        "type": "project",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "src/helper.php"
-            ],
-            "psr-4": {
-                "houdunwang\\view\\": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "后盾网向军",
-                "email": "2300071698@qq.com"
-            }
-        ],
-        "description": "日志管理",
-        "homepage": "http://www.houdunwang.com/",
-        "keywords": [
-            "hdphp",
-            "houdunwang",
-            "后盾人",
-            "后盾网",
-            "向军老师",
-            "模板",
-            "视图"
-        ]
-    },
-    {
         "name": "houdunwang/arr",
         "version": "v1.0.12",
         "version_normalized": "1.0.12.0",
@@ -1684,62 +1580,6 @@
             "后盾人",
             "后盾网",
             "向军老师"
-        ]
-    },
-    {
-        "name": "houdunwang/model",
-        "version": "v1.0.7",
-        "version_normalized": "1.0.7.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/houdunwang/model.git",
-            "reference": "ba032e8d379e2ffb936220ffbf7cb6ab9c733d8c"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/houdunwang/model/zipball/ba032e8d379e2ffb936220ffbf7cb6ab9c733d8c",
-            "reference": "ba032e8d379e2ffb936220ffbf7cb6ab9c733d8c",
-            "shasum": ""
-        },
-        "require": {
-            "houdunwang/arr": "~1.0",
-            "houdunwang/collection": "~1.0",
-            "houdunwang/config": "~1.0",
-            "houdunwang/db": "~1.0",
-            "houdunwang/validate": "~1.0",
-            "php": ">=5.4.0"
-        },
-        "time": "2017-01-10 11:45:28",
-        "type": "project",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "src/helper.php"
-            ],
-            "psr-4": {
-                "houdunwang\\model\\": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "后盾网向军",
-                "email": "2300071698@qq.com"
-            }
-        ],
-        "description": "模型是应用程序中用于处理应用程序数据逻辑的部分, 通常模型对象负责在数据库中存取数据。",
-        "homepage": "http://www.houdunwang.com/",
-        "keywords": [
-            "hdphp",
-            "houdunwang",
-            "model",
-            "后盾人",
-            "后盾网",
-            "向军老师",
-            "模型"
         ]
     },
     {
@@ -2009,56 +1849,6 @@
         ]
     },
     {
-        "name": "houdunwang/wechat",
-        "version": "v1.0.4",
-        "version_normalized": "1.0.4.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/houdunwang/wechat.git",
-            "reference": "2c530ce7b4e393164d4d4ab9475aa2c0f28b59ce"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/houdunwang/wechat/zipball/2c530ce7b4e393164d4d4ab9475aa2c0f28b59ce",
-            "reference": "2c530ce7b4e393164d4d4ab9475aa2c0f28b59ce",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.4.0"
-        },
-        "time": "2017-01-16 06:37:32",
-        "type": "project",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [],
-            "psr-4": {
-                "houdunwang\\wechat\\": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "后盾网向军",
-                "email": "2300071698@qq.com"
-            }
-        ],
-        "description": "微信开发组件可以快速整合到主流框架中如thinkphp、laravel。为微信开发提供了很大的便利，减少开发人员底层代码的构建，节省开发时间。如果大家对微信开发不了解，后盾网已经推出了【后盾向军微信开发宝典】 请登录 后盾网论坛获取视频 http://bbs.houdunwang.com",
-        "homepage": "http://www.houdunwang.com/",
-        "keywords": [
-            "hdphp",
-            "houdunwang",
-            "mcrypt",
-            "wechat",
-            "后盾人",
-            "后盾网",
-            "向军老师",
-            "微信开发"
-        ]
-    },
-    {
         "name": "houdunwang/framework",
         "version": "v3.0.62",
         "version_normalized": "3.0.62.0",
@@ -2139,5 +1929,215 @@
             }
         ],
         "description": "Hdphp Framework (Kernel)"
+    },
+    {
+        "name": "houdunwang/validate",
+        "version": "v1.0.5",
+        "version_normalized": "1.0.5.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/houdunwang/validate.git",
+            "reference": "34c0b396fe8b5250a8e847c2a280edf7455044ff"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/houdunwang/validate/zipball/34c0b396fe8b5250a8e847c2a280edf7455044ff",
+            "reference": "34c0b396fe8b5250a8e847c2a280edf7455044ff",
+            "shasum": ""
+        },
+        "require": {
+            "houdunwang/config": "~1.0",
+            "houdunwang/session": "~1.0",
+            "php": ">=5.4.0"
+        },
+        "time": "2017-01-17 19:30:16",
+        "type": "project",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [],
+            "psr-4": {
+                "houdunwang\\validate\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "后盾网向军",
+                "email": "2300071698@qq.com"
+            }
+        ],
+        "description": "Validate组件提供了方便的验证机制，快速实现验证业务。",
+        "homepage": "http://www.houdunwang.com/",
+        "keywords": [
+            "hdphp",
+            "houdunwang",
+            "validate",
+            "后盾人",
+            "后盾网",
+            "向军老师",
+            "表单验证"
+        ]
+    },
+    {
+        "name": "houdunwang/model",
+        "version": "v1.0.9",
+        "version_normalized": "1.0.9.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/houdunwang/model.git",
+            "reference": "c37c5a3c002f3f97a5ecadcb970e4e56b8e1da64"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/houdunwang/model/zipball/c37c5a3c002f3f97a5ecadcb970e4e56b8e1da64",
+            "reference": "c37c5a3c002f3f97a5ecadcb970e4e56b8e1da64",
+            "shasum": ""
+        },
+        "require": {
+            "houdunwang/arr": "~1.0",
+            "houdunwang/collection": "~1.0",
+            "houdunwang/config": "~1.0",
+            "houdunwang/db": "~1.0",
+            "houdunwang/validate": "~1.0",
+            "php": ">=5.4.0"
+        },
+        "time": "2017-01-17 23:14:18",
+        "type": "project",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "src/helper.php"
+            ],
+            "psr-4": {
+                "houdunwang\\model\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "后盾网向军",
+                "email": "2300071698@qq.com"
+            }
+        ],
+        "description": "模型是应用程序中用于处理应用程序数据逻辑的部分, 通常模型对象负责在数据库中存取数据。",
+        "homepage": "http://www.houdunwang.com/",
+        "keywords": [
+            "hdphp",
+            "houdunwang",
+            "model",
+            "后盾人",
+            "后盾网",
+            "向军老师",
+            "模型"
+        ]
+    },
+    {
+        "name": "houdunwang/view",
+        "version": "v1.0.9",
+        "version_normalized": "1.0.9.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/houdunwang/view.git",
+            "reference": "b17b03dcd7eac490c46d86f92f00867dc0d3e8e9"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/houdunwang/view/zipball/b17b03dcd7eac490c46d86f92f00867dc0d3e8e9",
+            "reference": "b17b03dcd7eac490c46d86f92f00867dc0d3e8e9",
+            "shasum": ""
+        },
+        "require": {
+            "houdunwang/cache": "~1.0",
+            "houdunwang/config": "~1.0",
+            "php": ">=5.4.0"
+        },
+        "time": "2017-01-17 23:14:59",
+        "type": "project",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "src/helper.php"
+            ],
+            "psr-4": {
+                "houdunwang\\view\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "后盾网向军",
+                "email": "2300071698@qq.com"
+            }
+        ],
+        "description": "日志管理",
+        "homepage": "http://www.houdunwang.com/",
+        "keywords": [
+            "hdphp",
+            "houdunwang",
+            "后盾人",
+            "后盾网",
+            "向军老师",
+            "模板",
+            "视图"
+        ]
+    },
+    {
+        "name": "houdunwang/wechat",
+        "version": "v1.0.9",
+        "version_normalized": "1.0.9.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/houdunwang/wechat.git",
+            "reference": "405185e0a929c7c52a9aa2e00167e6fe197c93a8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/houdunwang/wechat/zipball/405185e0a929c7c52a9aa2e00167e6fe197c93a8",
+            "reference": "405185e0a929c7c52a9aa2e00167e6fe197c93a8",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0"
+        },
+        "time": "2017-01-16 19:22:50",
+        "type": "project",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [],
+            "psr-4": {
+                "houdunwang\\wechat\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "后盾网向军",
+                "email": "2300071698@qq.com"
+            }
+        ],
+        "description": "微信开发组件可以快速整合到主流框架中如thinkphp、laravel。为微信开发提供了很大的便利，减少开发人员底层代码的构建，节省开发时间。如果大家对微信开发不了解，后盾网已经推出了【后盾向军微信开发宝典】 请登录 后盾网论坛获取视频 http://bbs.houdunwang.com",
+        "homepage": "http://www.houdunwang.com/",
+        "keywords": [
+            "hdphp",
+            "houdunwang",
+            "mcrypt",
+            "wechat",
+            "后盾人",
+            "后盾网",
+            "向军老师",
+            "微信开发"
+        ]
     }
 ]

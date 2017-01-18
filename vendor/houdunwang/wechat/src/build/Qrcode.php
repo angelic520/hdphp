@@ -1,6 +1,12 @@
 <?php namespace houdunwang\wechat\build;
 
-//二维码生成
+/**
+ * 二维码生成
+ * Class Qrcode
+ * @package houdunwang\wechat\build
+ * @author 向军 <2300071698@qq.com>
+ * @site www.houdunwang.com
+ */
 class Qrcode extends Base {
 	/**
 	 * @param int $scene_id 自行设定的参数(第几个二维码）
