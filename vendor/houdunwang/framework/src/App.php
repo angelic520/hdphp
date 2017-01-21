@@ -24,7 +24,7 @@ class App {
 		| WeChat: houdunwangxj
 		| Copyright (c) 2012-2019, www.houdunwang.com. All Rights Reserved.
 		|-------------------------------------------------------------------------*/
-		define( 'HDPHP_VERSION', '3.0.57' );
+		define( 'HDPHP_VERSION', '3.0.65' );
 	}
 
 	//更改缓存驱动

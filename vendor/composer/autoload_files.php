@@ -15,7 +15,7 @@ return array(
     'c54daba5473de13d796733fe0422e2c2' => $vendorDir . '/houdunwang/collection/src/helper.php',
     'b200b64f4d1415a1ec31d557162a91e1' => $vendorDir . '/houdunwang/loader/src/helper.php',
     '0fdb93813e3129bfd50d293224a2095e' => $vendorDir . '/houdunwang/error/src/helper.php',
-    '5d0c93371c27353f9ed08b6acca42f49' => $vendorDir . '/houdunwang/model/src/helper.php',
     '50d0a9eb2eaa09019de1d3a8d2c45e4e' => $vendorDir . '/houdunwang/view/src/helper.php',
+    '5d0c93371c27353f9ed08b6acca42f49' => $vendorDir . '/houdunwang/model/src/helper.php',
     '252420c3cb244c300529dbbdc1b6f21a' => $vendorDir . '/houdunwang/framework/src/helper.php',
 );

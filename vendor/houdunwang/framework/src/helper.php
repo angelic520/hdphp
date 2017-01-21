@@ -209,7 +209,7 @@ if ( ! function_exists( 'message' ) ) {
 					break;
 				case 'back':
 					//有回调地址时回调,没有时返回主页
-					$url = 'window.history.go(-1)';
+					$url = "window.history.go(-1)";
 					break;
 				case 'refresh':
 					$url = "location.replace('" . __URL__ . "')";
@@ -273,7 +273,6 @@ if ( ! function_exists( 'method_field' ) ) {
 		return "<input type='hidden' name='_method' value='" . strtoupper( $type ) . "'/>\r\n";
 	}
 }
-
 if ( ! function_exists( 'csrf_token' ) ) {
 	/**
 	 * CSRF 值

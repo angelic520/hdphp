@@ -497,8 +497,8 @@ class Query implements \ArrayAccess, \Iterator {
 	 */
 	public function lists( $field ) {
 		$result = $this->query( $this->build->select(), $this->build->getSelectParams() );
+		$data  = [ ];
 		if ( $result ) {
-			$data  = [ ];
 			$field = explode( ',', $field );
 			switch ( count( $field ) ) {
 				case 1:
@@ -519,9 +519,8 @@ class Query implements \ArrayAccess, \Iterator {
 					}
 					break;
 			}
-
-			return $data;
 		}
+		return $data;
 	}
 
 	/**

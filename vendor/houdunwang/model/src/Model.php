@@ -154,11 +154,11 @@ class Model implements ArrayAccess, Iterator {
 	 */
 	final private function unique( $field, $value, $param, $data ) {
 		//表主键
-		$db = Db::table( $this->table );
-		if ( isset( $this->data[ $this->pk ] ) ) {
+		$db = Db::table( $this->table )->where( $field, $value );
+		if ( $this->actionType() == self::MODEL_UPDATE ) {
 			$db->where( $this->pk, '<>', $this->data[ $this->pk ] );
 		}
-		if ( empty( $value ) || ! $db->where( $field, $value )->pluck( $field ) ) {
+		if ( empty( $value ) || ! $db->get() ) {
 			return true;
 		}
 	}
