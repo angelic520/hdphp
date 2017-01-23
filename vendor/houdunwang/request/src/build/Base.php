@@ -11,6 +11,7 @@ namespace houdunwang\request\build;
 
 //请求处理
 use houdunwang\arr\Arr;
+use houdunwang\config\Config;
 use houdunwang\cookie\Cookie;
 use houdunwang\session\Session;
 
@@ -25,6 +26,7 @@ class Base {
 			if ( empty( $_POST ) ) {
 				parse_str( file_get_contents( 'php://input' ), $_POST );
 			}
+
 			defined( 'NOW' ) or define( 'NOW', $_SERVER['REQUEST_TIME'] );
 			defined( 'MICROTIME' ) or define( 'MICROTIME', $_SERVER['REQUEST_TIME_FLOAT'] );
 			defined( 'IS_GET' ) or define( 'IS_GET', $_SERVER['REQUEST_METHOD'] == 'GET' );
@@ -34,6 +36,8 @@ class Base {
 			defined( 'IS_AJAX' ) or define( 'IS_AJAX', isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && strtolower( $_SERVER['HTTP_X_REQUESTED_WITH'] ) == 'xmlhttprequest' );
 			defined( 'IS_WECHAT' ) or define( 'IS_WECHAT', isset( $_SERVER['HTTP_USER_AGENT'] ) && strpos( $_SERVER['HTTP_USER_AGENT'], 'MicroMessenger' ) !== false );
 			defined( 'IS_MOBILE' ) or define( 'IS_MOBILE', $this->isMobile() );
+			defined( '__ROOT__' ) or define( '__ROOT__', PHP_SAPI == 'cli' ? '' : trim( 'http://' . $_SERVER['HTTP_HOST'] . dirname( $_SERVER['SCRIPT_NAME'] ), '/\\' ) );
+			defined( '__WEB__' ) or define( '__WEB__', Config::get( 'http.rewrite' ) ? __ROOT__ : __ROOT__ . '/index.php' );
 			defined( '__URL__' ) or define( '__URL__', trim( 'http://' . $_SERVER['HTTP_HOST'] . '/' . trim( $_SERVER['REQUEST_URI'], '/\\' ), '/' ) );
 			defined( '__HISTORY__' ) or define( "__HISTORY__", isset( $_SERVER["HTTP_REFERER"] ) ? $_SERVER["HTTP_REFERER"] : '' );
 		}
