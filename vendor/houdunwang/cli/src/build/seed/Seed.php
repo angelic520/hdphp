@@ -30,13 +30,13 @@ class Seed extends Base {
 		$files = glob( ROOT_PATH . '/system/database/seeds/*.php' );
 		sort( $files );
 		foreach ( (array) $files as $file ) {
-			$name = substr( basename( $file ), 0, - 4 );
+			$name = substr( basename( $file ), 0, -24 );
 			//只执行没有执行过的migration
-			if ( ! Db::table( 'seeds' )->where( 'seed', $name )->first() ) {
+			if ( ! Db::table( 'seeds' )->where( 'seed', basename($file) )->first() ) {
 				require $file;
-				$class = 'system\database\seeds\\'.substr( basename( $file ), 18, - 4 );
+				$class = 'system\database\seeds\\' . $name;
 				( new $class )->up();
-				Db::table( 'seeds' )->insert( [ 'seed' => $name, 'batch' => ++ self::$batch ] );
+				Db::table( 'seeds' )->insert( [ 'seed' => basename($file), 'batch' => self::$batch + 1 ] );
 			}
 		}
 	}
@@ -48,7 +48,7 @@ class Seed extends Base {
 			$file = ROOT_PATH . '/system/database/seeds/' . $f . '.php';
 			if ( is_file( $file ) ) {
 				require $file;
-				$class = 'system\database\seeds\\'.substr( basename( $file ), 18, - 4 );
+				$class = 'system\database\seeds\\' . substr( basename( $file ), 18, - 4 );
 				( new $class )->down();
 			}
 			Db::table( 'seeds' )->where( 'seed', $f )->delete();
@@ -63,7 +63,7 @@ class Seed extends Base {
 			$file = ROOT_PATH . '/system/database/seeds/' . $f . '.php';
 			if ( is_file( $file ) ) {
 				require $file;
-				$class = 'system\database\seeds\\'.substr( basename( $file ), 18, - 4 );
+				$class = 'system\database\seeds\\' . substr( basename( $file ), 18, - 4 );
 				( new $class )->down();
 			}
 			Db::table( 'seeds' )->where( 'seed', $f )->delete();

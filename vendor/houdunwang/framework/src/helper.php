@@ -51,7 +51,7 @@ if ( ! function_exists( 'u' ) ) {
 			$url .= '?' . c( 'http.url_var' ) . '=' . $path;
 		} else {
 			//路由访问模式
-			$url .= $path;
+			$url .= '?' . c( 'http.url_var' ) . '=' . $path;
 		}
 		//添加参数
 		if ( ! empty( $args ) ) {

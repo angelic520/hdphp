@@ -83,6 +83,17 @@ class Base {
 		return true;
 	}
 
+	//复制文件
+	public function copyFile( $file, $to ) {
+		if ( ! is_file( $file ) ) {
+			return false;
+		}
+		//创建目录
+		$this->create( dirname( $to ) );
+
+		return copy( $file, $to );
+	}
+
 	//移动目录
 	public function move( $old, $new ) {
 		if ( $this->copy( $old, $new ) ) {

@@ -17,8 +17,8 @@ class Base {
 		curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false );
 		curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, false );
 
-		if ( ! curl_exec( $ch ) ) {
-			throw new \Exception( url_errno( $ch ) );
+		if (  curl_exec( $ch ) ===false) {
+			throw new \Exception( curl_error( $ch ) );
 			$data = '';
 		} else {
 			$data = curl_multi_getcontent( $ch );
@@ -38,9 +38,8 @@ class Base {
 		curl_setopt( $ch, CURLOPT_TIMEOUT, 30 );
 		curl_setopt( $ch, CURLOPT_POST, 1 );
 		curl_setopt( $ch, CURLOPT_POSTFIELDS, $postData );
-
-		if ( ! curl_exec( $ch ) ) {
-			throw new \Exception( url_errno( $ch ) );
+		if ( curl_exec( $ch ) ===false) {
+			throw new \Exception( curl_error( $ch ) );
 			$data = '';
 		} else {
 			$data = curl_multi_getcontent( $ch );

@@ -352,12 +352,8 @@ class Query implements \ArrayAccess, \Iterator {
 				$this->where( $pri, $data[ $pri ] );
 			}
 		}
-		//必须有条件才可以更新
-		if ( $this->build->getBindExpression( 'where' ) ) {
-			return $this->execute( $this->build->update(), $this->build->getUpdateParams() );
-		}
 
-		return false;
+		return $this->execute( $this->build->update(), $this->build->getUpdateParams() );
 	}
 
 	/**
@@ -497,7 +493,7 @@ class Query implements \ArrayAccess, \Iterator {
 	 */
 	public function lists( $field ) {
 		$result = $this->query( $this->build->select(), $this->build->getSelectParams() );
-		$data  = [ ];
+		$data   = [ ];
 		if ( $result ) {
 			$field = explode( ',', $field );
 			switch ( count( $field ) ) {
@@ -514,12 +510,13 @@ class Query implements \ArrayAccess, \Iterator {
 				default:
 					foreach ( $result as $v ) {
 						foreach ( $field as $f ) {
-							$data[ $v[ $field[0] ] ][$f] = $v[$f];
+							$data[ $v[ $field[0] ] ][ $f ] = $v[ $f ];
 						}
 					}
 					break;
 			}
 		}
+
 		return $data;
 	}
 

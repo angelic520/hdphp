@@ -13,7 +13,7 @@ use houdunwang\framework\build\Provider;
 
 class RequestProvider extends Provider {
 	//延迟加载
-	public $defer = false;
+	public $defer = true;
 
 	public function boot() {
 		Request::get();
