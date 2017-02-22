@@ -8,6 +8,7 @@
  * @site www.houdunwang.com
  */
 class Pay extends Base {
+
 	//统一下单返回结果
 	protected $order = [ ];
 
@@ -24,24 +25,23 @@ class Pay extends Base {
 		//支付完成时
 		if ( isset( $_GET['done'] ) ) {
 			//支付成功后根据配置文件设置的链接地址跳转到成功页面
-			echo "<script>location.replace('" . self::$config['back_url'] . "&code=SUCCESS')</script>";
+			echo "<script>location.replace('" . c('wechat.back_url') . "&code=SUCCESS&out_trade_no=".$_GET['out_trade_no']."')</script>";
 			exit;
 		} else {
 			$res = $this->unifiedorder( $order );
 			if ( $res['return_code'] != 'SUCCESS' ) {
-				//				message( $res['return_msg'], self::$config['back_url'] . '&code=fail', 'error' );
+				message( $res['return_msg'], c('wechat.back_url') . '&code=fail', 'error' );
 			}
 			if ( ! isset( $res['result_code'] ) || $res['result_code'] != 'SUCCESS' ) {
-				//				message( $res['err_code_des'], self::$config['back_url'] . '&code=fail', 'error' );
+				message( $res['err_code_des'], c('wechat.back_url') . '&code=fail', 'error' );
 			}
-			$data['appId']     = c( 'weixin.appid' );
+			$data['appId']     = c( 'wechat.appid' );
 			$data['timeStamp'] = time();
 			$data['nonceStr']  = $this->getRandStr( 16 );
 			$data['package']   = "prepay_id=" . $res['prepay_id'];
 			$data['signType']  = "MD5";
 			$data['paySign']   = $this->makeSign( $data );
-			$js
-			                   = <<<sttr
+			$js                = <<<sttr
 <script>
     function onBridgeReady() {
         WeixinJSBridge.invoke(
@@ -50,12 +50,12 @@ class Pay extends Base {
                 "timeStamp": "{$data['timeStamp']}",//时间戳，自1970年以来的秒数
                 "nonceStr": "{$data['nonceStr']}", //随机串
                 "package": "{$data['package']}",
-                "signType": "{$data['signType']}",         //微信签名方式：
+                "signType": "{$data['signType']}", //微信签名方式：
                 "paySign": "{$data['paySign']}" //微信签名
             },
             function (res) {
                 if (res.err_msg == "get_brand_wcpay_request:ok") {
-                    location.search += '&done=1';
+                    location.search += '&done=1&out_trade_no={$order["out_trade_no"]}';
                 } else {
                     //alert('启动微信支付失败, 请检查你的支付参数. 详细错误为: ' + res.err_msg);
                     history.go(-1);
@@ -81,9 +81,9 @@ sttr;
 
 	//统一下单
 	protected function unifiedorder( $data ) {
-		$data['appid']      = self::$config['appid'];
-		$data['mch_id']     = self::$config['mch_id'];
-		$data['notify_url'] = self::$config['notify_url'];
+		$data['appid']      = c( 'wechat.appid' );
+		$data['mch_id']     = c( 'wechat.mch_id' );
+		$data['notify_url'] = c( 'wechat.notify_url' );
 		$data['nonce_str']  = $this->getRandStr( 16 );
 		$data['trade_type'] = 'JSAPI';
 		$data['openid']     = $this->instance( 'oauth' )->snsapiBase();

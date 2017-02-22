@@ -9,8 +9,8 @@
  * '-------------------------------------------------------------------*/
 class Base extends Error {
 	use Xml;
-	//配置项
-	protected static $config = [ ];
+	protected $appid;
+	protected $appsecret;
 	//access_token
 	protected $access_token;
 	//微信服务器发来的数据
@@ -18,28 +18,15 @@ class Base extends Error {
 	//API 根地址
 	protected $apiUrl = 'https://api.weixin.qq.com';
 
-	public function __construct( $config = [ ] ) {
-		$this->config( $config );
+	public function __construct() {
+		
 		$this->bootstrap();
-	}
-
-	//设置配置项
-	public function config( $config, $value = null ) {
-		if ( is_array( $config ) ) {
-			self::$config = $config;
-
-			return $this;
-		} else if ( is_null( $value ) ) {
-			return Arr::get( self::$config, $config );
-		} else {
-			self::$config = Arr::set( self::$config, $config, $value );
-
-			return $this;
-		}
 	}
 
 	//启动组件
 	public function bootstrap() {
+		$this->appid        = c( 'wechat.appid' );
+		$this->appsecret    = c( 'wechat.appsecret' );
 		$this->access_token = $this->getAccessToken();
 		//处理 微信服务器 发来的数据
 		$this->message = $this->parsePostRequestData();
@@ -68,7 +55,7 @@ class Base extends Error {
 		$signature = $_GET["signature"];
 		$timestamp = $_GET["timestamp"];
 		$nonce     = $_GET["nonce"];
-		$token     = self::$config['token'];
+		$token     = c( 'wechat.token' );
 		$tmpArr    = [ $token, $timestamp, $nonce ];
 		sort( $tmpArr, SORT_STRING );
 		$tmpStr = implode( $tmpArr );
@@ -95,14 +82,15 @@ class Base extends Error {
 	 */
 	public function getAccessToken( $force = false ) {
 		//缓存名
-		$cacheName = md5( self::$config['appid'] . self::$config['appsecret'] );
+		$cacheName = md5( c( 'wechat.appid' ) . c( 'wechat.appsecret' ) );
 		//缓存文件
 		$file = __DIR__ . '/cache/' . $cacheName . '.php';
 		if ( $force === false && is_file( $file ) && filemtime( $file ) + 7000 > time() ) {
 			//缓存有效
 			$data = include $file;
 		} else {
-			$url  = $this->apiUrl . '/cgi-bin/token?grant_type=client_credential&appid=' . self::$config['appid'] . '&secret=' . self::$config['appsecret'];
+			$url  = $this->apiUrl . '/cgi-bin/token?grant_type=client_credential&appid=' . c( 'wechat.appid' )
+			        . '&secret=' . c( 'wechat.appsecret' );
 			$data = $this->curl( $url );
 			$data = json_decode( $data, true );
 			//获取失败
@@ -169,7 +157,7 @@ class Base extends Error {
 		ksort( $data );
 		$string = $this->ToUrlParams( $data );
 		//签名步骤二：在string后加入KEY
-		$string = $string . "&key=" . self::$config['key'];
+		$string = $string . "&key=" . c( 'wechat.key' );
 		//签名步骤三：MD5加密
 		$string = md5( $string );
 		//签名步骤四：所有字符转为大写
@@ -196,6 +184,6 @@ class Base extends Error {
 	public function instance( $type ) {
 		$class = '\houdunwang\wechat\build\\' . ucfirst( $type );
 
-		return new $class( self::$config );
+		return new $class();
 	}
 }

@@ -49,13 +49,16 @@ class Base extends \houdunwang\container\build\Base {
 		//启动服务
 		$this->boot();
 		//应用初始中间件
-		Middleware::exe( 'boot' );
+		Middleware::system( 'boot' );
 		//解析全局数组同时开启SESSION
 		Request::bootstrap();
 		//执行命令行指令
 		Cli::bootstrap();
-		//执行全局中间件
+		//执行中间件
 		Middleware::globals();
+		Middleware::system( 'app_begin' );
+		Middleware::system( 'csrf_validate' );
+		Middleware::system( 'form_validate' );
 		//解析路由
 		require ROOT_PATH . '/system/routes.php';
 		Route::dispatch();
@@ -65,7 +68,7 @@ class Base extends \houdunwang\container\build\Base {
 	protected function constant() {
 		//根目录即Vendor同级目录
 		define( 'ROOT_PATH', realpath( dirname( __DIR__ ) . '/../../../..' ) );
-
+		$_SERVER['SCRIPT_NAME'] = str_replace( '\\', '/', $_SERVER['SCRIPT_NAME'] );
 		//根URL地址
 		define( '__ROOT__', PHP_SAPI == 'cli' ? '' : trim( 'http://' . $_SERVER['HTTP_HOST'] . dirname( $_SERVER['SCRIPT_NAME'] ), '/\\' ) );
 		define( 'DS', DIRECTORY_SEPARATOR );

@@ -15,11 +15,11 @@ class oauth extends Base {
 		if ( q( 'get.code' ) && q( 'get.state' ) == 'STATE' ) {
 			$url  = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" . $this->appid . "&secret=" . $this->appsecret . "&code=" . q( 'get.code' ) . "&grant_type=authorization_code";
 			$d    = $this->curl( $url );
-			$data = $this->get( json_decode( $d, true ) );
+			$data = $this->get(  $d);
 
 			return isset( $data['errcode'] ) ? false : $data;
 		} else {
-			$url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" . c( 'weixin.appid' ) . "&redirect_uri=" . urlencode( __URL__ ) . "&response_type=code&scope=" . $type . "&state=STATE#wechat_redirect";
+			$url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" . $this->appid . "&redirect_uri=" . urlencode( __URL__ ) . "&response_type=code&scope=" . $type . "&state=STATE#wechat_redirect";
 			header( 'location:' . $url );
 			exit;
 		}

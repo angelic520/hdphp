@@ -346,7 +346,7 @@ class Model implements ArrayAccess, Iterator {
 					$data = Arr::filterKeys( $data, $this->denyFill, 1 );
 				}
 			}
-			$this->original = $data;
+			$this->original = array_merge($this->original,$data);
 		}
 		//不允许设置主键字段
 		if ( isset( $this->original[ $this->pk ] ) ) {
@@ -515,6 +515,8 @@ class Model implements ArrayAccess, Iterator {
 					}
 
 					return $Collection;
+				case 'paginate':
+					return $result;
 				default:
 					/**
 					 * 返回值为查询构造器对象时
@@ -527,5 +529,6 @@ class Model implements ArrayAccess, Iterator {
 					return $result;
 			}
 		}
+		return $result;
 	}
 }

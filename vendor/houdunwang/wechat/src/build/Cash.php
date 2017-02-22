@@ -5,8 +5,8 @@ class cash extends Base {
 	//发布现金红包
 	public function sendRedPack( $data ) {
 		$data['mch_billno'] = time();
-		$data['mch_id']     = c( 'weixin.mch_id' );
-		$data['wxappid']    = c( 'weixin.appid' );
+		$data['mch_id']     = c( 'wechat.mch_id' );
+		$data['wxappid']    = c( 'wechat.appid' );
 		$data['total_num']  = "1";//红包发放总人数
 		$data['client_ip']  = Request::ip();
 		$data['nonce_str']  = $this->getRandStr( 16 );

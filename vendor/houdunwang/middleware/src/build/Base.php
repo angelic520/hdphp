@@ -80,6 +80,28 @@ class Base {
 			}
 		}
 	}
+	/**
+	 * 执行系统中间件
+	 *
+	 * @param $name
+	 *
+	 * @return mixed
+	 */
+	public function system( $name ) {
+		$class = $this->config( 'system.' . $name );
+		if ( is_array( $class ) ) {
+			//数组配置时
+			foreach ( $class as $c ) {
+				if ( class_exists( $c ) ) {
+					return Container::callMethod( $c, 'run' );
+				}
+			}
+		} else {
+			if ( class_exists( $class ) ) {
+				return Container::callMethod( $class, 'run' );
+			}
+		}
+	}
 
 	/**
 	 * 执行应用中间件

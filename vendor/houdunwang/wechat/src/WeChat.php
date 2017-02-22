@@ -17,7 +17,7 @@ class WeChat {
 
 	//更改缓存驱动
 	protected function driver() {
-		$this->link = new Base(Config::get( 'wechat' ));
+		$this->link = new Base();
 
 		return $this;
 	}
