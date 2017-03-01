@@ -46,14 +46,14 @@ class Base extends \houdunwang\container\build\Base {
 		$this->bindServiceProvider();
 		//设置外观类APP属性
 		Facade::setFacadeApplication( $this );
+		//执行命令行指令
+		Cli::bootstrap();
 		//启动服务
 		$this->boot();
 		//应用初始中间件
 		Middleware::system( 'boot' );
 		//解析全局数组同时开启SESSION
 		Request::bootstrap();
-		//执行命令行指令
-		Cli::bootstrap();
 		//执行中间件
 		Middleware::globals();
 		Middleware::system( 'app_begin' );

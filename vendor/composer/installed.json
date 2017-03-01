@@ -990,54 +990,6 @@
         ]
     },
     {
-        "name": "houdunwang/arr",
-        "version": "v1.0.12",
-        "version_normalized": "1.0.12.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/houdunwang/arr.git",
-            "reference": "b4f807c93bc8d9b46e1187c659e58ce6c4d29e0e"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/houdunwang/arr/zipball/b4f807c93bc8d9b46e1187c659e58ce6c4d29e0e",
-            "reference": "b4f807c93bc8d9b46e1187c659e58ce6c4d29e0e",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.4.0"
-        },
-        "time": "2017-01-08 18:21:12",
-        "type": "project",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [],
-            "psr-4": {
-                "houdunwang\\arr\\": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "后盾网向军",
-                "email": "2300071698@qq.com"
-            }
-        ],
-        "description": "数组增强组件主要是对数组等数据进行处理，如无限级分类操作、商品规格的迪卡尔乘积运算等",
-        "homepage": "http://www.houdunwang.com/",
-        "keywords": [
-            "array",
-            "hdphp",
-            "houdunwang",
-            "后盾人",
-            "后盾网",
-            "向军老师"
-        ]
-    },
-    {
         "name": "houdunwang/cache",
         "version": "v1.0.13",
         "version_normalized": "1.0.13.0",
@@ -2063,18 +2015,66 @@
         ]
     },
     {
-        "name": "houdunwang/framework",
-        "version": "v3.0.80",
-        "version_normalized": "3.0.80.0",
+        "name": "houdunwang/arr",
+        "version": "v1.0.13",
+        "version_normalized": "1.0.13.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/houdunwang/framework.git",
-            "reference": "4964274505973d3f52876e44546b65a36964ced9"
+            "url": "https://github.com/houdunwang/arr.git",
+            "reference": "ccb6a18aff0188af7fa6b6cc1703096e69ae401b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/houdunwang/framework/zipball/4964274505973d3f52876e44546b65a36964ced9",
-            "reference": "4964274505973d3f52876e44546b65a36964ced9",
+            "url": "https://api.github.com/repos/houdunwang/arr/zipball/ccb6a18aff0188af7fa6b6cc1703096e69ae401b",
+            "reference": "ccb6a18aff0188af7fa6b6cc1703096e69ae401b",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0"
+        },
+        "time": "2017-02-22 13:00:09",
+        "type": "project",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [],
+            "psr-4": {
+                "houdunwang\\arr\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "后盾网向军",
+                "email": "2300071698@qq.com"
+            }
+        ],
+        "description": "数组增强组件主要是对数组等数据进行处理，如无限级分类操作、商品规格的迪卡尔乘积运算等",
+        "homepage": "http://www.houdunwang.com/",
+        "keywords": [
+            "array",
+            "hdphp",
+            "houdunwang",
+            "后盾人",
+            "后盾网",
+            "向军老师"
+        ]
+    },
+    {
+        "name": "houdunwang/framework",
+        "version": "v3.0.81",
+        "version_normalized": "3.0.81.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/houdunwang/framework.git",
+            "reference": "7124f6c4ee2380ed78c8ec566556b0d614032417"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/houdunwang/framework/zipball/7124f6c4ee2380ed78c8ec566556b0d614032417",
+            "reference": "7124f6c4ee2380ed78c8ec566556b0d614032417",
             "shasum": ""
         },
         "require": {
@@ -2121,9 +2121,9 @@
             "houdunwang/zip": "~1.0",
             "php": ">=5.4.0"
         },
-        "time": "2017-02-22 08:58:57",
+        "time": "2017-03-01 06:35:52",
         "type": "project",
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "files": [
                 "src/helper.php"
