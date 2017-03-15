@@ -9,7 +9,7 @@
  * '-------------------------------------------------------------------*/
 namespace houdunwang\cookie\build;
 
-use houdunwang\arr\Arr;
+use houdunwang\config\Config;
 use houdunwang\crypt\Crypt;
 
 /**
@@ -19,24 +19,8 @@ use houdunwang\crypt\Crypt;
  */
 class Base {
 	protected $items = [ ];
-	protected $config;
 
-	//设置配置项
-	public function config( $config, $value = null ) {
-		if ( is_array( $config ) ) {
-			$this->config = $config;
-
-			return $this;
-		} else if ( is_null( $value ) ) {
-			return Arr::get( $this->config, $config );
-		} else {
-			$this->config = Arr::set( $this->config, $config, $value );
-
-			return $this;
-		}
-	}
-
-	public function bootstrap() {
+	public function __construct() {
 		$this->items = $_COOKIE;
 	}
 
@@ -51,7 +35,7 @@ class Base {
 		if ( isset( $this->items[ $name ] ) ) {
 			return $this->items[ $name ];
 		} else if ( $this->has( $name ) ) {
-			return Crypt::decrypt( $this->items[ $this->config( 'prefix' ) . '##' . $name ], $this->config( 'key' ) );
+			return Crypt::decrypt( $this->items[ Config::get( 'cookie.prefix' ) . '##' . $name ], Config::get( 'cookie.key' ) );
 		}
 	}
 
@@ -79,8 +63,8 @@ class Base {
 	 */
 	public function set( $name, $value, $expire = 0, $path = '/', $domain = null ) {
 		$expire = $expire ? time() + $expire : $expire;
-		$name   = $this->config( 'prefix' ) . '##' . $name;
-		setcookie( $name, Crypt::encrypt( $value, $this->config( 'key' ) ), $expire, $path, $domain );
+		$name   = Config::get( 'cookie.prefix' ) . '##' . $name;
+		setcookie( $name, Crypt::encrypt( $value, Config::get( 'cookie.key' ) ), $expire, $path, $domain );
 
 	}
 
@@ -103,7 +87,7 @@ class Base {
 	 * @return bool
 	 */
 	public function has( $name ) {
-		return isset( $this->items[ $this->config( 'prefix' ).'##' . $name ] );
+		return isset( $this->items[ Config::get( 'cookie.prefix' ) . '##' . $name ] );
 	}
 
 	/**

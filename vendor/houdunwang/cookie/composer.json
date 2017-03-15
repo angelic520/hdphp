@@ -22,8 +22,7 @@
   "require": {
     "php": ">=5.4.0",
     "houdunwang/config": "~1.0",
-    "houdunwang/crypt": "~1.0",
-    "houdunwang/arr": "~1.0"
+    "houdunwang/crypt": "~1.0"
   },
   "autoload": {
     "files": [

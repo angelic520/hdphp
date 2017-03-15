@@ -24,8 +24,6 @@ class Cookie {
 	//获取实例
 	protected function driver() {
 		$this->link = new Base();
-		$this->link->config( Config::get( 'cookie' ) );
-		$this->link->bootstrap();
 
 		return $this;
 	}
