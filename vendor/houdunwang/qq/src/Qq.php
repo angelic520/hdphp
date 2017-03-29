@@ -18,7 +18,7 @@ class Qq {
 	//更改缓存驱动
 	public function driver() {
 		$this->link = new QC();
-		$this->link->config(Config::get('qq'));
+		$this->link->config( Config::get( 'qq' ) );
 
 		return $this;
 	}

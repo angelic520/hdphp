@@ -1,12 +1,21 @@
-<?php namespace houdunwang\wechat\build;
+<?php
 /** .-------------------------------------------------------------------
- * |  Software: [HDCMS framework]
- * |      Site: www.hdcms.com
+ * |  Software: [HDPHP framework]
+ * |      Site: www.hdphp.com
  * |-------------------------------------------------------------------
  * |    Author: 向军 <2300071698@qq.com>
  * |    WeChat: aihoudun
  * | Copyright (c) 2012-2019, www.houdunwang.com. All Rights Reserved.
  * '-------------------------------------------------------------------*/
+namespace houdunwang\wechat\build;
+
+use houdunwang\config\Config;
+
+/**
+ * 基础类
+ * Class Base
+ * @package houdunwang\wechat\build
+ */
 class Base extends Error {
 	use Xml;
 	protected $appid;
@@ -19,14 +28,13 @@ class Base extends Error {
 	protected $apiUrl = 'https://api.weixin.qq.com';
 
 	public function __construct() {
-		
 		$this->bootstrap();
 	}
 
 	//启动组件
 	public function bootstrap() {
-		$this->appid        = c( 'wechat.appid' );
-		$this->appsecret    = c( 'wechat.appsecret' );
+		$this->appid        = Config::get( 'wechat.appid' );
+		$this->appsecret    = Config::get( 'wechat.appsecret' );
 		$this->access_token = $this->getAccessToken();
 		//处理 微信服务器 发来的数据
 		$this->message = $this->parsePostRequestData();
@@ -55,7 +63,7 @@ class Base extends Error {
 		$signature = $_GET["signature"];
 		$timestamp = $_GET["timestamp"];
 		$nonce     = $_GET["nonce"];
-		$token     = c( 'wechat.token' );
+		$token     = Config::get( 'wechat.token' );
 		$tmpArr    = [ $token, $timestamp, $nonce ];
 		sort( $tmpArr, SORT_STRING );
 		$tmpStr = implode( $tmpArr );
@@ -82,15 +90,15 @@ class Base extends Error {
 	 */
 	public function getAccessToken( $force = false ) {
 		//缓存名
-		$cacheName = md5( c( 'wechat.appid' ) . c( 'wechat.appsecret' ) );
+		$cacheName = md5( Config::get( 'wechat.appid' ) . Config::get( 'wechat.appsecret' ) );
 		//缓存文件
 		$file = __DIR__ . '/cache/' . $cacheName . '.php';
 		if ( $force === false && is_file( $file ) && filemtime( $file ) + 7000 > time() ) {
 			//缓存有效
 			$data = include $file;
 		} else {
-			$url  = $this->apiUrl . '/cgi-bin/token?grant_type=client_credential&appid=' . c( 'wechat.appid' )
-			        . '&secret=' . c( 'wechat.appsecret' );
+			$url  = $this->apiUrl . '/cgi-bin/token?grant_type=client_credential&appid=' . Config::get( 'wechat.appid' )
+			        . '&secret=' . Config::get( 'wechat.appsecret' );
 			$data = $this->curl( $url );
 			$data = json_decode( $data, true );
 			//获取失败
@@ -157,7 +165,7 @@ class Base extends Error {
 		ksort( $data );
 		$string = $this->ToUrlParams( $data );
 		//签名步骤二：在string后加入KEY
-		$string = $string . "&key=" . c( 'wechat.key' );
+		$string = $string . "&key=" . Config::get( 'wechat.key' );
 		//签名步骤三：MD5加密
 		$string = md5( $string );
 		//签名步骤四：所有字符转为大写

@@ -21,6 +21,7 @@
     "houdunwang/code": "~1.0",
     "houdunwang/collection": "~1.0",
     "houdunwang/config": "~1.0",
+    "houdunwang/oss": "~1.0",
     "houdunwang/container": "~1.0",
     "houdunwang/controller": "~1.0",
     "houdunwang/cookie": "~1.0",
@@ -52,7 +53,9 @@
     "houdunwang/xml": "~1.0",
     "houdunwang/zip": "~1.0",
     "houdunwang/wechat": "~1.0",
-    "houdunwang/loader": "~1.0"
+    "houdunwang/loader": "~1.0",
+    "houdunwang/qrcode": "~1.0",
+    "houdunwang/aliyunsms": "~1.0"
   },
   "autoload": {
     "files": [

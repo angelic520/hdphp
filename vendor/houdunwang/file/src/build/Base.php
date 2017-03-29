@@ -1,4 +1,8 @@
 <?php namespace houdunwang\file\build;
+
+use houdunwang\config\Config;
+use houdunwang\oss\Oss;
+
 /** .-------------------------------------------------------------------
  * |  Software: [HDCMS framework]
  * |      Site: www.hdcms.com
@@ -7,65 +11,25 @@
  * |    WeChat: aihoudun
  * | Copyright (c) 2012-2019, www.houdunwang.com. All Rights Reserved.
  * '-------------------------------------------------------------------*/
-
 class Base {
 	//上传类型
 	protected $type = 'jpg,jpeg,gif,png,zip,rar,doc,txt,pem';
 	//上传文件大小
-	protected $size = 10000;
+	protected $size = 100000000;
 	//上传路径
 	protected $path = 'attachment';
 	//错误信息
 	protected $error;
 
-	/**
-	 * 上传初始化
-	 *
-	 * @param array $config
-	 * [
-	 *  'path'=>'上传目录',
-	 *  'type'=>'上传类型',
-	 *  'size'=>'上传大小,单位KB'
-	 * ]
-	 *
-	 * @return $this
-	 */
-	public function config( array $config ) {
-		//上传路径
-		if ( isset( $config['path'] ) ) {
-			$this->path = $config['path'];
+	public function __construct() {
+		foreach ( Config::get( 'upload' ) as $k => $v ) {
+			$this->$k = $v;
 		}
-		//上传类型
-		if ( isset( $config['type'] ) ) {
-			$this->type = $config['type'];
-		}
-
-		//允许大小
-		if ( isset( $config['size'] ) ) {
-			$this->size = $config['size'] * 1024;
-		}
-
-		return $this;
 	}
 
-	//设置上传类型
-	public function type( $type ) {
-		$this->type = $type;
-
-		return $this;
-	}
-
-	//设置上传大小
-	public function size( $size ) {
-		$this->size = $size * 1024;
-
-		return $this;
-	}
-
-	//设置上传目录
-	public function path( $path ) {
-		$this->path = $path;
-
+	//设置属性
+	public function __call( $name, $arguments ) {
+		$this->$name = current( $arguments );
 		return $this;
 	}
 
@@ -110,25 +74,31 @@ class Base {
 	 * @return boolean
 	 */
 	private function save( $file ) {
-		$fileName = mt_rand( 1, 9999 ) . time() . "." . $file['ext'];
-		$filePath = $this->path . '/' . $fileName;
-		if ( ! move_uploaded_file( $file ['tmp_name'], $filePath ) && is_file( $filePath ) ) {
-			$this->error( '移动临时文件失败' );
+		if ( c( 'upload.mold' ) == 'oss' ) {
+			//阿里oss
+			return Oss::uploadFile( $file['name'], $file['tmp_name'] );
+		} else {
+			$fileName = mt_rand( 1, 9999 ) . time() . "." . $file['ext'];
+			$filePath = $this->path . '/' . $fileName;
+			if ( ! move_uploaded_file( $file ['tmp_name'], $filePath ) && is_file( $filePath ) ) {
+				$this->error( '移动临时文件失败' );
 
-			return false;
+				return false;
+			}
+			$_info            = pathinfo( $filePath );
+			$arr              = [ ];
+			$arr['path']      = $filePath;
+			$arr['uptime']    = time();
+			$arr['fieldname'] = $file['fieldname'];
+			$arr['basename']  = $_info['basename'];
+			$arr['filename']  = $_info['filename']; //新文件名
+			$arr['name']      = $file['filename']; //旧文件名
+			$arr['size']      = $file['size'];
+			$arr['ext']       = $file['ext'];
+			$arr['dir']       = $this->path;
+			$arr['image']     = getimagesize( $filePath ) ? 1 : 0;
 		}
-		$_info            = pathinfo( $filePath );
-		$arr              = [ ];
-		$arr['path']      = $filePath;
-		$arr['uptime']    = time();
-		$arr['fieldname'] = $file['fieldname'];
-		$arr['basename']  = $_info['basename'];
-		$arr['filename']  = $_info['filename']; //新文件名
-		$arr['name']      = $file['filename']; //旧文件名
-		$arr['size']      = $file['size'];
-		$arr['ext']       = $file['ext'];
-		$arr['dir']       = $this->path;
-		$arr['image']     = getimagesize( $filePath ) ? 1 : 0;
+
 
 		return $arr;
 	}
@@ -197,7 +167,7 @@ class Base {
 			return false;
 		}
 		if ( $file ['size'] > $this->size ) {
-			$this->error = '上传文件大于' . get_size( $this->size );
+			$this->error = '上传文件大于' . $this->size;
 
 			return false;
 		}
@@ -248,7 +218,8 @@ class Base {
 	/**
 	 * 下载文件
 	 *
-	 * @param $filepath
+	 * @param $filepath 文件地址
+	 * @param string $name 下载后的新文件名
 	 */
 	public function download( $filepath, $name = '' ) {
 		if ( is_file( $filepath ) ) {

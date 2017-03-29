@@ -1,7 +1,7 @@
 <?php
 /** .-------------------------------------------------------------------
- * |  Software: [HDCMS framework]
- * |      Site: www.hdcms.com
+ * |  Software: [HDPHP framework]
+ * |      Site: www.hdphp.com
  * |-------------------------------------------------------------------
  * |    Author: 向军 <2300071698@qq.com>
  * |    WeChat: aihoudun

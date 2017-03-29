@@ -16,7 +16,6 @@ class File {
 
 	protected function driver() {
 		$this->link = new Base();
-		$this->link->config( Config::get( 'upload' ) );
 
 		return $this;
 	}

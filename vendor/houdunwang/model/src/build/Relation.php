@@ -7,6 +7,7 @@
  * |    WeChat: aihoudun
  * | Copyright (c) 2012-2019, www.houdunwang.com. All Rights Reserved.
  * '-------------------------------------------------------------------*/
+
 namespace houdunwang\model\build;
 
 trait Relation {
@@ -15,12 +16,12 @@ trait Relation {
 	 * 一对一
 	 *
 	 * @param $class 关联模型
-	 * @param $foreignKey 关联表关联字段
-	 * @param $localKey 本模型字段
+	 * @param int $foreignKey 关联表关联字段
+	 * @param int $localKey 本模型字段
 	 *
 	 * @return mixed
 	 */
-	protected function hasOne( $class, $foreignKey = NULL, $localKey = NULL ) {
+	protected function hasOne( $class, $foreignKey = 0, $localKey = 0 ) {
 		$foreignKey = $foreignKey ?: $this->table . '_' . $this->pk;
 		$localKey   = $localKey ?: $this->pk;
 
@@ -36,9 +37,10 @@ trait Relation {
 	 *
 	 * @return mixed
 	 */
-	protected function hasMany( $class, $foreignKey = NULL, $localKey = NULL ) {
+	protected function hasMany( $class, $foreignKey = null, $localKey = null ) {
 		$foreignKey = $foreignKey ?: $this->table . '_' . $this->pk;
 		$localKey   = $localKey ?: $this->pk;
+
 		return ( new $class() )->where( $foreignKey, $this[ $localKey ] )->get();
 	}
 
@@ -51,7 +53,7 @@ trait Relation {
 	 *
 	 * @return mixed
 	 */
-	protected function belongsTo( $class, $localKey = NULL, $parentKey = NULL ) {
+	protected function belongsTo( $class, $localKey = null, $parentKey = null ) {
 		$instance = new $class();
 		//父表
 		$parentKey = $parentKey ?: $instance->getPrimaryKey();
@@ -70,7 +72,7 @@ trait Relation {
 	 *
 	 * @return [object]
 	 */
-	protected function belongsToMany( $class, $middleTable, $localKey = NULL, $foreignKey = NULL ) {
+	protected function belongsToMany( $class, $middleTable, $localKey = null, $foreignKey = null ) {
 		$instance   = ( new $class );
 		$localKey   = $localKey ?: $this->table . '_' . $this->pk;
 		$foreignKey = $foreignKey ?: $instance->getTableName() . '_' . $instance->getPrimaryKey();

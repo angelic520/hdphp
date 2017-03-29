@@ -7,6 +7,7 @@
  * |    WeChat: aihoudun
  * | Copyright (c) 2012-2019, www.houdunwang.com. All Rights Reserved.
  * '-------------------------------------------------------------------*/
+
 namespace houdunwang\request\build;
 
 //请求处理
@@ -16,24 +17,23 @@ use houdunwang\cookie\Cookie;
 use houdunwang\session\Session;
 
 class Base {
-	protected $items = [ ];
+	protected $items = [];
 
 	//启动组件
-	public function bootstrap() {
+	public function __construct() {
 		defined( 'IS_CLI' ) or define( 'IS_CLI', PHP_SAPI == 'cli' );
 		if ( ! IS_CLI ) {
 			//post数据解析
 			if ( empty( $_POST ) ) {
-				parse_str( file_get_contents( 'php://input' ), $_POST );
+//				parse_str( file_get_contents( 'php://input' ), $_POST );
 			}
-
 			defined( 'NOW' ) or define( 'NOW', $_SERVER['REQUEST_TIME'] );
 			defined( 'MICROTIME' ) or define( 'MICROTIME', $_SERVER['REQUEST_TIME_FLOAT'] );
 			defined( 'IS_GET' ) or define( 'IS_GET', $_SERVER['REQUEST_METHOD'] == 'GET' );
 			defined( 'IS_POST' ) or define( 'IS_POST', $_SERVER['REQUEST_METHOD'] == 'POST' );
 			defined( 'IS_DELETE' ) or define( 'IS_DELETE', $_SERVER['REQUEST_METHOD'] == 'DELETE' ? true : ( isset( $_POST['_method'] ) && $_POST['_method'] == 'DELETE' ) );
 			defined( 'IS_PUT' ) or define( 'IS_PUT', $_SERVER['REQUEST_METHOD'] == 'PUT' ? true : ( isset( $_POST['_method'] ) && $_POST['_method'] == 'PUT' ) );
-			defined( 'IS_AJAX' ) or define( 'IS_AJAX', isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && strtolower( $_SERVER['HTTP_X_REQUESTED_WITH'] ) == 'xmlhttprequest' );
+			defined( 'IS_AJAX' ) or define( 'IS_AJAX', $this->isAjax() );
 			defined( 'IS_WECHAT' ) or define( 'IS_WECHAT', isset( $_SERVER['HTTP_USER_AGENT'] ) && strpos( $_SERVER['HTTP_USER_AGENT'], 'MicroMessenger' ) !== false );
 			defined( 'IS_MOBILE' ) or define( 'IS_MOBILE', $this->isMobile() );
 			defined( '__ROOT__' ) or define( '__ROOT__', PHP_SAPI == 'cli' ? '' : trim( 'http://' . $_SERVER['HTTP_HOST'] . dirname( $_SERVER['SCRIPT_NAME'] ), '/\\' ) );
@@ -48,6 +48,19 @@ class Base {
 		$this->items['GLOBALS'] = $GLOBALS;
 		$this->items['SESSION'] = Session::all();
 		$this->items['COOKIE']  = Cookie::all();
+		$input                  = file_get_contents( 'php://input' );
+		if ( ! $input = json_decode( $input, true ) ) {
+			$this->items['INPUT'] = parse_str( $input, $input );
+		}
+		$this->items['INPUT'] = $input;
+	}
+
+	/**
+	 * 是否为异步提交
+	 * @return bool
+	 */
+	public function isAjax() {
+		return isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && strtolower( $_SERVER['HTTP_X_REQUESTED_WITH'] ) == 'xmlhttprequest';
 	}
 
 	/**
@@ -59,7 +72,7 @@ class Base {
 	 *
 	 * @return null
 	 */
-	public function query( $name, $value = null, $method = [ ] ) {
+	public function query( $name, $value = null, $method = [] ) {
 		$exp = explode( '.', $name );
 		if ( count( $exp ) == 1 ) {
 			array_unshift( $exp, 'request' );
@@ -111,7 +124,8 @@ class Base {
 		if ( ! is_null( $data ) && ! empty( $arguments[2] ) ) {
 			return Tool::batchFunctions( $arguments[2], $data );
 		}
-		return ! is_null( $data ) ? $data : ( isset( $arguments[1] ) ?  $arguments[1]:null );
+
+		return ! is_null( $data ) ? $data : ( isset( $arguments[1] ) ? $arguments[1] : null );
 	}
 
 	//客户端IP

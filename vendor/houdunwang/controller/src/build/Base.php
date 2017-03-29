@@ -105,7 +105,7 @@ class Base {
 			if ( IS_AJAX && is_array( $result ) ) {
 				Response::ajax( $result );
 			} else {
-				echo( $result );
+				echo $result;
 			}
 		} catch ( ReflectionException $e ) {
 			$action = new ReflectionMethod( $controller, '__call' );

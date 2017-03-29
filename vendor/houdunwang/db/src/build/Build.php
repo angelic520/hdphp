@@ -8,6 +8,8 @@
 	 * |    WeChat: aihoudun
 	 * | Copyright (c) 2012-2019, www.houdunwang.com. All Rights Reserved.
 	 * '-------------------------------------------------------------------*/
+use houdunwang\config\Config;
+
 /**
  * Class Build
  * @package hdphp\db
@@ -133,7 +135,7 @@ abstract class Build {
 
 	public function parseJoin() {
 		$expression = $this->getBindExpression( 'join' );
-		$as         = preg_replace( "/^" . $this->query->config( 'prefix' ) . "/", '', $this->parseTable() );
+		$as         = preg_replace( "/^" .Config::get('database.prefix') . "/", '', $this->parseTable() );
 
 		return $expression ? $as . implode( ' ', $expression ) : '';
 	}

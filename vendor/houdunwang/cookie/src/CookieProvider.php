@@ -17,6 +17,7 @@ class CookieProvider extends Provider {
 	public $defer = true;
 
 	public function boot() {
+		Config::set( 'cookie.key', Config::get( 'app.key' ) );
 	}
 
 	public function register() {

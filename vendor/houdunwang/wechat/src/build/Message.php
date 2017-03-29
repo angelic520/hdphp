@@ -1,14 +1,19 @@
-<?php namespace houdunwang\wechat\build;
-
-	/** .-------------------------------------------------------------------
- * |  Software: [HDCMS framework]
- * |      Site: www.hdcms.com
+<?php
+/** .-------------------------------------------------------------------
+ * |  Software: [HDPHP framework]
+ * |      Site: www.hdphp.com
  * |-------------------------------------------------------------------
  * |    Author: 向军 <2300071698@qq.com>
  * |    WeChat: aihoudun
  * | Copyright (c) 2012-2019, www.houdunwang.com. All Rights Reserved.
  * '-------------------------------------------------------------------*/
-//接收消息
+namespace houdunwang\wechat\build;
+
+/**
+ * 消息管理
+ * Class Message
+ * @package houdunwang\wechat\build
+ */
 class Message extends Base {
 
 	#-------------------用户事件类型----------------
@@ -185,7 +190,7 @@ class Message extends Base {
 </xml>';
 		$text = sprintf( $xml, $this->message->FromUserName, $this->message->ToUserName, time(), self::REPLY_TYPE_TEXT, $content );
 		header( 'Content-type:application/xml' );
-		echo $text;
+		die( $text );
 	}
 
 	//回复图片消息
@@ -202,7 +207,7 @@ class Message extends Base {
 </xml>';
 		$text = sprintf( $xml, $this->message->FromUserName, $this->message->ToUserName, time(), self::REPLY_TYPE_IMAGE, $media_id );
 		header( 'Content-type:application/xml' );
-		echo $text;
+		die( $text );
 	}
 
 	//回复语音消息
@@ -219,7 +224,7 @@ class Message extends Base {
 </xml>';
 		$text = sprintf( $xml, $this->message->FromUserName, $this->message->ToUserName, time(), self::REPLY_TYPE_VOICE, $media_id );
 		header( 'Content-type:application/xml' );
-		echo $text;
+		die( $text );
 	}
 
 	//回复视频消息
@@ -238,7 +243,7 @@ class Message extends Base {
 </xml>';
 		$text = sprintf( $xml, $this->message->FromUserName, $this->message->ToUserName, time(), self::REPLY_TYPE_VIDEO, $video['media_id'], $video['title'], $video['description'] );
 		header( 'Content-type:application/xml' );
-		echo $text;
+		die( $text );
 	}
 
 	//回复音乐消息
@@ -259,7 +264,7 @@ class Message extends Base {
 </xml>';
 		$text = sprintf( $xml, $this->message->FromUserName, $this->message->ToUserName, time(), self::REPLY_TYPE_MUSIC, $music['title'], $music['description'], $music['musicurl'], $music['hqmusicurl'], $music['thumbmediaid'] );
 		header( 'Content-type:application/xml' );
-		echo $text;
+		die( $text );
 	}
 
 	//回复图文信息
@@ -290,7 +295,7 @@ class Message extends Base {
 		$text = sprintf( $xml, $this->message->FromUserName, $this->message->ToUserName, time(), self::REPLY_TYPE_NEWS, count( $news ), $items );
 
 		header( 'Content-type:application/xml' );
-		echo $text;
+		die( $text );
 	}
 
 	//群发消息正式发送
@@ -299,9 +304,7 @@ class Message extends Base {
 
 		$content = Curl::post( $url, json_encode( $data, JSON_UNESCAPED_UNICODE ) );
 
-		$result = json_decode( $content, true );
-
-		return $this->get( $result );
+		return $this->get( $content );
 	}
 
 	//群发消息预览发送
@@ -310,8 +313,6 @@ class Message extends Base {
 
 		$content = Curl::post( $url, json_encode( $data, JSON_UNESCAPED_UNICODE ) );
 
-		$result = json_decode( $content, true );
-
-		return $this->get( $result );
+		return $this->get( $content );
 	}
 }

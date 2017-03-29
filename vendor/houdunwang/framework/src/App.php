@@ -15,8 +15,6 @@ class App {
 	protected $link;
 
 	public function __construct() {
-		header( "Content-type:text/html;charset=utf-8" );
-
 		/*--------------------------------------------------------------------------
 		| 框架版本
 		|--------------------------------------------------------------------------
@@ -24,7 +22,7 @@ class App {
 		| WeChat: houdunwangxj
 		| Copyright (c) 2012-2019, www.houdunwang.com. All Rights Reserved.
 		|-------------------------------------------------------------------------*/
-		define( 'HDPHP_VERSION', '3.0.80' );
+		define( 'HDPHP_VERSION', '3.0.88' );
 	}
 
 	//更改缓存驱动

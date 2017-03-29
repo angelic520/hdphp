@@ -10,6 +10,7 @@
 
 namespace houdunwang\db\connection;
 
+use houdunwang\config\Config;
 use PDO;
 use Closure;
 use Exception;
@@ -20,14 +21,7 @@ trait Connection {
 	//本次查询影响的条数
 	protected $affectedRow;
 	//查询语句日志
-	protected static $queryLogs = [ ];
-	//查询实例
-	protected $query;
-
-	//初始化
-	public function __construct( $query ) {
-		$this->query = $query;
-	}
+	protected static $queryLogs = [];
 
 	/**
 	 * 获取连接
@@ -37,8 +31,8 @@ trait Connection {
 	 * @return mixed
 	 */
 	public function link( $type = true ) {
-		static $links = [ ];
-		$mulConfig    = $this->query->config( $type ? 'write' : 'read' );
+		static $links = [];
+		$mulConfig    = Config::get( 'database.' . ( $type ? 'write' : 'read' ) );
 		$this->config = $mulConfig[ array_rand( $mulConfig ) ];
 		$name         = serialize( $this->config );
 		if ( isset( $links[ $name ] ) ) {
@@ -47,7 +41,7 @@ trait Connection {
 		$dns            = $this->getDns();
 		$links[ $name ] = new PDO(
 			$dns, $this->config['user'], $this->config['password'],
-			[ PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'"]
+			[ PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'" ]
 		);
 		$links[ $name ]->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 		$this->execute( "SET sql_mode = ''" );
@@ -64,7 +58,7 @@ trait Connection {
 	 * @return bool
 	 * @throws \Exception
 	 */
-	public function execute( $sql, array $params = [ ] ) {
+	public function execute( $sql, array $params = [] ) {
 		//准备sql
 		$sth = $this->link( true )->prepare( $sql );
 		//绑定参数
@@ -96,7 +90,7 @@ trait Connection {
 	 */
 	protected function setParamsSort( array $params ) {
 		if ( is_numeric( key( $params ) ) && key( $params ) == 0 ) {
-			$tmp = [ ];
+			$tmp = [];
 			foreach ( $params as $key => $value ) {
 				$tmp[ $key + 1 ] = $value;
 			}
@@ -115,7 +109,7 @@ trait Connection {
 	 * @return bool
 	 * @throws \Exception
 	 */
-	public function query( $sql, array $params = [ ] ) {
+	public function query( $sql, array $params = [] ) {
 		//准备sql
 		$sth = $this->link( false )->prepare( $sql );
 		//设置保存数据
@@ -132,7 +126,7 @@ trait Connection {
 			//记录日志
 			self::$queryLogs[] = $sql . var_export( $params, true );
 
-			return $sth->fetchAll() ?: [ ];
+			return $sth->fetchAll() ?: [];
 		} catch ( Exception $e ) {
 			$error = $sth->errorInfo();
 			throw new Exception( $sql . " ;BindParams:" . var_export( $params, true ) . implode( ';', $error ) );

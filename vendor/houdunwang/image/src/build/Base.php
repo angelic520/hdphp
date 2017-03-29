@@ -9,42 +9,34 @@
  * '-------------------------------------------------------------------*/
 namespace houdunwang\image\build;
 
-class Base {
-	protected $config = [
-		//水印字体
-		'font'       => '',
-		//水印图像
-		'image'      => '',
-		//位置  1~9九个位置  0为随机
-		'pos'        => 9,
-		//透明度
-		'pct'        => 60,
-		//压缩比
-		'quality'    => 80,
-		//水印文字
-		'text'       => 'houdunwang.com',
-		//文字颜色
-		'text_color' => '#f00f00',
-		//文字大小
-		'text_size'  => 12,
-	];
+use houdunwang\config\Config;
 
-	/**
-	 * 设置配置项
-	 * @param $config
-	 * @param null $value
-	 *
-	 * @return $this
-	 */
-	public function config( $config, $value = null ) {
-		if ( is_array( $config ) ) {
-			$this->config = $config;
-		} else if ( is_null( $value ) ) {
-			return Arr::get( $this->config, $config );
-		} else {
-			$this->config = Arr::set( $this->config, $config, $value );
+class Base {
+	//水印字体
+	protected $font = '';
+	//水印图像
+	protected $image = '';
+	//位置  1~9九个位置  0为随机
+	protected $pos = 9;
+	//透明度
+	protected $pct = 60;
+	//压缩比
+	protected $quality = 80;
+	//水印文字
+	protected $text = 'houdunwang.com';
+	//文字颜色
+	protected $text_color = '#f00f00';
+	//文字大小
+	protected $text_size = 12;
+
+	public function __construct() {
+		foreach ( Config::get( 'image' ) as $k => $v ) {
+			$this->$k = $v;
 		}
-		return $this;
+	}
+
+	public function __call( $name, $arguments ) {
+		$this->$name = current($arguments);
 	}
 
 	/**
@@ -132,13 +124,13 @@ class Base {
 	 * @param string $outFile 另存文件名
 	 * @param string $thumbWidth 缩略图宽度
 	 * @param string $thumbHeight 缩略图高度
-	 * @param string $thumbType 裁切图片的方式
+	 * @param int $thumbType 裁切图片的方式
 	 * 1 固定宽度  高度自增 2固定高度  宽度自增 3固定宽度  高度裁切
 	 * 4 固定高度 宽度裁切 5缩放最大边 原图不裁切 6缩略图尺寸不变，自动裁切最大边
 	 *
 	 * @return bool|string
 	 */
-	public function thumb( $img, $outFile, $thumbWidth, $thumbHeight, $thumbType ) {
+	public function thumb( $img, $outFile, $thumbWidth, $thumbHeight, $thumbType=6 ) {
 		if ( ! $this->check( $img ) ) {
 			return false;
 		}
@@ -207,15 +199,15 @@ class Base {
 			return false;
 		}
 		//验证水印图像
-		$waterImg   = $waterImg ?: $this->config['image'];
+		$waterImg   = $waterImg ?: $this->image;
 		$waterImgOn = $this->check( $waterImg ) ? 1 : 0;
 
 		//水印位置
-		$pos = $pos ?: $this->config['pos'];
+		$pos = $pos ?: $this->pos;
 		//水印文字
-		$text = $text ?: $this->config['text'];
+		$text = $text ?: $this->text;
 		//水印透明度
-		$pct       = $pct ?: $this->config['pct'];
+		$pct       = $pct ?: $this->pct;
 		$imgInfo   = getimagesize( $img );
 		$imgWidth  = $imgInfo [0];
 		$imgHeight = $imgInfo [1];
@@ -306,18 +298,18 @@ class Base {
 				imagecopymerge( $resImg, $w_img, $x, $y, 0, 0, $waterWidth, $waterHeight, $pct );
 			}
 		} else {
-			$r     = hexdec( substr( $this->config['text_color'], 1, 2 ) );
-			$g     = hexdec( substr( $this->config['text_color'], 3, 2 ) );
-			$b     = hexdec( substr( $this->config['text_color'], 5, 2 ) );
+			$r     = hexdec( substr( $this->text_color, 1, 2 ) );
+			$g     = hexdec( substr( $this->text_color, 3, 2 ) );
+			$b     = hexdec( substr( $this->text_color, 5, 2 ) );
 			$color = imagecolorallocate( $resImg, $r, $g, $b );
-			imagettftext( $resImg, $this->config['text_size'], 0, $x, $y, $color, $this->config['font'], $text );
+			imagettftext( $resImg, $this->text_size, 0, $x, $y, $color, $this->font, $text );
 		}
 		switch ( $imgInfo [2] ) {
 			case 1 :
 				imagegif( $resImg, $outImg );
 				break;
 			case 2 :
-				imagejpeg( $resImg, $outImg, $this->config['quality'] );
+				imagejpeg( $resImg, $outImg, $this->quality );
 				break;
 			case 3 :
 				imagepng( $resImg, $outImg );

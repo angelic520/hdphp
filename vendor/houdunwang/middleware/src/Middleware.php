@@ -9,7 +9,6 @@
  * '-------------------------------------------------------------------*/
 namespace houdunwang\middleware;
 
-use houdunwang\config\Config;
 use houdunwang\middleware\build\Base;
 
 class Middleware {
@@ -18,7 +17,6 @@ class Middleware {
 	//更改缓存驱动
 	protected function driver() {
 		$this->link = new Base();
-		$this->link->config( Config::get( 'middleware' ) );
 
 		return $this;
 	}

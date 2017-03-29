@@ -14,28 +14,10 @@ use houdunwang\arr\Arr;
 class Base {
 	//语句包
 	private $language;
-	//配置
-	protected $config;
-
-	public function __construct() {
-	}
-
-	//设置配置项
-	public function config( $config, $value = null ) {
-		if ( is_array( $config ) ) {
-			$this->config = $config;
-		} else if ( is_null( $value ) ) {
-			return Arr::get( $this->config, $config );
-		} else {
-			$this->config = Arr::set( $this->config, $config, $value );
-		}
-		$this->file( $this->config( 'file' ) );
-
-		return $this;
-	}
 
 	/**
 	 * 语言包文件
+	 *
 	 * @param $file
 	 */
 	public function file( $file ) {

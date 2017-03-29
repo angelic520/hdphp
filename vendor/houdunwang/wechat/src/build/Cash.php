@@ -1,12 +1,25 @@
-<?php namespace houdunwang\wechat\build;
+<?php
+/** .-------------------------------------------------------------------
+ * |  Software: [HDPHP framework]
+ * |      Site: www.hdphp.com
+ * |-------------------------------------------------------------------
+ * |    Author: 向军 <2300071698@qq.com>
+ * |    WeChat: aihoudun
+ * | Copyright (c) 2012-2019, www.houdunwang.com. All Rights Reserved.
+ * '-------------------------------------------------------------------*/
+namespace houdunwang\wechat\build;
 
-//微信红包
+/**
+ * 微信红包
+ * Class cash
+ * @package houdunwang\wechat\build
+ */
 class cash extends Base {
 	//发布现金红包
 	public function sendRedPack( $data ) {
 		$data['mch_billno'] = time();
-		$data['mch_id']     = c( 'wechat.mch_id' );
-		$data['wxappid']    = c( 'wechat.appid' );
+		$data['mch_id']     = Config::get( 'wechat.mch_id' );
+		$data['wxappid']    = Config::get( 'wechat.appid' );
 		$data['total_num']  = "1";//红包发放总人数
 		$data['client_ip']  = Request::ip();
 		$data['nonce_str']  = $this->getRandStr( 16 );
@@ -28,9 +41,9 @@ class cash extends Base {
 		curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, false );
 		//cert 与 key 分别属于两个.pem文件
 		//请确保您的libcurl版本是否支持双向认证，版本高于7.20.1
-		curl_setopt( $ch, CURLOPT_SSLCERT, self::$config['apiclient_cert'] );
-		curl_setopt( $ch, CURLOPT_SSLKEY, self::$config['apiclient_key'] );
-		curl_setopt( $ch, CURLOPT_CAINFO, self::$config['rootca'] );
+		curl_setopt( $ch, CURLOPT_SSLCERT, Config::get( 'wechat.apiclient_cert' ) );
+		curl_setopt( $ch, CURLOPT_SSLKEY, Config::get( 'wechat.apiclient_key' ) );
+		curl_setopt( $ch, CURLOPT_CAINFO, Config::get( 'wechat.rootca' ) );
 		if ( count( $aHeader ) >= 1 ) {
 			curl_setopt( $ch, CURLOPT_HTTPHEADER, $aHeader );
 		}

@@ -62,13 +62,13 @@ class Model implements ArrayAccess, Iterator {
 	//全部情况下处理
 	const MODEL_BOTH = 3;
 	//允许填充字段
-	protected $allowFill = [ ];
+	protected $allowFill = [];
 	//禁止填充字段
-	protected $denyFill = [ ];
+	protected $denyFill = [];
 	//模型数据
-	protected $data = [ ];
+	protected $data = [];
 	//构建数据
-	protected $original = [ ];
+	protected $original = [];
 	//数据库连接
 	protected $connect;
 	//表名
@@ -76,21 +76,21 @@ class Model implements ArrayAccess, Iterator {
 	//表主键
 	protected $pk;
 	//验证错误
-	protected $error = [ ];
+	protected $error = [];
 	//自动验证
-	protected $validate = [ ];
+	protected $validate = [];
 	//自动完成
-	protected $auto = [ ];
+	protected $auto = [];
 	//字段映射
-	protected $map = [ ];
+	protected $map = [];
 	//自动过滤
-	protected $filter = [ ];
+	protected $filter = [];
 	//时间操作
 	protected $timestamps = false;
 	//数据库驱动
 	protected $db;
 
-	public function __construct( $data = [ ] ) {
+	public function __construct( $data = [] ) {
 		//设置表名
 		if ( empty( $this->table ) ) {
 			$model       = basename( str_replace( '\\', '/', get_class( $this ) ) );
@@ -329,10 +329,10 @@ class Model implements ArrayAccess, Iterator {
 	 *
 	 * @return $this
 	 */
-	final private function create( array $data = [ ] ) {
+	final private function create( array $data = [] ) {
 		if ( ! empty( $data ) ) {
 			if ( empty( $this->allowFill ) && empty( $this->denyFill ) ) {
-				$data = [ ];
+				$data = [];
 			}
 			//允许填充的数据
 			if ( ! empty( $this->allowFill ) && $this->allowFill[0] != '*' ) {
@@ -341,16 +341,12 @@ class Model implements ArrayAccess, Iterator {
 			//禁止填充的数据
 			if ( ! empty( $this->denyFill ) ) {
 				if ( $this->denyFill[0] == '*' ) {
-					$data = [ ];
+					$data = [];
 				} else {
 					$data = Arr::filterKeys( $data, $this->denyFill, 1 );
 				}
 			}
-			$this->original = array_merge($this->original,$data);
-		}
-		//不允许设置主键字段
-		if ( isset( $this->original[ $this->pk ] ) ) {
-			unset( $this->original[ $this->pk ] );
+			$this->original = array_merge( $this->original, $data );
 		}
 		//更新时设置主键
 		if ( $this->actionType() == self::MODEL_UPDATE ) {
@@ -396,7 +392,7 @@ class Model implements ArrayAccess, Iterator {
 	 * @return bool
 	 * @throws \Exception
 	 */
-	final public function save( array $data = [ ] ) {
+	final public function save( array $data = [] ) {
 		//批量设置数据
 		$this->create( $data );
 		//自动完成/自动过滤/自动验证
@@ -410,19 +406,19 @@ class Model implements ArrayAccess, Iterator {
 		$db  = Db::table( $this->table );
 		switch ( $this->actionType() ) {
 			case self::MODEL_UPDATE:
-				if ( $res = $db->update( $this->original ) ) {
+				if ( $res = $db->update( $this->original ) && $this->pk ) {
 					$this->data = $db->find( $this->data[ $this->pk ] );
 				}
 				break;
 			case self::MODEL_INSERT:
 				if ( $res = $db->insertGetId( $this->original ) ) {
-					if ( is_numeric( $res ) ) {
+					if ( is_numeric( $res ) && $this->pk ) {
 						$this->data = $db->find( $res );
 					}
 				}
 				break;
 		}
-		$this->original = [ ];
+		$this->original = [];
 
 		return $res;
 	}
@@ -435,7 +431,7 @@ class Model implements ArrayAccess, Iterator {
 		//没有查询参数如果模型数据中存在主键值,以主键值做删除条件
 		if ( ! empty( $this->data[ $this->pk ] ) ) {
 			if ( $this->db->delete( $this->data[ $this->pk ] ) ) {
-				$this->data( [ ] );
+				$this->data( [] );
 
 				return true;
 			}
@@ -490,13 +486,7 @@ class Model implements ArrayAccess, Iterator {
 	 * @return mixed
 	 */
 	public static function __callStatic( $method, $params ) {
-		static $links = [ ];
-		$model = get_called_class();
-		if ( ! isset( $links[ $model ] ) ) {
-			$links[ $model ] = ( new static() );
-		}
-
-		return call_user_func_array( [ $links[ $model ], $method ], $params );
+		return call_user_func_array( [ new static(), $method ], $params );
 	}
 
 	protected function returnParse( $method, $result, $model ) {
@@ -508,7 +498,7 @@ class Model implements ArrayAccess, Iterator {
 
 					return $instance->data( $result );
 				case 'get':
-					$Collection = Collection::make( [ ] );
+					$Collection = Collection::make( [] );
 					foreach ( $result as $k => $v ) {
 						$instance         = clone $model;
 						$Collection[ $k ] = $instance->data( $v );
@@ -529,6 +519,7 @@ class Model implements ArrayAccess, Iterator {
 					return $result;
 			}
 		}
+
 		return $result;
 	}
 }

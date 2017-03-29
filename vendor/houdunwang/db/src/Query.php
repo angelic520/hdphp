@@ -10,8 +10,8 @@
  * '-------------------------------------------------------------------*/
 
 use Exception;
-use houdunwang\arr\Arr;
 use houdunwang\ArrayAccess;
+use houdunwang\config\Config;
 use houdunwang\dir\Dir;
 use houdunwang\page\Page;
 
@@ -29,35 +29,13 @@ class Query implements \ArrayAccess, \Iterator {
 	protected $connection;
 	//sql分析实例
 	protected $build;
-	//配置
-	protected $config;
-
-	//设置配置项
-	public function config( $config, $value = null ) {
-		if ( is_array( $config ) ) {
-			//格式配置项
-			if ( empty( $config['write'] ) ) {
-				$config['write'][] = Arr::getExtName( $config, [ 'read', 'write' ] );
-			}
-			if ( empty( $config['read'] ) ) {
-				$config['read'][] = Arr::getExtName( $config, [ 'read', 'write' ] );
-			}
-			$this->config = $config;
-		} else if ( is_null( $value ) ) {
-			return Arr::get( $this->config, $config );
-		} else {
-			$this->config = Arr::set( $this->config, $config, $value );
-		}
-
-		return $this;
-	}
 
 	/**
 	 * 根据驱动创建数据库连接对象
 	 * @return $this
 	 */
 	public function connection() {
-		$driver = ucfirst( $this->config( 'driver' ) );
+		$driver = ucfirst( Config::get( 'database.driver' ));
 		//SQL数据库连接引擎
 		$class            = '\houdunwang\db\connection\\' . $driver;
 		$this->connection = new $class( $this );
@@ -71,7 +49,7 @@ class Query implements \ArrayAccess, \Iterator {
 
 	//获取表前缀
 	protected function getPrefix() {
-		return $this->config( 'prefix' );
+		return Config::get( 'database.prefix' );
 	}
 
 	/**
@@ -84,7 +62,7 @@ class Query implements \ArrayAccess, \Iterator {
 	 */
 	public function table( $table, $full = false ) {
 		//模型实例时不允许改表名
-		$this->table = $this->table ?: ( $full ? $table : $this->config( 'prefix' ) . $table );
+		$this->table = $this->table ?: ( $full ? $table : Config::get( 'database.prefix' ) . $table );
 		//缓存表字段
 		$this->fields = $this->getFields();
 		//获取表主键
@@ -128,11 +106,11 @@ class Query implements \ArrayAccess, \Iterator {
 	 */
 	public function getFields() {
 		static $cache = [ ];
-		if ( $this->config( 'cache_field' ) && isset( $cache[ $this->table ] ) ) {
+		if ( Config::get( 'database.cache_field' ) && isset( $cache[ $this->table ] ) ) {
 			return $cache[ $this->table ];
 		}
 		//缓存字段
-		$name = $this->config( 'database' ) . '.' . $this->table;
+		$name = Config::get( 'database.database' ) . '.' . $this->table;
 		$data = $this->cache( $name );
 		if ( empty( $data ) ) {
 			$sql = "show columns from " . $this->table;
@@ -180,11 +158,11 @@ class Query implements \ArrayAccess, \Iterator {
 	 * @return int|null|void
 	 */
 	public function cache( $name, $data = null ) {
-		if ( ! $this->config( 'cache_field' ) ) {
+		if ( ! Config::get( 'database.cache_field' ) ) {
 			return;
 		}
 		//目录检测
-		$dir = $this->config( 'cache_dir' );
+		$dir = Config::get( 'database.cache_dir' );
 		Dir::create( $dir );
 		//缓存文件
 		$file = $dir . '/' . md5( $name ) . '.php';
@@ -618,18 +596,24 @@ class Query implements \ArrayAccess, \Iterator {
 	public function where() {
 		$this->logic( 'AND' );
 		$args = func_get_args();
-		switch ( count( $args ) ) {
-			case 1:
-				$this->build->bindExpression( 'where', $args[0] );
-				break;
-			case 2:
-				$this->build->bindExpression( 'where', "{$args[0]} = ?" );
-				$this->build->bindParams( 'where', $args[1] );
-				break;
-			case 3:
-				$this->build->bindExpression( 'where', "{$args[0]} {$args[1]} ?" );
-				$this->build->bindParams( 'where', $args[2] );
-				break;
+		if ( is_array( $args[0] ) ) {
+			foreach ( $args as $v ) {
+				call_user_func_array( [ $this, 'where' ], $v );
+			}
+		} else {
+			switch ( count( $args ) ) {
+				case 1:
+					$this->build->bindExpression( 'where', $args[0] );
+					break;
+				case 2:
+					$this->build->bindExpression( 'where', "{$args[0]} = ?" );
+					$this->build->bindParams( 'where', $args[1] );
+					break;
+				case 3:
+					$this->build->bindExpression( 'where', "{$args[0]} {$args[1]} ?" );
+					$this->build->bindParams( 'where', $args[2] );
+					break;
+			}
 		}
 
 		return $this;

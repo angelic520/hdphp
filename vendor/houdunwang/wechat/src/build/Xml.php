@@ -1,13 +1,13 @@
-<?php namespace houdunwang\wechat\build;
+<?php
 /** .-------------------------------------------------------------------
- * |  Software: [HDPHP framework, HDCMS]
- * |      Site: www.hdphp.com www.hdcms.com
+ * |  Software: [HDPHP framework]
+ * |      Site: www.hdphp.com
  * |-------------------------------------------------------------------
  * |    Author: 向军 <2300071698@qq.com>
- * |    Video : www.houdunren.com
  * |    WeChat: aihoudun
  * | Copyright (c) 2012-2019, www.houdunwang.com. All Rights Reserved.
  * '-------------------------------------------------------------------*/
+namespace houdunwang\wechat\build;
 
 trait Xml {
 	/**
@@ -31,6 +31,10 @@ trait Xml {
 
 	/**
 	 * 生成xml字符,不能分析复杂的XML数据比如有属性的XML
+	 *
+	 * @param $data
+	 * @param int $level
+	 *
 	 * @return string
 	 * @throws \Exception
 	 */

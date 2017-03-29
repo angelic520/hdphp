@@ -7,6 +7,7 @@
  * |    WeChat: aihoudun
  * | Copyright (c) 2012-2019, www.houdunwang.com. All Rights Reserved.
  * '-------------------------------------------------------------------*/
+
 namespace houdunwang\crypt\build;
 
 class Base {
@@ -21,9 +22,9 @@ class Base {
 	 * @return string
 	 */
 	public function key( $key = '' ) {
-		$this->secureKey = $key ?: $this->secureKey;
+		$this->secureKey = $key ?: Config::get( 'crypt.key', $this->secureKey );
 
-		return hash( 'sha256', $this->secureKey, true );
+		return base64_decode( hash( 'sha256', $this->secureKey, true ) );
 	}
 
 	/**
@@ -35,7 +36,11 @@ class Base {
 	 * @return string
 	 */
 	public function encrypt( $input, $secureKey = '' ) {
-		return base64_encode( mcrypt_encrypt( MCRYPT_RIJNDAEL_256, $this->key( $secureKey ), $input, MCRYPT_MODE_ECB, mcrypt_create_iv( 32 ) ) );
+		$encrypt = openssl_encrypt( $input, 'aes-256-cbc', $this->key( $secureKey ),
+			OPENSSL_RAW_DATA, substr( $this->secureKey, - 16 ) );
+
+		return base64_encode( $encrypt );
+//		return base64_encode( openssl_encrypt( MCRYPT_RIJNDAEL_256, $this->key( $secureKey ), $input, MCRYPT_MODE_ECB, mcrypt_create_iv( 32 ) ) );
 	}
 
 	/**
@@ -47,7 +52,12 @@ class Base {
 	 * @return string
 	 */
 	public function decrypt( $input, $secureKey = '' ) {
+		$encrypted = base64_decode( $input );
+		$decrypted = openssl_decrypt( $encrypted, 'aes-256-cbc', $this->key( $secureKey ),
+			OPENSSL_RAW_DATA, substr( $this->secureKey, - 16 ) );
 
-		return trim( mcrypt_decrypt( MCRYPT_RIJNDAEL_256, $this->key( $secureKey ), base64_decode( $input ), MCRYPT_MODE_ECB, mcrypt_create_iv( 32 ) ) );
+		return $decrypted;
+//		return trim( mcrypt_decrypt( MCRYPT_RIJNDAEL_256, $this->key( $secureKey ),
+// base64_decode( $input ), MCRYPT_MODE_ECB, mcrypt_create_iv( 32 ) ) );
 	}
 }

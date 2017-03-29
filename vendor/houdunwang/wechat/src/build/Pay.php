@@ -1,11 +1,18 @@
-<?php namespace houdunwang\wechat\build;
+<?php
+/** .-------------------------------------------------------------------
+ * |  Software: [HDPHP framework]
+ * |      Site: www.hdphp.com
+ * |-------------------------------------------------------------------
+ * |    Author: 向军 <2300071698@qq.com>
+ * |    WeChat: aihoudun
+ * | Copyright (c) 2012-2019, www.houdunwang.com. All Rights Reserved.
+ * '-------------------------------------------------------------------*/
+namespace houdunwang\wechat\build;
 
 /**
  * 微信支付
  * Class Pay
  * @package houdunwang\wechat\build
- * @author 向军 <2300071698@qq.com>
- * @site www.houdunwang.com
  */
 class Pay extends Base {
 
@@ -23,19 +30,19 @@ class Pay extends Base {
 	 */
 	public function jsapi( $order ) {
 		//支付完成时
-		if ( isset( $_GET['done'] ) ) {
+		if ( Request::get( 'done' ) ) {
 			//支付成功后根据配置文件设置的链接地址跳转到成功页面
-			echo "<script>location.replace('" . c('wechat.back_url') . "&code=SUCCESS&out_trade_no=".$_GET['out_trade_no']."')</script>";
+			echo "<script>location.replace('" . Config::get( 'wechat.back_url' ) . "&code=SUCCESS&out_trade_no=" . $_GET['out_trade_no'] . "')</script>";
 			exit;
 		} else {
 			$res = $this->unifiedorder( $order );
 			if ( $res['return_code'] != 'SUCCESS' ) {
-				message( $res['return_msg'], c('wechat.back_url') . '&code=fail', 'error' );
+				message( $res['return_msg'], Config::get( 'wechat.back_url' ) . '&code=fail', 'error' );
 			}
 			if ( ! isset( $res['result_code'] ) || $res['result_code'] != 'SUCCESS' ) {
-				message( $res['err_code_des'], c('wechat.back_url') . '&code=fail', 'error' );
+				message( $res['err_code_des'], Config::get( 'wechat.back_url' ) . '&code=fail', 'error' );
 			}
-			$data['appId']     = c( 'wechat.appid' );
+			$data['appId']     = Config::get( 'wechat.appid' );
 			$data['timeStamp'] = time();
 			$data['nonceStr']  = $this->getRandStr( 16 );
 			$data['package']   = "prepay_id=" . $res['prepay_id'];
@@ -81,9 +88,9 @@ sttr;
 
 	//统一下单
 	protected function unifiedorder( $data ) {
-		$data['appid']      = c( 'wechat.appid' );
-		$data['mch_id']     = c( 'wechat.mch_id' );
-		$data['notify_url'] = c( 'wechat.notify_url' );
+		$data['appid']      = Config::get( 'wechat.appid' );
+		$data['mch_id']     = Config::get( 'wechat.mch_id' );
+		$data['notify_url'] = Config::get( 'wechat.notify_url' );
 		$data['nonce_str']  = $this->getRandStr( 16 );
 		$data['trade_type'] = 'JSAPI';
 		$data['openid']     = $this->instance( 'oauth' )->snsapiBase();

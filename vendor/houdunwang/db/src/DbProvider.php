@@ -19,6 +19,7 @@ class DbProvider extends Provider {
 	public $defer = true;
 
 	public function boot() {
+
 	}
 
 	public function register() {

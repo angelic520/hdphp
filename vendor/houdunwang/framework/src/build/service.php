@@ -3,6 +3,10 @@ return [
 	//服务提供者
 	'providers' => [
 		'houdunwang\error\ErrorProvider',
+		'houdunwang\cli\CliProvider',
+		'houdunwang\middleware\MiddlewareProvider',
+		'houdunwang\view\ViewProvider',
+		'houdunwang\route\RouteProvider',
 		'houdunwang\session\SessionProvider',
 		'houdunwang\config\ConfigProvider',
 		'houdunwang\loader\LoaderProvider',
@@ -10,9 +14,6 @@ return [
 		'houdunwang\cache\CacheProvider',
 		'houdunwang\validate\ValidateProvider',
 		'houdunwang\log\LogProvider',
-		'houdunwang\view\ViewProvider',
-		'houdunwang\route\RouteProvider',
-		'houdunwang\cli\CliProvider',
 		'houdunwang\alipay\AliPayProvider',
 		'houdunwang\collection\CollectionProvider',
 		'houdunwang\db\DbProvider',
@@ -22,7 +23,6 @@ return [
 		'houdunwang\cookie\CookieProvider',
 		'houdunwang\xml\XmlProvider',
 		'houdunwang\qq\QqProvider',
-		'houdunwang\middleware\MiddlewareProvider',
 		'houdunwang\wechat\WeChatProvider',
 		'houdunwang\curl\CurlProvider',
 		'houdunwang\dir\DirProvider',
@@ -41,6 +41,7 @@ return [
 		'houdunwang\zip\ZipProvider',
 		'houdunwang\page\PageProvider',
 		'houdunwang\cart\CartProvider',
+		'houdunwang\qrcode\QrCodeProvider',
 	],
 
 	//服务外观
@@ -85,5 +86,6 @@ return [
 		'Zip'        => 'houdunwang\zip\ZipFacade',
 		'Page'       => 'houdunwang\page\PageFacade',
 		'Cart'       => 'houdunwang\cart\CartFacade',
+		'QrCode'     => 'houdunwang\qrcode\QrCodeFacade',
 	]
 ];

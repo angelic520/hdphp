@@ -19,7 +19,6 @@ class Lang {
 	//更改缓存驱动
 	protected function driver() {
 		$this->link = new Base();
-		$this->link->config( Config::set( 'lang' ) );
 
 		return $this;
 	}
