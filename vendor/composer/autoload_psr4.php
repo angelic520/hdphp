@@ -45,6 +45,7 @@ return array(
     'houdunwang\\config\\' => array($vendorDir . '/houdunwang/config/src'),
     'houdunwang\\collection\\' => array($vendorDir . '/houdunwang/collection/src'),
     'houdunwang\\code\\' => array($vendorDir . '/houdunwang/code/src'),
+    'houdunwang\\cloud\\' => array($vendorDir . '/houdunwang/cloud/src'),
     'houdunwang\\cli\\' => array($vendorDir . '/houdunwang/cli/src'),
     'houdunwang\\cart\\' => array($vendorDir . '/houdunwang/cart/src'),
     'houdunwang\\cache\\' => array($vendorDir . '/houdunwang/cache/src'),

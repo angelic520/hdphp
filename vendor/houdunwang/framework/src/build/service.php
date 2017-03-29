@@ -16,6 +16,7 @@ return [
 		'houdunwang\log\LogProvider',
 		'houdunwang\alipay\AliPayProvider',
 		'houdunwang\collection\CollectionProvider',
+		'houdunwang\cloud\CloudProvider',
 		'houdunwang\db\DbProvider',
 		'houdunwang\database\SchemaProvider',
 		'houdunwang\file\FileProvider',

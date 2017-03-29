@@ -1941,91 +1941,6 @@
         ]
     },
     {
-        "name": "houdunwang/framework",
-        "version": "v3.0.90",
-        "version_normalized": "3.0.90.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/houdunwang/framework.git",
-            "reference": "05cfb5e90dc570941cff730a01ad29f4bb463c36"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/houdunwang/framework/zipball/05cfb5e90dc570941cff730a01ad29f4bb463c36",
-            "reference": "05cfb5e90dc570941cff730a01ad29f4bb463c36",
-            "shasum": ""
-        },
-        "require": {
-            "houdunwang/alipay": "~1.0",
-            "houdunwang/aliyunsms": "~1.0",
-            "houdunwang/arr": "~1.0",
-            "houdunwang/backup": "~1.0",
-            "houdunwang/cache": "~1.0",
-            "houdunwang/cart": "~1.0",
-            "houdunwang/cli": "~1.0",
-            "houdunwang/code": "~1.0",
-            "houdunwang/collection": "~1.0",
-            "houdunwang/config": "~1.0",
-            "houdunwang/container": "~1.0",
-            "houdunwang/controller": "~1.0",
-            "houdunwang/cookie": "~1.0",
-            "houdunwang/crypt": "~1.0",
-            "houdunwang/curl": "~1.0",
-            "houdunwang/database": "~1.0",
-            "houdunwang/db": "~1.0",
-            "houdunwang/dir": "~1.0",
-            "houdunwang/error": "~1.0",
-            "houdunwang/file": "~1.0",
-            "houdunwang/html": "~1.0",
-            "houdunwang/image": "~1.0",
-            "houdunwang/lang": "~1.0",
-            "houdunwang/loader": "~1.0",
-            "houdunwang/log": "~1.0",
-            "houdunwang/mail": "~1.0",
-            "houdunwang/middleware": "~1.0",
-            "houdunwang/model": "~1.0",
-            "houdunwang/oss": "~1.0",
-            "houdunwang/page": "~1.0",
-            "houdunwang/qq": "~1.0",
-            "houdunwang/qrcode": "~1.0",
-            "houdunwang/rbac": "~1.0",
-            "houdunwang/request": "~1.0",
-            "houdunwang/response": "~1.0",
-            "houdunwang/route": "~1.0",
-            "houdunwang/session": "~1.0",
-            "houdunwang/str": "~1.0",
-            "houdunwang/tool": "~1.0",
-            "houdunwang/validate": "~1.0",
-            "houdunwang/view": "~1.0",
-            "houdunwang/wechat": "~1.0",
-            "houdunwang/xml": "~1.0",
-            "houdunwang/zip": "~1.0",
-            "php": ">=5.4.0"
-        },
-        "time": "2017-03-25 11:14:30",
-        "type": "project",
-        "installation-source": "source",
-        "autoload": {
-            "files": [
-                "src/helper.php"
-            ],
-            "psr-4": {
-                "houdunwang\\framework\\": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "后盾网向军",
-                "email": "2300071698@qq.com"
-            }
-        ],
-        "description": "Hdphp Framework (Kernel)"
-    },
-    {
         "name": "houdunwang/aliyunsms",
         "version": "v1.0.2",
         "version_normalized": "1.0.2.0",
@@ -2387,5 +2302,141 @@
             "向军老师",
             "微信开发"
         ]
+    },
+    {
+        "name": "houdunwang/cloud",
+        "version": "v1.0.1",
+        "version_normalized": "1.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/houdunwang/cloud.git",
+            "reference": "4a0cba0838d0700b1332fac24eaa782d65728f4e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/houdunwang/cloud/zipball/4a0cba0838d0700b1332fac24eaa782d65728f4e",
+            "reference": "4a0cba0838d0700b1332fac24eaa782d65728f4e",
+            "shasum": ""
+        },
+        "require": {
+            "houdunwang/config": "~1.0",
+            "houdunwang/curl": "~1.0",
+            "php": ">=5.4.0"
+        },
+        "time": "2017-03-28 09:51:31",
+        "type": "project",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [],
+            "psr-4": {
+                "houdunwang\\cloud\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "后盾网向军",
+                "email": "2300071698@qq.com"
+            }
+        ],
+        "description": "后盾云接口用于实现短信、邮件发送等服务",
+        "homepage": "http://www.houdunwang.com/",
+        "keywords": [
+            "hdphp",
+            "houdunwang",
+            "后盾云",
+            "后盾人",
+            "后盾网",
+            "向军老师"
+        ]
+    },
+    {
+        "name": "houdunwang/framework",
+        "version": "v3.0.93",
+        "version_normalized": "3.0.93.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/houdunwang/framework.git",
+            "reference": "434b2b016ed47d27a14cfa955f038f9ce245401d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/houdunwang/framework/zipball/434b2b016ed47d27a14cfa955f038f9ce245401d",
+            "reference": "434b2b016ed47d27a14cfa955f038f9ce245401d",
+            "shasum": ""
+        },
+        "require": {
+            "houdunwang/alipay": "~1.0",
+            "houdunwang/aliyunsms": "~1.0",
+            "houdunwang/arr": "~1.0",
+            "houdunwang/backup": "~1.0",
+            "houdunwang/cache": "~1.0",
+            "houdunwang/cart": "~1.0",
+            "houdunwang/cli": "~1.0",
+            "houdunwang/cloud": "~1.0",
+            "houdunwang/code": "~1.0",
+            "houdunwang/collection": "~1.0",
+            "houdunwang/config": "~1.0",
+            "houdunwang/container": "~1.0",
+            "houdunwang/controller": "~1.0",
+            "houdunwang/cookie": "~1.0",
+            "houdunwang/crypt": "~1.0",
+            "houdunwang/curl": "~1.0",
+            "houdunwang/database": "~1.0",
+            "houdunwang/db": "~1.0",
+            "houdunwang/dir": "~1.0",
+            "houdunwang/error": "~1.0",
+            "houdunwang/file": "~1.0",
+            "houdunwang/html": "~1.0",
+            "houdunwang/image": "~1.0",
+            "houdunwang/lang": "~1.0",
+            "houdunwang/loader": "~1.0",
+            "houdunwang/log": "~1.0",
+            "houdunwang/mail": "~1.0",
+            "houdunwang/middleware": "~1.0",
+            "houdunwang/model": "~1.0",
+            "houdunwang/oss": "~1.0",
+            "houdunwang/page": "~1.0",
+            "houdunwang/qq": "~1.0",
+            "houdunwang/qrcode": "~1.0",
+            "houdunwang/rbac": "~1.0",
+            "houdunwang/request": "~1.0",
+            "houdunwang/response": "~1.0",
+            "houdunwang/route": "~1.0",
+            "houdunwang/session": "~1.0",
+            "houdunwang/str": "~1.0",
+            "houdunwang/tool": "~1.0",
+            "houdunwang/validate": "~1.0",
+            "houdunwang/view": "~1.0",
+            "houdunwang/wechat": "~1.0",
+            "houdunwang/xml": "~1.0",
+            "houdunwang/zip": "~1.0",
+            "php": ">=5.4.0"
+        },
+        "time": "2017-03-29 07:03:28",
+        "type": "project",
+        "installation-source": "source",
+        "autoload": {
+            "files": [
+                "src/helper.php"
+            ],
+            "psr-4": {
+                "houdunwang\\framework\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "后盾网向军",
+                "email": "2300071698@qq.com"
+            }
+        ],
+        "description": "Hdphp Framework (Kernel)"
     }
 ]

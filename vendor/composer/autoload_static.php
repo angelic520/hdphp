@@ -68,6 +68,7 @@ class ComposerStaticInit6cb549ca3268dd919f8ef1d89772ab3d
             'houdunwang\\config\\' => 18,
             'houdunwang\\collection\\' => 22,
             'houdunwang\\code\\' => 16,
+            'houdunwang\\cloud\\' => 17,
             'houdunwang\\cli\\' => 15,
             'houdunwang\\cart\\' => 16,
             'houdunwang\\cache\\' => 17,
@@ -242,6 +243,10 @@ class ComposerStaticInit6cb549ca3268dd919f8ef1d89772ab3d
         'houdunwang\\code\\' => 
         array (
             0 => __DIR__ . '/..' . '/houdunwang/code/src',
+        ),
+        'houdunwang\\cloud\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/houdunwang/cloud/src',
         ),
         'houdunwang\\cli\\' => 
         array (
