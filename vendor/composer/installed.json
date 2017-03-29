@@ -2304,56 +2304,6 @@
         ]
     },
     {
-        "name": "houdunwang/cloud",
-        "version": "v1.0.1",
-        "version_normalized": "1.0.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/houdunwang/cloud.git",
-            "reference": "4a0cba0838d0700b1332fac24eaa782d65728f4e"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/houdunwang/cloud/zipball/4a0cba0838d0700b1332fac24eaa782d65728f4e",
-            "reference": "4a0cba0838d0700b1332fac24eaa782d65728f4e",
-            "shasum": ""
-        },
-        "require": {
-            "houdunwang/config": "~1.0",
-            "houdunwang/curl": "~1.0",
-            "php": ">=5.4.0"
-        },
-        "time": "2017-03-28 09:51:31",
-        "type": "project",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [],
-            "psr-4": {
-                "houdunwang\\cloud\\": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "后盾网向军",
-                "email": "2300071698@qq.com"
-            }
-        ],
-        "description": "后盾云接口用于实现短信、邮件发送等服务",
-        "homepage": "http://www.houdunwang.com/",
-        "keywords": [
-            "hdphp",
-            "houdunwang",
-            "后盾云",
-            "后盾人",
-            "后盾网",
-            "向军老师"
-        ]
-    },
-    {
         "name": "houdunwang/framework",
         "version": "v3.0.93",
         "version_normalized": "3.0.93.0",
@@ -2438,5 +2388,55 @@
             }
         ],
         "description": "Hdphp Framework (Kernel)"
+    },
+    {
+        "name": "houdunwang/cloud",
+        "version": "v1.0.2",
+        "version_normalized": "1.0.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/houdunwang/cloud.git",
+            "reference": "78ed740b57fd94a22bb5fa67187b1f5ed4cda7db"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/houdunwang/cloud/zipball/78ed740b57fd94a22bb5fa67187b1f5ed4cda7db",
+            "reference": "78ed740b57fd94a22bb5fa67187b1f5ed4cda7db",
+            "shasum": ""
+        },
+        "require": {
+            "houdunwang/config": "~1.0",
+            "houdunwang/curl": "~1.0",
+            "php": ">=5.4.0"
+        },
+        "time": "2017-03-29 07:12:03",
+        "type": "project",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [],
+            "psr-4": {
+                "houdunwang\\cloud\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "后盾网向军",
+                "email": "2300071698@qq.com"
+            }
+        ],
+        "description": "后盾云接口用于实现短信、邮件发送等服务",
+        "homepage": "http://www.houdunwang.com/",
+        "keywords": [
+            "hdphp",
+            "houdunwang",
+            "后盾云",
+            "后盾人",
+            "后盾网",
+            "向军老师"
+        ]
     }
 ]
