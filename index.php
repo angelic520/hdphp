@@ -7,6 +7,5 @@
  * |    WeChat: aihoudun
  * | Copyright (c) 2012-2019, www.houdunwang.com. All Rights Reserved.
  * '-------------------------------------------------------------------*/
-phpinfo();
 //引入框架
 require __DIR__ . '/system/hdphp.php';
