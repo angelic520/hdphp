@@ -59,9 +59,9 @@ class Base {
 	 * @param mixed $value 值
 	 * @param int $expire 过期时间
 	 * @param string $path 有效路径
-	 * @param null $domain 有效域名
+	 * @param string $domain 有效域名
 	 */
-	public function set( $name, $value, $expire = 0, $path = '/', $domain = null ) {
+	public function set( $name, $value, $expire = 0, $path = '/', $domain = '' ) {
 		$expire = $expire ? time() + $expire : $expire;
 		$name   = Config::get( 'cookie.prefix' ) . '##' . $name;
 		setcookie( $name, Crypt::encrypt( $value, Config::get( 'cookie.key' ) ), $expire, $path, $domain );

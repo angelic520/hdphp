@@ -1,13 +1,13 @@
 <?php namespace houdunwang\db\build;
 
-	/** .-------------------------------------------------------------------
-	 * |  Software: [HDCMS framework]
-	 * |      Site: www.hdcms.com
-	 * |-------------------------------------------------------------------
-	 * |    Author: 向军 <2300071698@qq.com>
-	 * |    WeChat: aihoudun
-	 * | Copyright (c) 2012-2019, www.houdunwang.com. All Rights Reserved.
-	 * '-------------------------------------------------------------------*/
+/** .-------------------------------------------------------------------
+ * |  Software: [HDCMS framework]
+ * |      Site: www.hdcms.com
+ * |-------------------------------------------------------------------
+ * |    Author: 向军 <2300071698@qq.com>
+ * |    WeChat: aihoudun
+ * | Copyright (c) 2012-2019, www.houdunwang.com. All Rights Reserved.
+ * '-------------------------------------------------------------------*/
 use houdunwang\config\Config;
 
 /**
@@ -167,6 +167,12 @@ abstract class Build {
 	protected function parseLimit() {
 		if ( $expression = $this->getBindExpression( 'limit' ) ) {
 			return "LIMIT " . current( $expression );
+		}
+	}
+
+	protected function parseLock() {
+		if ( $expression = $this->getBindExpression( 'lock' ) ) {
+			return current( $expression );
 		}
 	}
 

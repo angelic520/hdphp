@@ -25,7 +25,8 @@ class Mysql extends Build {
 			'%groupBy%',
 			'%having%',
 			'%orderBy%',
-			'%limit%'
+			'%limit%',
+			'%lock%'
 		], [
 			$this->parseField(),
 			$this->parseTable(),
@@ -34,8 +35,9 @@ class Mysql extends Build {
 			$this->parseGroupBy(),
 			$this->parseHaving(),
 			$this->parseOrderBy(),
-			$this->parseLimit()
-		], 'SELECT %field% FROM %table% %join% %where% %groupBy% %having% %orderBy% %limit%' );
+			$this->parseLimit(),
+			$this->parseLock()
+		], 'SELECT %field% FROM %table% %join% %where% %groupBy% %having% %orderBy% %limit% %lock%' );
 	}
 
 	public function insert() {

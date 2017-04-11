@@ -22,15 +22,28 @@ class Base {
 	//启动组件
 	public function __construct() {
 		defined( 'IS_CLI' ) or define( 'IS_CLI', PHP_SAPI == 'cli' );
+		$this->items['POST']    = $_POST;
+		$this->items['GET']     = $_GET;
+		$this->items['REQUEST'] = $_REQUEST;
+		$this->items['SERVER']  = $_SERVER;
+		$this->items['GLOBALS'] = $GLOBALS;
 		if ( ! IS_CLI ) {
 			//post数据解析
 			if ( empty( $_POST ) ) {
-//				parse_str( file_get_contents( 'php://input' ), $_POST );
+				$input = file_get_contents( 'php://input' );
+				if ( $data = json_decode( $input, true ) ) {
+					$this->items['POST'] = $data;
+				} else {
+					parse_str( $input, $post );
+					if ( ! empty( $post ) ) {
+						$this->items['POST'] = $post;
+					}
+				}
 			}
 			defined( 'NOW' ) or define( 'NOW', $_SERVER['REQUEST_TIME'] );
 			defined( 'MICROTIME' ) or define( 'MICROTIME', $_SERVER['REQUEST_TIME_FLOAT'] );
 			defined( 'IS_GET' ) or define( 'IS_GET', $_SERVER['REQUEST_METHOD'] == 'GET' );
-			defined( 'IS_POST' ) or define( 'IS_POST', $_SERVER['REQUEST_METHOD'] == 'POST' );
+			defined( 'IS_POST' ) or define( 'IS_POST', $_SERVER['REQUEST_METHOD'] == 'POST' || ! empty( $this->items['POST'] ) );
 			defined( 'IS_DELETE' ) or define( 'IS_DELETE', $_SERVER['REQUEST_METHOD'] == 'DELETE' ? true : ( isset( $_POST['_method'] ) && $_POST['_method'] == 'DELETE' ) );
 			defined( 'IS_PUT' ) or define( 'IS_PUT', $_SERVER['REQUEST_METHOD'] == 'PUT' ? true : ( isset( $_POST['_method'] ) && $_POST['_method'] == 'PUT' ) );
 			defined( 'IS_AJAX' ) or define( 'IS_AJAX', $this->isAjax() );
@@ -41,18 +54,8 @@ class Base {
 			defined( '__URL__' ) or define( '__URL__', trim( 'http://' . $_SERVER['HTTP_HOST'] . '/' . trim( $_SERVER['REQUEST_URI'], '/\\' ), '/' ) );
 			defined( '__HISTORY__' ) or define( "__HISTORY__", isset( $_SERVER["HTTP_REFERER"] ) ? $_SERVER["HTTP_REFERER"] : '' );
 		}
-		$this->items['GET']     = $_GET;
-		$this->items['POST']    = $_POST;
-		$this->items['REQUEST'] = $_REQUEST;
-		$this->items['SERVER']  = $_SERVER;
-		$this->items['GLOBALS'] = $GLOBALS;
 		$this->items['SESSION'] = Session::all();
 		$this->items['COOKIE']  = Cookie::all();
-		$input                  = file_get_contents( 'php://input' );
-		if ( ! $input = json_decode( $input, true ) ) {
-			$this->items['INPUT'] = parse_str( $input, $input );
-		}
-		$this->items['INPUT'] = $input;
 	}
 
 	/**

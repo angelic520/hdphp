@@ -354,10 +354,10 @@ class Model implements ArrayAccess, Iterator {
 		}
 		//修改时间
 		if ( $this->timestamps === true && ! empty( $this->original ) ) {
-			$this->original['updated_at'] = time();
+			$this->original['updated_at'] = date('Y-m-d h:i:s');
 			if ( $this->actionType() == self::MODEL_INSERT ) {
 				//更新时间
-				$this->original['created_at'] = time();
+				$this->original['created_at'] = date('Y-m-d h:i:s');
 			}
 		}
 

@@ -306,7 +306,7 @@ if ( ! function_exists( 'message' ) ) {
 				'ico'      => $ico,
 				'timeout'  => $timeout * 1000
 			] );
-			echo view( Config::get( 'app.message' ) );
+			echo view( Config::get( 'app.message' ) )->toString();
 		}
 		exit;
 	}

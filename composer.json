@@ -25,5 +25,11 @@
       "app\\": "app",
       "system\\": "system"
     }
-  }
+  },
+  "repositories": {
+    "packagist": {
+        "type": "composer",
+        "url": "https://packagist.phpcomposer.com"
+    }
+	}
 }

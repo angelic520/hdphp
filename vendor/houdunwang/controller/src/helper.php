@@ -9,6 +9,6 @@ function action() {
 	$info  = explode( '.', array_shift( $args ) );
 	$class = Config::get( 'controller.app' ) . '\\' . $info[0] . '\\controller\\' . ucfirst( $info[1] );
 	$res   = call_user_func_array( [ new $class, $info[2] ], $args );
-	echo $res;
+	echo $res->toString();
 	die;
 }

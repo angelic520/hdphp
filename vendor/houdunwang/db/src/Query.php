@@ -18,7 +18,7 @@ use houdunwang\page\Page;
 class Query implements \ArrayAccess, \Iterator {
 	use ArrayAccessIterator;
 	//数据
-	protected $data = [ ];
+	protected $data = [];
 	//表名
 	protected $table;
 	//字段列表
@@ -35,7 +35,7 @@ class Query implements \ArrayAccess, \Iterator {
 	 * @return $this
 	 */
 	public function connection() {
-		$driver = ucfirst( Config::get( 'database.driver' ));
+		$driver = ucfirst( Config::get( 'database.driver' ) );
 		//SQL数据库连接引擎
 		$class            = '\houdunwang\db\connection\\' . $driver;
 		$this->connection = new $class( $this );
@@ -87,7 +87,7 @@ class Query implements \ArrayAccess, \Iterator {
 	 * @return array
 	 */
 	public function filterTableField( array $data ) {
-		$new = [ ];
+		$new = [];
 		if ( is_array( $data ) ) {
 			foreach ( $data as $name => $value ) {
 				if ( key_exists( $name, $this->fields ) ) {
@@ -105,7 +105,7 @@ class Query implements \ArrayAccess, \Iterator {
 	 * @return array|bool|void
 	 */
 	public function getFields() {
-		static $cache = [ ];
+		static $cache = [];
 		if ( Config::get( 'database.cache_field' ) && isset( $cache[ $this->table ] ) ) {
 			return $cache[ $this->table ];
 		}
@@ -115,9 +115,9 @@ class Query implements \ArrayAccess, \Iterator {
 		if ( empty( $data ) ) {
 			$sql = "show columns from " . $this->table;
 			if ( ! $result = $this->connection->query( $sql ) ) {
-				return [ ];
+				return [];
 			}
-			$data = [ ];
+			$data = [];
 			foreach ( (array) $result as $res ) {
 				$f ['field']             = $res ['Field'];
 				$f ['type']              = $res ['Type'];
@@ -140,7 +140,7 @@ class Query implements \ArrayAccess, \Iterator {
 	 * @return mixed
 	 */
 	public function getPrimaryKey() {
-		static $cache = [ ];
+		static $cache = [];
 		$fields = $this->getFields( $this->table );
 		foreach ( $fields as $v ) {
 			if ( $v['key'] == 1 ) {
@@ -223,7 +223,7 @@ class Query implements \ArrayAccess, \Iterator {
 		$obj = unserialize( serialize( $this ) );
 		Page::row( $row )->pageNum( $pageNum )->make( $obj->count() );
 		$res = $this->limit( Page::limit() )->get();
-		$this->data( $res ?: [ ] );
+		$this->data( $res ?: [] );
 
 		return $this;
 	}
@@ -244,7 +244,7 @@ class Query implements \ArrayAccess, \Iterator {
 	 *
 	 * @return mixed
 	 */
-	public function execute( $sql, array $params = [ ] ) {
+	public function execute( $sql, array $params = [] ) {
 		$result = $this->connection->execute( $sql, $params );
 		$this->build->reset();
 
@@ -259,7 +259,7 @@ class Query implements \ArrayAccess, \Iterator {
 	 *
 	 * @return mixed
 	 */
-	public function query( $sql, array $params = [ ] ) {
+	public function query( $sql, array $params = [] ) {
 		$data = $this->connection->query( $sql, $params );
 		$this->build->reset();
 
@@ -342,7 +342,7 @@ class Query implements \ArrayAccess, \Iterator {
 	 * @return bool
 	 * @throws \Exception
 	 */
-	public function delete( $id = [ ] ) {
+	public function delete( $id = [] ) {
 		if ( ! empty( $id ) ) {
 			$this->whereIn( $this->getPrimaryKey(), is_array( $id ) ? $id : explode( ',', $id ) );
 		}
@@ -417,7 +417,7 @@ class Query implements \ArrayAccess, \Iterator {
 		if ( $id ) {
 			$this->where( $this->getPrimaryKey(), $id );
 			if ( $data = $this->query( $this->build->select(), $this->build->getSelectParams() ) ) {
-				return $data ? $data[0] : [ ];
+				return $data ? $data[0] : [];
 			}
 		}
 	}
@@ -428,7 +428,7 @@ class Query implements \ArrayAccess, \Iterator {
 	 */
 	public function first() {
 		if ( $data = $this->query( $this->build->select(), $this->build->getSelectParams() ) ) {
-			return $res = $data ? $data[0] : [ ];
+			return $res = $data ? $data[0] : [];
 		}
 	}
 
@@ -441,7 +441,7 @@ class Query implements \ArrayAccess, \Iterator {
 	 */
 	public function pluck( $field ) {
 		$data   = $this->query( $this->build->select(), $this->build->getSelectParams() );
-		$result = $data ? $data[0] : [ ];
+		$result = $data ? $data[0] : [];
 		if ( ! empty( $result ) ) {
 			return $result[ $field ];
 		}
@@ -454,7 +454,7 @@ class Query implements \ArrayAccess, \Iterator {
 	 *
 	 * @return array
 	 */
-	public function get( array $field = [ ] ) {
+	public function get( array $field = [] ) {
 		if ( ! empty( $field ) ) {
 			$this->field( $field );
 		}
@@ -471,7 +471,7 @@ class Query implements \ArrayAccess, \Iterator {
 	 */
 	public function lists( $field ) {
 		$result = $this->query( $this->build->select(), $this->build->getSelectParams() );
-		$data   = [ ];
+		$data   = [];
 		if ( $result ) {
 			$field = explode( ',', $field );
 			switch ( count( $field ) ) {
@@ -535,6 +535,13 @@ class Query implements \ArrayAccess, \Iterator {
 	public function orderBy() {
 		$args = func_get_args();
 		$this->build->bindExpression( 'orderBy', $args[0] . " " . ( empty( $args[1] ) ? ' ASC ' : " $args[1]" ) );
+
+		return $this;
+	}
+
+	//排他锁，必须与事务结合使用
+	public function lock() {
+		$this->build->bindExpression( 'lock', ' FOR UPDATE ' );
 
 		return $this;
 	}
@@ -620,7 +627,7 @@ class Query implements \ArrayAccess, \Iterator {
 	}
 
 	//预准备whereRaw
-	public function whereRaw( $sql, array $params = [ ] ) {
+	public function whereRaw( $sql, array $params = [] ) {
 		$this->logic( 'AND' );
 		$this->build->bindExpression( 'where', $sql );
 		foreach ( $params as $p ) {

@@ -7,6 +7,7 @@
  * |    WeChat: aihoudun
  * | Copyright (c) 2012-2019, www.houdunwang.com. All Rights Reserved.
  * '-------------------------------------------------------------------*/
+
 namespace houdunwang\controller\build;
 
 use Exception;
@@ -15,14 +16,15 @@ use houdunwang\container\Container;
 use houdunwang\middleware\Middleware;
 use houdunwang\request\Request;
 use houdunwang\response\Response;
+use houdunwang\view\View;
 use ReflectionMethod;
 
 //控制器处理类
 class Base {
 	//路由参数
-	protected $routeArgs = [ ];
+	protected $routeArgs = [];
 
-	public function run( $routeArgs = [ ] ) {
+	public function run( $routeArgs = [] ) {
 		//控制器开始运行中间件
 		\Middleware::system( 'controller_start' );
 		$this->routeArgs = $routeArgs;
@@ -85,7 +87,7 @@ class Base {
 			 */
 			//反射方法实例
 			$reflectionMethod = new \ReflectionMethod( $class, ACTION );
-			$args             = [ ];
+			$args             = [];
 			foreach ( $reflectionMethod->getParameters() as $k => $p ) {
 				if ( isset( $this->routeArgs[ $p->name ] ) ) {
 					//如果GET变量中存在则将GET变量值赋予,也就是说GET优先级高
@@ -105,7 +107,7 @@ class Base {
 			if ( IS_AJAX && is_array( $result ) ) {
 				Response::ajax( $result );
 			} else {
-				echo $result;
+				echo is_object( $result ) ? View::toString() : $result;
 			}
 		} catch ( ReflectionException $e ) {
 			$action = new ReflectionMethod( $controller, '__call' );

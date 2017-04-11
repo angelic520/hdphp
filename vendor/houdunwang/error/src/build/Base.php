@@ -7,6 +7,7 @@
  * |    WeChat: aihoudun
  * | Copyright (c) 2012-2019, www.houdunwang.com. All Rights Reserved.
  * '-------------------------------------------------------------------*/
+
 namespace houdunwang\error\build;
 
 //错误处理
@@ -28,15 +29,15 @@ class Base {
 
 	//自定义异常理
 	public function exception( $e ) {
-		Log::write( $e->getMessage(), 'EXCEPTION' );
 		//命令行错误
 		if ( PHP_SAPI == 'cli' ) {
 			die( PHP_EOL . "\033[;36m " . $e->getMessage() . "\x1B[0m\n" . PHP_EOL );;
 		} else {
-			if ( Config::get( 'error.debug' ) === true ) {
+			if ( Config::get( 'error.debug' ) == true ) {
 				require __DIR__ . '/../view/exception.php';
 			} else {
-				require $this->bug;
+				Log::write( $e->getMessage(), 'EXCEPTION' );
+//				require $this->bug;
 			}
 		}
 		exit;
@@ -52,8 +53,14 @@ class Base {
 			case E_DEPRECATED:
 				break;
 			case E_NOTICE:
-				if ( PHP_SAPI != 'cli' && c( 'error.debug' ) === true && c( 'error.show_notice' ) ) {
+				if ( PHP_SAPI != 'cli' && c( 'error.debug' ) == true && c( 'error.show_notice' ) ) {
 					require __DIR__ . '/../view/notice.php';
+				}
+				break;
+			case E_WARNING:
+				if ( PHP_SAPI != 'cli' && c( 'error.debug' ) == true ) {
+					require __DIR__ . '/../view/debug.php';
+					exit;
 				}
 				break;
 			default:
@@ -61,11 +68,11 @@ class Base {
 				if ( PHP_SAPI == 'cli' ) {
 					die( PHP_EOL . "\033[;36m $msg \x1B[0m\n" . PHP_EOL );
 				}
-				Log::write( $msg, $this->errorType( $errno ) );
-				if ( c( 'error.debug' ) === true ) {
+				if ( c( 'error.debug' ) == true ) {
 					require __DIR__ . '/../view/debug.php';
 				} else {
-					require $this->bug;
+					Log::write( $msg, $this->errorType( $errno ) );
+//					require $this->bug;
 				}
 				exit;
 		}
@@ -140,9 +147,9 @@ class Base {
 	 * @return void|array
 	 */
 	public function trace( $value = '[hdphp]', $label = '', $level = 'DEBUG', $record = false ) {
-		static $trace = [ ];
+		static $trace = [];
 
-		if ( '[hdphp]' === $value ) {
+		if ( '[hdphp]' == $value ) {
 			// 获取trace信息
 			return $trace;
 		} else {
@@ -152,7 +159,7 @@ class Base {
 				Log::record( $info, $level, $record );
 			} else {
 				if ( ! isset( $trace[ $level ] ) ) {
-					$trace[ $level ] = [ ];
+					$trace[ $level ] = [];
 				}
 				$trace[ $level ][] = $info;
 			}
