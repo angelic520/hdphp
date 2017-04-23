@@ -1,7 +1,4 @@
-<?php namespace houdunwang\tool;
-
-use houdunwang\framework\build\Provider;
-
+<?php
 /** .-------------------------------------------------------------------
  * |  Software: [HDCMS framework]
  * |      Site: www.hdcms.com
@@ -10,17 +7,27 @@ use houdunwang\framework\build\Provider;
  * |    WeChat: aihoudun
  * | Copyright (c) 2012-2019, www.houdunwang.com. All Rights Reserved.
  * '-------------------------------------------------------------------*/
-class ToolProvider extends Provider {
 
-	//延迟加载
-	public $defer = true;
+namespace houdunwang\tool;
 
-	public function boot() {
-	}
+use houdunwang\framework\build\Provider;
 
-	public function register() {
-		$this->app->single( 'Tool', function ( $app ) {
-			return new Tool();
-		} );
-	}
+class ToolProvider extends Provider
+{
+    //延迟加载
+    public $defer = true;
+
+    public function boot()
+    {
+    }
+
+    public function register()
+    {
+        $this->app->single(
+            'Tool',
+            function ($app) {
+                return new Tool();
+            }
+        );
+    }
 }

@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'system\\' => array($baseDir . '/system'),
+    'phpDocumentor\\Reflection\\' => array($vendorDir . '/phpdocumentor/reflection-common/src', $vendorDir . '/phpdocumentor/type-resolver/src', $vendorDir . '/phpdocumentor/reflection-docblock/src'),
     'houdunwang\\zip\\' => array($vendorDir . '/houdunwang/zip/src'),
     'houdunwang\\xml\\' => array($vendorDir . '/houdunwang/xml/src'),
     'houdunwang\\wechat\\' => array($vendorDir . '/houdunwang/wechat/src'),
@@ -54,5 +55,9 @@ return array(
     'houdunwang\\aliyunsms\\' => array($vendorDir . '/houdunwang/aliyunsms/src'),
     'houdunwang\\alipay\\' => array($vendorDir . '/houdunwang/alipay/src'),
     'app\\' => array($baseDir . '/app'),
+    'Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),
+    'Symfony\\Component\\Yaml\\' => array($vendorDir . '/symfony/yaml'),
     'OSS\\' => array($vendorDir . '/aliyuncs/oss-sdk-php/src/OSS'),
+    'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
+    'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
 );

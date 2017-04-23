@@ -15,7 +15,7 @@ use houdunwang\request\build\Base;
 class Request {
 	protected $link;
 
-	protected function driver() {
+    protected function driver() {
 		$this->link = new Base();
 		return $this;
 	}

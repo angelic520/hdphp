@@ -18,9 +18,13 @@
   "minimum-stability": "stable",
   "require": {
     "php": ">=5.4.0",
-    "houdunwang/framework": "3.0.*"
+    "houdunwang/framework": "3.0.*",
+    "phpunit/phpunit": "^5.7"
   },
   "autoload": {
+    "classmap": [
+      "app"
+    ],
     "psr-4": {
       "app\\": "app",
       "system\\": "system"
@@ -28,8 +32,8 @@
   },
   "repositories": {
     "packagist": {
-        "type": "composer",
-        "url": "https://packagist.phpcomposer.com"
+      "type": "composer",
+      "url": "https://packagist.phpcomposer.com"
     }
-	}
+  }
 }
