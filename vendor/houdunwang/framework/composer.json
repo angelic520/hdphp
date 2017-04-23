@@ -56,7 +56,8 @@
     "houdunwang/loader": "~1.0",
     "houdunwang/qrcode": "~1.0",
     "houdunwang/aliyunsms": "~1.0",
-    "houdunwang/cloud": "~1.0"
+    "houdunwang/cloud": "~1.0",
+    "vlucas/phpdotenv": "~2.0"
   },
   "autoload": {
     "files": [

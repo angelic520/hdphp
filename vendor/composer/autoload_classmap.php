@@ -468,5 +468,9 @@ return array(
     'SebastianBergmann\\ResourceOperations\\ResourceOperations' => $vendorDir . '/sebastian/resource-operations/src/ResourceOperations.php',
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
+    'app\\home\\controller\\Aa' => $baseDir . '/app/home/controller/Aa.php',
+    'app\\home\\controller\\Aa5' => $baseDir . '/app/home/controller/Aa5.php',
+    'app\\home\\controller\\Aa51' => $baseDir . '/app/home/controller/Aa51.php',
+    'app\\home\\controller\\Aaa' => $baseDir . '/app/home/controller/Aaa.php',
     'app\\home\\controller\\Entry' => $baseDir . '/app/home/controller/Entry.php',
 );

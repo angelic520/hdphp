@@ -36,7 +36,7 @@ class Base
         if (PHP_SAPI == 'cli') {
             die(PHP_EOL."\033[;36m ".$e->getMessage()."\x1B[0m\n".PHP_EOL);;
         } else {
-            if (Config::get('error.debug') == true) {
+            if (Config::get('app.debug') == true) {
                 require __DIR__.'/../view/exception.php';
             } else {
                 Log::write($e->getMessage(), 'EXCEPTION');

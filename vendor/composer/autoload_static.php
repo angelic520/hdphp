@@ -99,6 +99,7 @@ class ComposerStaticInit6cb549ca3268dd919f8ef1d89772ab3d
         ),
         'D' => 
         array (
+            'Dotenv\\' => 7,
             'Doctrine\\Instantiator\\' => 22,
             'DeepCopy\\' => 9,
         ),
@@ -314,6 +315,10 @@ class ComposerStaticInit6cb549ca3268dd919f8ef1d89772ab3d
         'OSS\\' => 
         array (
             0 => __DIR__ . '/..' . '/aliyuncs/oss-sdk-php/src/OSS',
+        ),
+        'Dotenv\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
         ),
         'Doctrine\\Instantiator\\' => 
         array (
@@ -805,6 +810,10 @@ class ComposerStaticInit6cb549ca3268dd919f8ef1d89772ab3d
         'SebastianBergmann\\ResourceOperations\\ResourceOperations' => __DIR__ . '/..' . '/sebastian/resource-operations/src/ResourceOperations.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
+        'app\\home\\controller\\Aa' => __DIR__ . '/../..' . '/app/home/controller/Aa.php',
+        'app\\home\\controller\\Aa5' => __DIR__ . '/../..' . '/app/home/controller/Aa5.php',
+        'app\\home\\controller\\Aa51' => __DIR__ . '/../..' . '/app/home/controller/Aa51.php',
+        'app\\home\\controller\\Aaa' => __DIR__ . '/../..' . '/app/home/controller/Aaa.php',
         'app\\home\\controller\\Entry' => __DIR__ . '/../..' . '/app/home/controller/Entry.php',
     );
 
