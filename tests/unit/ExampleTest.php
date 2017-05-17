@@ -8,12 +8,25 @@
  * | Copyright (c) 2012-2019, www.houdunwang.com. All Rights Reserved.
  * '-------------------------------------------------------------------*/
 
-namespace app\home\controller;
+namespace tests\unit;
 
-class Entry
+use tests\Test;
+
+/**
+ * 单元测试
+ * Class ExampleTest
+ *
+ * @package tests\unit
+ */
+class ExampleTest extends Test
 {
-    public function index()
+    public function setUp()
     {
-        return view();
+        parent::setUp();
+    }
+
+    public function test_example()
+    {
+        $this->assertTrue(true);
     }
 }

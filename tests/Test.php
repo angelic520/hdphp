@@ -8,12 +8,25 @@
  * | Copyright (c) 2012-2019, www.houdunwang.com. All Rights Reserved.
  * '-------------------------------------------------------------------*/
 
-namespace app\home\controller;
+namespace tests;
 
-class Entry
+use houdunwang\unit\Application;
+use houdunwang\unit\UnitBaseTestCase;
+
+/**
+ * 测试基础类
+ * Class Base
+ *
+ * @package tests
+ */
+abstract class Test extends UnitBaseTestCase
 {
-    public function index()
+    use Application;
+
+    protected function setUp()
     {
-        return view();
+        $this->create();
+        parent::setUp();
     }
+
 }

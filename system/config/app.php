@@ -52,7 +52,7 @@ return [
     |
     | message 函数调用时使用的模板
     */
-    'message'  => ROOT_PATH.'/resource/view/message.php',
+    'message'  => 'resource/view/message.php',
 
     /*
     |--------------------------------------------------------------------------
@@ -61,7 +61,7 @@ return [
     |
     | confirm函数调用时显示的模板文件
     */
-    'confirm'  => ROOT_PATH.'/resource/view/confirm.php',
+    'confirm'  => 'resource/view/confirm.php',
 
     /*
     |--------------------------------------------------------------------------
@@ -70,5 +70,5 @@ return [
     |
     | 请求页面不存或执行_404()函数时调用的视图模板
     */
-    '404'      => ROOT_PATH.'/resource/view/404.php',
+    '404'      => 'resource/view/404.php',
 ];

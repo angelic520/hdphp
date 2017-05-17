@@ -13,6 +13,12 @@ namespace system;
 use houdunwang\framework\App;
 use houdunwang\model\Model;
 
+/**
+ *
+ * Class Repository
+ *
+ * @package system
+ */
 abstract class Repository implements RepositoryInterface
 {
     private $app;
@@ -23,7 +29,6 @@ abstract class Repository implements RepositoryInterface
         $this->app = $app;
         $this->makeModel();
     }
-
     /**
      * Specify Model class name
      *
