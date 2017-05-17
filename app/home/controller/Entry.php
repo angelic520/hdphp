@@ -14,6 +14,6 @@ class Entry
 {
     public function index()
     {
-        return view();
+        return View::with('framework', 'HDPHP')->make();
     }
 }

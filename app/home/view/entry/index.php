@@ -13,7 +13,7 @@
     .links{margin: 0 auto;margin:10px;text-align: center;}
     .links a{padding:10px 10px;color:#636b6f;font-size:12px;text-decoration: none;}
 </style>
-<p class="text-muted text-center" style="margin-top:200px;font-size:90px;">HDPHP</p>
+<p class="text-muted text-center" style="margin-top:200px;font-size:90px;">{{$framework}}</p>
 <h4 class="text-muted text-center">服务化/组件化/模块化的未来框架产品</h4>
 <div class="links">
     <a href="http://bbs.houdunwang.com">论坛交流</a>
