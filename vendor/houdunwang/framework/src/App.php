@@ -15,10 +15,6 @@ class App
 {
     protected $link;
 
-    public function __construct()
-    {
-    }
-
     //更改缓存驱动
     protected function driver()
     {

@@ -32,14 +32,18 @@ class Base
                 switch ($type) {
                     case 'only':
                         if (in_array(ACTION, $data)) {
-                            $this->run[] = Config::get('middleware.controller.'
-                                .$name);
+                            $this->run[] = Config::get(
+                                'middleware.controller.'
+                                .$name
+                            );
                         }
                         break;
                     case 'except':
                         if ( ! in_array(ACTION, $data)) {
-                            $this->run[] = Config::get('middleware.controller.'
-                                .$name);
+                            $this->run[] = Config::get(
+                                'middleware.controller.'
+                                .$name
+                            );
                         }
                         break;
                 }

@@ -16,7 +16,7 @@ class Cookie implements Middleware
 {
     public function run($next)
     {
-        c('cookie.key', c('app.key'));
+        \Config::set('cookie.key', \Config::get('app.key'));
         $next();
     }
 }

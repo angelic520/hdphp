@@ -41,7 +41,7 @@ return [
     | 通过设置下面的path值来定义保存SESSION的目录
     */
     'file'     => [
-        'path' => ROOT_PATH.'/storage/session',
+        'path' => 'storage/session',
     ],
 
     /*

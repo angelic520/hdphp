@@ -1,4 +1,5 @@
 <?php
+
 namespace houdunwang\framework\middleware;
 
 use houdunwang\middleware\build\Middleware;
@@ -16,7 +17,7 @@ class Csrf implements Middleware
 
     public function run($next)
     {
-        $this->make();
+        $this->validate();
         $next();
     }
 
@@ -24,47 +25,52 @@ class Csrf implements Middleware
      * 检测令牌
      *
      * @return bool
+     * @throws \Exception
      */
-    protected function make()
+    protected function validate()
     {
-        //设置令牌
-        $this->setToken();
-        //当为POST请求时并且为同域名时验证令牌
-        $status = \Request::isDomain()
-            && \Request::post()
-            && c('csrf.open');
+        $status = $this->getToken() && \Request::post()
+            && \Config::get(
+                'csrf.open'
+            );
         if ($status) {
-            //比较POST中提交的CSRF
-            if (\Request::post('csrf_token') == $this->token) {
-                return true;
-            }
-            //根据头部数据验证CSRF
-            $headers = \Arr::keyCase(getallheaders(), 1);
-            if (isset($headers['X-CSRF-TOKEN'])
-                && ($headers['X-CSRF-TOKEN'] == $this->token)
-            ) {
+            //比较CSRF
+            if ($this->getClientToken() == $this->getToken()) {
                 return true;
             }
             //存在过滤的验证时忽略验证
-            $except = c('csrf.except');
+            $except = \Config::get('csrf.except');
             foreach ((array)$except as $f) {
                 if (preg_match("@$f@i", __URL__)) {
                     return true;
                 }
             }
-            message('CSRF表单令牌验证失败', '', 'error');
+            \Response::sendHttpStatus(403);
+            throw new \Exception('CSRF表单令牌验证失败');
         }
+
+        return true;
     }
 
+    /**
+     * 获取令牌
+     *
+     * @return mixed
+     */
+    protected function getToken()
+    {
+        return \Session::get('csrf_token');
+    }
 
     /**
-     * 设置令牌/如果不存是创建新令牌
+     * 设置令牌
+     *
+     * @param mixed $token
      */
-    protected function setToken()
+    protected function setToken($token)
     {
-        if (c('csrf.open')) {
-            $token = \Session::get('csrf_token');
-            if (empty($token)) {
+        if (\Config::get('csrf.open')) {
+            if (empty($this->getToken())) {
                 $token = md5(clientIp().microtime(true));
                 \Session::set('csrf_token', $token);
                 /**
@@ -75,5 +81,20 @@ class Csrf implements Middleware
             }
             $this->token = $token;
         }
+    }
+
+    /**
+     * 获取端发送来的令牌
+     *
+     * @return mixed
+     */
+    protected function getClientToken()
+    {
+        $headers = \Arr::keyCase(getallheaders(), 1);
+        if (isset($headers['X-CSRF-TOKEN'])) {
+            return $headers['X-CSRF-TOKEN'];
+        }
+
+        return \Request::post('csrf_token');
     }
 }

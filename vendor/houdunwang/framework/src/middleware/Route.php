@@ -12,32 +12,41 @@ namespace houdunwang\framework\middleware;
 
 use houdunwang\middleware\build\Middleware;
 use Config;
+use houdunwang\view\build\Base as ViewBase;
 use Response;
 
 class Route implements Middleware
 {
     public function run($next)
     {
-        Config::set('controller.app', Config::get('app.path'));
-        Config::set('route.cache', Config::get('http.route_cache'));
-        Config::set('route.mode', Config::get('http.route_mode'));
-        //解析路由
-        require ROOT_PATH.'/system/routes.php';
-        $this->parse(\Route::dispatch());
+        if (RUN_MODE == 'HTTP') {
+            Config::set('controller.app', Config::get('app.path'));
+            Config::set('route.cache', Config::get('http.route_cache'));
+            //解析路由
+            require ROOT_PATH.'/system/routes.php';
+            \Route::dispatch();
+            $this->parse();
+        }
         $next();
     }
 
     /**
      * 处理解析结果
      *
-     * @param $result
      */
-    protected function parse($result)
+    protected function parse()
     {
-        if (IS_AJAX && is_array($result)) {
-            Response::ajax($result);
-        } else {
-            echo is_object($result) ? \View::toString() : $result;
+        if (RUN_MODE == 'HTTP') {
+            $result = \Route::getResult();
+            if (is_array($result)) {
+                echo json_encode($result, JSON_UNESCAPED_UNICODE);
+            }
+            if (is_string($result)) {
+                echo $result;
+            }
+            if ($result instanceof ViewBase) {
+                echo \View::toString();
+            }
         }
     }
 }

@@ -8,18 +8,21 @@
  * | Copyright (c) 2012-2019, www.houdunwang.com. All Rights Reserved.
  * '-------------------------------------------------------------------*/
 
-namespace houdunwang\framework\middleware;
+namespace houdunwang\route;
 
-
-use houdunwang\middleware\build\Middleware;
-
-class Globals implements Middleware
+/**
+ * 控制器基础类
+ * Class Controller
+ *
+ * @package houdunwang\route
+ */
+abstract class Controller
 {
-    public function run($next)
+    /**
+     * 验证码
+     */
+    final public function captcha()
     {
-        //执行中间件
-        Middleware::globals();
-        $next();
+        Code::make();
     }
-
 }

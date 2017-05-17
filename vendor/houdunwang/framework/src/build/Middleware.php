@@ -14,6 +14,7 @@ use houdunwang\framework\middleware\App;
 use houdunwang\framework\middleware\Cli;
 use houdunwang\framework\middleware\Cookie;
 use houdunwang\framework\middleware\Csrf;
+use houdunwang\framework\middleware\Globals;
 use houdunwang\framework\middleware\Request;
 use houdunwang\framework\middleware\Route;
 use houdunwang\framework\middleware\Session;
@@ -36,17 +37,19 @@ trait Middleware
             Request::class,
             Csrf::class,
             View::class,
-            Route::class,
         ];
 
     /**
      * 执行中间件
-     *
-     * @param array $middleware
      */
-    protected function middleware(array $middleware = [])
+    protected function middleware()
     {
-        $middleware = array_reverse($middleware ?: $this->middlewarte);
+        $middleware = array_merge(
+            $this->middlewarte,
+            Config::get('middleware.global'),
+            [Route::class]
+        );
+        $middleware = array_reverse($middleware);
         $dispatcher = array_reduce(
             $middleware,
             $this->getSlice(),

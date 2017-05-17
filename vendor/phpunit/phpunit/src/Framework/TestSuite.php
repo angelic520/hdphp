@@ -10,6 +10,8 @@
 
 /**
  * A TestSuite is a composite of Tests. It runs a collection of test cases.
+ *
+ * @since Class available since Release 2.0.0
  */
 class PHPUnit_Framework_TestSuite implements PHPUnit_Framework_Test, PHPUnit_Framework_SelfDescribing, IteratorAggregate
 {
@@ -289,6 +291,8 @@ class PHPUnit_Framework_TestSuite implements PHPUnit_Framework_Test, PHPUnit_Fra
      * @param string $filename
      *
      * @throws PHPUnit_Framework_Exception
+     *
+     * @since Method available since Release 2.3.0
      */
     public function addTestFile($filename)
     {
@@ -367,6 +371,8 @@ class PHPUnit_Framework_TestSuite implements PHPUnit_Framework_Test, PHPUnit_Fra
      * @param array|Iterator $filenames
      *
      * @throws PHPUnit_Framework_Exception
+     *
+     * @since Method available since Release 2.3.0
      */
     public function addTestFiles($filenames)
     {
@@ -612,6 +618,8 @@ class PHPUnit_Framework_TestSuite implements PHPUnit_Framework_Test, PHPUnit_Fra
      * Returns the test groups of the suite.
      *
      * @return array
+     *
+     * @since Method available since Release 3.2.0
      */
     public function getGroups()
     {
@@ -627,6 +635,8 @@ class PHPUnit_Framework_TestSuite implements PHPUnit_Framework_Test, PHPUnit_Fra
      * Set tests groups of the test case
      *
      * @param array $groups
+     *
+     * @since Method available since Release 4.0.0
      */
     public function setGroupDetails(array $groups)
     {
@@ -691,10 +701,6 @@ class PHPUnit_Framework_TestSuite implements PHPUnit_Framework_Test, PHPUnit_Fra
             $numTests = count($this);
 
             for ($i = 0; $i < $numTests; $i++) {
-                if ($result->shouldStop()) {
-                    break;
-                }
-
                 $result->startTest($this);
                 $result->addError($this, $t, 0);
                 $result->endTest($this, 0);
@@ -739,6 +745,8 @@ class PHPUnit_Framework_TestSuite implements PHPUnit_Framework_Test, PHPUnit_Fra
      * @param bool $runTestInSeparateProcess
      *
      * @throws PHPUnit_Framework_Exception
+     *
+     * @since Method available since Release 3.7.0
      */
     public function setRunTestInSeparateProcess($runTestInSeparateProcess)
     {
@@ -802,6 +810,8 @@ class PHPUnit_Framework_TestSuite implements PHPUnit_Framework_Test, PHPUnit_Fra
      * Set tests of the test suite
      *
      * @param array $tests
+     *
+     * @since Method available since Release 4.0.0
      */
     public function setTests(array $tests)
     {
@@ -814,6 +824,8 @@ class PHPUnit_Framework_TestSuite implements PHPUnit_Framework_Test, PHPUnit_Fra
      * @param string $message
      *
      * @throws PHPUnit_Framework_SkippedTestSuiteError
+     *
+     * @since Method available since Release 3.0.0
      */
     public function markTestSuiteSkipped($message = '')
     {
@@ -876,7 +888,7 @@ class PHPUnit_Framework_TestSuite implements PHPUnit_Framework_Test, PHPUnit_Fra
         // @test     on TestCase::testMethod()
         $docComment = $method->getDocComment();
 
-        return strpos($docComment, '@test') !== false ||
+        return strpos($docComment, '@test')     !== false ||
                strpos($docComment, '@scenario') !== false;
     }
 
@@ -896,6 +908,8 @@ class PHPUnit_Framework_TestSuite implements PHPUnit_Framework_Test, PHPUnit_Fra
      * @param string $message
      *
      * @return PHPUnit_Framework_SkippedTestCase
+     *
+     * @since Method available since Release 4.3.0
      */
     protected static function skipTest($class, $methodName, $message)
     {
@@ -908,6 +922,8 @@ class PHPUnit_Framework_TestSuite implements PHPUnit_Framework_Test, PHPUnit_Fra
      * @param string $message
      *
      * @return PHPUnit_Framework_IncompleteTestCase
+     *
+     * @since Method available since Release 4.3.0
      */
     protected static function incompleteTest($class, $methodName, $message)
     {
@@ -916,6 +932,8 @@ class PHPUnit_Framework_TestSuite implements PHPUnit_Framework_Test, PHPUnit_Fra
 
     /**
      * @param bool $beStrictAboutChangesToGlobalState
+     *
+     * @since Method available since Release 4.6.0
      */
     public function setbeStrictAboutChangesToGlobalState($beStrictAboutChangesToGlobalState)
     {
@@ -926,6 +944,8 @@ class PHPUnit_Framework_TestSuite implements PHPUnit_Framework_Test, PHPUnit_Fra
 
     /**
      * @param bool $backupGlobals
+     *
+     * @since Method available since Release 3.3.0
      */
     public function setBackupGlobals($backupGlobals)
     {
@@ -936,6 +956,8 @@ class PHPUnit_Framework_TestSuite implements PHPUnit_Framework_Test, PHPUnit_Fra
 
     /**
      * @param bool $backupStaticAttributes
+     *
+     * @since Method available since Release 3.4.0
      */
     public function setBackupStaticAttributes($backupStaticAttributes)
     {
@@ -949,6 +971,8 @@ class PHPUnit_Framework_TestSuite implements PHPUnit_Framework_Test, PHPUnit_Fra
      * Returns an iterator for this test suite.
      *
      * @return RecursiveIteratorIterator
+     *
+     * @since Method available since Release 3.1.0
      */
     public function getIterator()
     {
@@ -974,6 +998,8 @@ class PHPUnit_Framework_TestSuite implements PHPUnit_Framework_Test, PHPUnit_Fra
     /**
      * Template Method that is called before the tests
      * of this test suite are run.
+     *
+     * @since Method available since Release 3.1.0
      */
     protected function setUp()
     {
@@ -982,6 +1008,8 @@ class PHPUnit_Framework_TestSuite implements PHPUnit_Framework_Test, PHPUnit_Fra
     /**
      * Template Method that is called after the tests
      * of this test suite have finished running.
+     *
+     * @since Method available since Release 3.1.0
      */
     protected function tearDown()
     {

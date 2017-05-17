@@ -25,13 +25,15 @@ trait Initial
     {
         $this->constant();
         $this->configSetting();
-        //自动加载系统服务
-        Loader::bootstrap();
         //设置自动加载
+        Loader::bootstrap();
         Loader::register([$this, 'autoload']);
         Error::bootstrap();
     }
 
+    /**
+     * 加载配置项
+     */
     protected function configSetting()
     {
         //加载服务配置项
@@ -48,16 +50,17 @@ trait Initial
         );
         //设置时区
         date_default_timezone_set(Config::get('app.timezone'));
-        //设置加密密钥
-        Config::set('crypt.key', Config::get('app.key'));
     }
 
+    /**
+     * 常量设置
+     */
     protected function constant()
     {
         if ( ! defined('__ROOT__')) {
             define(
                 '__ROOT__',
-                PHP_SAPI == 'cli'
+                RUN_MODE != 'HTTP'
                     ? ''
                     : trim(
                     'http://'.$_SERVER['HTTP_HOST']

@@ -7,32 +7,19 @@
  * |    WeChat: aihoudun
  * | Copyright (c) 2012-2019, www.houdunwang.com. All Rights Reserved.
  * '-------------------------------------------------------------------*/
+if ( ! function_exists('app')) {
 
-if ( ! function_exists('env')) {
+
     /**
-     * 根据.env配置文件获取匹配项
+     * 获取应用实例
      *
-     * @param $name  配置名称
-     * @param $value 为空时的返回值
+     * @param string $name 外观名称
      *
      * @return mixed
      */
-    function env($name, $value)
+    function app($name = 'App')
     {
-        (new \Dotenv\Dotenv(ROOT_PATH))->load();
-
-        return getenv($name, $value);
-//		$envConfig = [];
-//		if ( is_file( '.env' ) && empty( $envConfig ) ) {
-//			$parse = file_get_contents( '.env' );
-//			$data  = array_filter( preg_split( '@' . PHP_EOL . '@', $parse ) );
-//			foreach ( $data as $v ) {
-//				$info                          = explode( '=', $v );
-//				$envConfig[ trim( $info[0] ) ] = trim( $info[1] );
-//			}
-//		}
-//
-//		return empty( $envConfig[ $name ] ) ? $value : $envConfig[ $name ];
+        return \App::make($name);
     }
 }
 
@@ -81,14 +68,13 @@ if ( ! function_exists('u')) {
         if (defined('MODULE')) {
             //控制器访问模式
             //URL请求参数
-            $urlParam = explode('/', $_GET[c('http.url_var')]);
-            $path     = str_replace('.', '/', $path);
+            $path = str_replace('.', '/', $path);
             switch (count(explode('/', $path))) {
                 case 2:
-                    $path = $urlParam[0].'/'.$path;
+                    $path = MODULE.'/'.$path;
                     break;
                 case 1:
-                    $path = $urlParam[0].'/'.$urlParam[1].'/'.$path;
+                    $path = MODULE.'/'.CONTROLLER.'/'.$path;
                     break;
             }
 
@@ -140,11 +126,10 @@ if ( ! function_exists('url_del')) {
 if ( ! function_exists('_404')) {
     function _404()
     {
-        \Response::sendHttpStatus(302);
-        if (is_file(c('app.404'))) {
+        \Response::sendHttpStatus(404);
+        if (RUN_MODE == 'HTTP' && is_file(c('app.404'))) {
             die(view(c('app.404')));
         }
-        exit;
     }
 }
 
@@ -186,19 +171,18 @@ if ( ! function_exists('go')) {
     function go($url, $time = 0, $msg = '')
     {
         $url = u($url);
-        if ( ! headers_sent()) {
-            $time == 0
-                ? header("Location:".$url)
-                : header(
-                "refresh:{$time};url={$url}"
-            );
-            exit($msg);
-        } else {
-            echo "<meta http-equiv='Refresh' content='{$time};URL={$url}'>";
-            if ($msg) {
-                echo($msg);
-            }
-            exit;
+//        if ( ! headers_sent()) {
+//            $time == 0
+//                ? header("Location:".$url)
+//                : header(
+//                "refresh:{$time};url={$url}"
+//            );
+//        } else {
+//            echo "<meta http-equiv='Refresh' content='{$time};URL={$url}'>";
+//        }
+        echo "<meta http-equiv='Refresh' content='{$time};URL={$url}'>";
+        if ($msg) {
+//            die($msg);
         }
     }
 }

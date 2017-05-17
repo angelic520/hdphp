@@ -22,12 +22,12 @@ class Base
     //启动组件
     public function bootstrap()
     {
-        defined('IS_CLI') or define('IS_CLI', PHP_SAPI == 'cli');
         $_SERVER['SCRIPT_NAME'] = str_replace(
             '\\',
             '/',
             $_SERVER['SCRIPT_NAME']
         );
+
         $this->items['POST']    = $_POST;
         $this->items['GET']     = $_GET;
         $this->items['REQUEST'] = $_REQUEST;
@@ -35,82 +35,80 @@ class Base
         $this->items['GLOBALS'] = $GLOBALS;
         $this->items['SESSION'] = Session::all();
         $this->items['COOKIE']  = Cookie::all();
-        if ( ! IS_CLI) {
-            if (empty($_POST)) {
-                $input = file_get_contents('php://input');
-                if ($data = json_decode($input, true)) {
-                    $this->items['POST'] = $data;
-                } else {
-                    parse_str($input, $post);
-                    if ( ! empty($post)) {
-                        $this->items['POST'] = $post;
-                    }
+        if (empty($_POST)) {
+            $input = file_get_contents('php://input');
+            if ($data = json_decode($input, true)) {
+                $this->items['POST'] = $data;
+            } else {
+                parse_str($input, $post);
+                if ( ! empty($post)) {
+                    $this->items['POST'] = $post;
                 }
             }
-            if ( ! defined('NOW')) {
-                define('NOW', $_SERVER['REQUEST_TIME']);
-            }
-            if ( ! defined('MICROTIME')) {
-                define('MICROTIME', $_SERVER['REQUEST_TIME_FLOAT']);
-            }
-            if ( ! defined('IS_GET')) {
-                define('IS_GET', $_SERVER['REQUEST_METHOD'] == 'GET');
-            }
-            if ( ! defined('IS_POST')) {
-                define(
-                    'IS_POST',
-                    $_SERVER['REQUEST_METHOD'] == 'POST'
-                    || ! empty($this->items['POST'])
-                );
-            }
-            if ( ! defined('IS_DELETE')) {
-                define(
-                    'IS_DELETE',
-                    $_SERVER['REQUEST_METHOD'] == 'DELETE'
-                        ?: (isset($_POST['_method'])
-                        && $_POST['_method'] == 'DELETE')
-                );
-            }
-            if ( ! defined('IS_PUT')) {
-                define(
-                    'IS_PUT',
-                    $_SERVER['REQUEST_METHOD'] == 'PUT'
-                        ?:
-                        (isset($_POST['_method'])
-                            && $_POST['_method'] == 'PUT')
-                );
-            }
-            if ( ! defined('IS_AJAX')) {
-                define('IS_AJAX', $this->isAjax());
-            }
-            if ( ! defined('IS_WECHAT')) {
-                define(
-                    'IS_WECHAT',
-                    isset($_SERVER['HTTP_USER_AGENT'])
-                    && strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger')
-                    !== false
-                );
-            }
-            if ( ! defined('IS_MOBILE')) {
-                define('IS_MOBILE', $this->isMobile());
-            }
-            if ( ! defined('__URL__')) {
-                define(
-                    '__URL__',
-                    trim(
-                        'http://'.$_SERVER['HTTP_HOST'].'/'
-                        .trim($_SERVER['REQUEST_URI'], '/\\'),
-                        '/'
-                    )
-                );
-            }
-            if ( ! defined('__HISTORY__')) {
-                define(
-                    "__HISTORY__",
-                    isset($_SERVER["HTTP_REFERER"]) ? $_SERVER["HTTP_REFERER"]
-                        : ''
-                );
-            }
+        }
+        if ( ! defined('NOW')) {
+            define('NOW', $_SERVER['REQUEST_TIME']);
+        }
+        if ( ! defined('MICROTIME')) {
+            define('MICROTIME', $_SERVER['REQUEST_TIME_FLOAT']);
+        }
+        if ( ! defined('IS_GET')) {
+            define('IS_GET', $_SERVER['REQUEST_METHOD'] == 'GET');
+        }
+        if ( ! defined('IS_POST')) {
+            define(
+                'IS_POST',
+                $_SERVER['REQUEST_METHOD'] == 'POST'
+                || ! empty($this->items['POST'])
+            );
+        }
+        if ( ! defined('IS_DELETE')) {
+            define(
+                'IS_DELETE',
+                $_SERVER['REQUEST_METHOD'] == 'DELETE'
+                    ?: (isset($_POST['_method'])
+                    && $_POST['_method'] == 'DELETE')
+            );
+        }
+        if ( ! defined('IS_PUT')) {
+            define(
+                'IS_PUT',
+                $_SERVER['REQUEST_METHOD'] == 'PUT'
+                    ?:
+                    (isset($_POST['_method'])
+                        && $_POST['_method'] == 'PUT')
+            );
+        }
+        if ( ! defined('IS_AJAX')) {
+            define('IS_AJAX', $this->isAjax());
+        }
+        if ( ! defined('IS_WECHAT')) {
+            define(
+                'IS_WECHAT',
+                isset($_SERVER['HTTP_USER_AGENT'])
+                && strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger')
+                !== false
+            );
+        }
+        if ( ! defined('IS_MOBILE')) {
+            define('IS_MOBILE', $this->isMobile());
+        }
+        if ( ! defined('__URL__')) {
+            define(
+                '__URL__',
+                trim(
+                    'http://'.$_SERVER['HTTP_HOST'].'/'
+                    .trim($_SERVER['REQUEST_URI'], '/\\'),
+                    '/'
+                )
+            );
+        }
+        if ( ! defined('__HISTORY__')) {
+            define(
+                "__HISTORY__",
+                isset($_SERVER["HTTP_REFERER"]) ? $_SERVER["HTTP_REFERER"]
+                    : ''
+            );
         }
     }
 

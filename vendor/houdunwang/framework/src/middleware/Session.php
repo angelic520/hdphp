@@ -18,5 +18,6 @@ class Session implements Middleware
     {
         \Session::bootstrap();
         $next();
+//        \Session::write();
     }
 }

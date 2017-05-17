@@ -10,15 +10,17 @@
 
 namespace houdunwang\framework\middleware;
 
-
 use houdunwang\middleware\build\Middleware;
 
 class Cli implements Middleware
 {
     public function run($next)
     {
-        //执行命令行指令
-        \houdunwang\cli\Cli::bootstrap();
+        if (RUN_MODE == 'CLI') {
+            //执行命令行指令
+            \houdunwang\cli\Cli::bootstrap();
+            die;
+        }
         $next();
     }
 }

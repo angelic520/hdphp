@@ -19,22 +19,25 @@
   "require": {
     "php": ">=5.4.0",
     "houdunwang/framework": "3.0.*",
-    "phpunit/phpunit": "5.7",
-    "vlucas/phpdotenv": "^2.4"
+    "houdunwang/unit": "^1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.1"
   },
   "autoload": {
-    "classmap": [
-      "app"
+    "files": [
+      "system/helper.php"
     ],
     "psr-4": {
       "app\\": "app",
-      "system\\": "system"
+      "system\\": "system",
+      "addons\\": "addons",
+      "module\\": "module"
     }
   },
-  "repositories": {
-    "packagist": {
-      "type": "composer",
-      "url": "https://packagist.phpcomposer.com"
+  "autoload-dev": {
+    "psr-4": {
+      "tests\\": "tests"
     }
   }
 }

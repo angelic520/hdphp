@@ -11,13 +11,12 @@
 namespace houdunwang\framework\middleware;
 
 use houdunwang\middleware\build\Middleware;
+
 class Request implements Middleware
 {
     public function run($next)
     {
-//        echo '<br/>request start<br/>';
         \Request::bootstrap();
         $next();
-//        echo '<br/>request end<br/>';
     }
 }

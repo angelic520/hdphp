@@ -47,7 +47,7 @@ class Base implements ArrayAccess
     /**
      * 单例服务
      *
-     * @param string $name   名称
+     * @param string $name 名称
      * @param mixed  $object 对象
      */
     public function instance($name, $object)
@@ -107,9 +107,38 @@ class Base implements ArrayAccess
     {
         $reflectionFunction = new \ReflectionFunction($function);
         $args
-                            = $this->getDependencies($reflectionFunction->getParameters());
+                            = $this->getDependencies(
+            $reflectionFunction->getParameters()
+        );
 
         return $reflectionFunction->invokeArgs($args);
+    }
+
+    /**
+     * 递归解析参数
+     *
+     * @param $parameters
+     *
+     * @return array
+     * @throws Exception
+     */
+    public function getDependencies($parameters)
+    {
+        $dependencies = [];
+        //参数列表
+        foreach ($parameters as $parameter) {
+            //获取参数类型
+            $dependency = $parameter->getClass();
+            if (is_null($dependency)) {
+                //是变量,有默认值则设置默认值
+                $dependencies[] = $this->resolveNonClass($parameter);
+            } else {
+                //是一个类,递归解析
+                $dependencies[] = $this->build($dependency->name);
+            }
+        }
+
+        return $dependencies;
     }
 
     /**
@@ -165,33 +194,6 @@ class Base implements ArrayAccess
 
         //创建一个类的新实例，给出的参数将传递到类的构造函数。
         return $reflector->newInstanceArgs($dependencies);
-    }
-
-    /**
-     * 递归解析参数
-     *
-     * @param $parameters
-     *
-     * @return array
-     * @throws Exception
-     */
-    public function getDependencies($parameters)
-    {
-        $dependencies = [];
-        //参数列表
-        foreach ($parameters as $parameter) {
-            //获取参数类型
-            $dependency = $parameter->getClass();
-            if (is_null($dependency)) {
-                //是变量,有默认值则设置默认值
-                $dependencies[] = $this->resolveNonClass($parameter);
-            } else {
-                //是一个类,递归解析
-                $dependencies[] = $this->build($dependency->name);
-            }
-        }
-
-        return $dependencies;
     }
 
     /**
