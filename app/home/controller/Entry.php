@@ -10,7 +10,9 @@
 
 namespace app\home\controller;
 
-class Entry
+use houdunwang\route\Controller;
+
+class Entry extends Controller
 {
     public function index()
     {
